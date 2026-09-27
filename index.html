@@ -296,7 +296,7 @@
   const TERMS_VERSION = "Design Services Terms and Conditions, last updated September 27, 2026";
   // Signing automation (Cloudflare Worker). When set, the signed agreement is emailed to the client after payment.
   // When empty or unreachable, the site falls back to emailing the record to info@ and downloading a PDF copy.
-  const AGREEMENT_API = "";
+  const AGREEMENT_API = "https://bp-agreements.bp-agreements.workers.dev";
   document.querySelectorAll("[data-pay]").forEach(a => { const url = STRIPE_LINKS[a.dataset.pay]; if (url) a.href = url; });
   document.getElementById("year").textContent = new Date().getFullYear();
 
