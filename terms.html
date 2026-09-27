@@ -17,8 +17,10 @@
   a { color:inherit; }
   .wrap { max-width:760px; margin:0 auto; padding:0 var(--g); }
   header.top { display:flex; justify-content:space-between; align-items:center; padding:26px 0; }
-  .mark { text-decoration:none; font:400 24px/1 "Bodoni Moda", serif; letter-spacing:.02em; }
-  .mark em { color:var(--acc); }
+  .brand { display:inline-flex; align-items:center; gap:14px; text-decoration:none; }
+  .brand img { display:block; height:auto; }
+  .brand-mark { width:38px; } .brand-word { width:190px; }
+  @media (max-width:420px) { .brand-word { width:150px; } .brand-mark { width:32px; } }
   header.top nav a { font-size:14px; font-weight:500; letter-spacing:.08em; color:var(--soft); text-decoration:none; }
   header.top nav a:hover { color:var(--text); }
   h1 { font:400 clamp(36px,5vw,52px)/1.08 "Bodoni Moda", serif; margin:48px 0 10px; }
@@ -28,7 +30,7 @@
   .actions { margin:-20px 0 36px; }
   .print { font:600 13px/1 "Hanken Grotesk", sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--text); background:transparent; border:1px solid var(--rule); padding:11px 16px; cursor:pointer; }
   .print:hover { border-color:var(--text); }
-  @media print { body { background:#fff; color:#000; } p, li { color:#000; } h1 em, h2 em, h3, .mark em { color:#000; } header.top nav, .actions, footer a { display:none; } a { text-decoration:none; } }
+  @media print { body { background:#fff; color:#000; } p, li { color:#000; } h1 em, h2 em, h3 { color:#000; } .brand img { filter:invert(1); } header.top nav, .actions, footer a { display:none; } a { text-decoration:none; } }
   h2 { font:400 26px/1.2 "Bodoni Moda", serif; margin:44px 0 10px; padding-top:24px; border-top:1px solid var(--rule); }
   p, li { color:#D9D6D0; }
   ul { padding-left:20px; } li { margin:6px 0; }
@@ -39,7 +41,7 @@
 <body>
 <div class="wrap">
   <header class="top">
-    <a class="mark" href="/">BP Design <em>Group</em></a>
+    <a class="brand" href="/" aria-label="BP Design Group, home"><img class="brand-mark" src="logo-mark.svg" width="38" height="40" alt=""><img class="brand-word" src="logo-wordmark.svg" width="190" height="12" alt="BP Design Group"></a>
     <nav><a href="/#packages">Packages</a></nav>
   </header>
 

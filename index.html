@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BP Design Group | Kitchen &amp; Bath Design in Chicago</title>
-<meta name="description" content="BP Design Group designs kitchen and bathroom renovations for homes in Chicago and the northwest suburbs, with renderings of the finished room before work begins.">
+<meta name="description" content="BP Design Group designs kitchen and bathroom renovations for homes in Chicago and the northwest suburbs: layout, cabinetry, finishes, and lighting, with renderings of the finished room before work begins.">
 <meta property="og:title" content="BP Design Group">
 <meta property="og:description" content="Kitchen and bath design for Chicago and the northwest suburbs. See your new room before you build it.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://bpdesignchi.com/img/kitchen-after.jpg">
 <meta property="og:url" content="https://bpdesignchi.com/">
 <meta name="theme-color" content="#15171A">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -14,7 +15,9 @@
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
   "name": "BP Design Group LLC",
-  "description": "Kitchen and bathroom renovation design with renderings.",
+  "description": "Kitchen and bathroom renovation design: layout, cabinetry, finishes, lighting, and renderings.",
+  "logo": "https://bpdesignchi.com/logo-mark.svg",
+  "image": "https://bpdesignchi.com/img/kitchen-after.jpg",
   "url": "https://bpdesignchi.com/",
   "email": "info@bpdesignchi.com",
   "address": { "@type": "PostalAddress", "addressLocality": "Chicago", "addressRegion": "IL", "addressCountry": "US" },
@@ -31,8 +34,11 @@
   a { color:inherit; }
   .wrap { max-width:1140px; margin:0 auto; padding:0 var(--g); }
   header.top { display:flex; justify-content:space-between; align-items:center; padding:26px 0; }
-  .mark { text-decoration:none; font:400 24px/1 "Bodoni Moda", serif; letter-spacing:.02em; }
-  .mark em { color:var(--acc); }
+  .brand { display:inline-flex; align-items:center; gap:14px; text-decoration:none; }
+  .brand img { display:block; height:auto; }
+  .brand-mark { width:38px; }
+  .brand-word { width:190px; }
+  @media (max-width:420px) { .brand-word { width:150px; } .brand-mark { width:32px; } }
   nav a { margin-left:28px; text-decoration:none; font-size:14px; font-weight:500; letter-spacing:.08em; color:var(--soft); }
   nav a:hover { color:var(--text); }
   .hero { padding:40px 0 90px; text-align:center; }
@@ -45,9 +51,8 @@
   .btn.ghost { background:transparent; color:var(--text); } .btn.ghost:hover { background:var(--text); color:var(--bg); }
   /* signature: drag from drawing to rendering */
   .compare { position:relative; margin:56px auto 0; max-width:980px; border:1px solid var(--rule); background:var(--raised); --pos:50%; user-select:none; }
-  .compare svg { display:block; width:100%; height:auto; }
+  .compare img { display:block; width:100%; height:auto; }
   .compare .top { position:absolute; inset:0; background:var(--raised); color:var(--text); clip-path:inset(0 calc(100% - var(--pos)) 0 0); }
-  .compare .top .t { opacity:.4; }
   .compare .handle { position:absolute; top:0; bottom:0; left:var(--pos); width:1px; background:var(--text); pointer-events:none; }
   .compare .handle::after { content:"‹ ›"; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%; background:var(--text); color:var(--bg); display:grid; place-items:center; font-size:18px; letter-spacing:4px; }
   .compare input { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:ew-resize; margin:0; }
@@ -77,8 +82,10 @@
   .steps li::before { content:counter(s); font:italic 400 36px/1 "Bodoni Moda", serif; color:var(--acc); display:block; margin-bottom:14px; }
   .steps h3 { margin:0 0 8px; font-size:18px; font-weight:600; }
   .steps p { margin:0; color:var(--soft); font-size:15.5px; }
-  .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .ph { aspect-ratio:4/5; background:var(--raised); border:1px solid var(--rule); display:grid; place-items:center; color:var(--soft); font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
+  .ba { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .ba figure { margin:0; }
+  .ba img { display:block; width:100%; height:auto; border:1px solid var(--rule); }
+  .ba figcaption { margin-top:10px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
   .contact-bg { background:var(--raised); }
   .contact { max-width:760px; }
   .contact .head { text-align:center; margin-bottom:52px; }
@@ -102,7 +109,8 @@
   .form-status.is-error { color:#E39A8A; }
   .form-status.is-success { color:var(--acc); font-style:italic; }
   @media (max-width:600px) { .row { grid-template-columns:1fr; } .form-actions .btn { width:100%; } }
-  footer { padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; }
+  .foot-mark { display:block; width:26px; height:auto; opacity:.8; }
+  footer { align-items:center; padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; }
   a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
   /* retainer agreement: signed before checkout */
   dialog.agree { width:min(660px, calc(100vw - 32px)); max-height:calc(100vh - 32px); overflow:auto; padding:0; border:1px solid var(--rule); background:var(--raised); color:var(--text); }
@@ -134,56 +142,30 @@
   .agree .fine { font-size:13px; color:var(--soft); margin:0; }
   @media (max-width:600px) { .agree form { padding:28px 20px 22px; } .agree h2 { font-size:26px; } }
   @media (max-width:880px) {
-    .pkgs, .steps, .gallery { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
-    .gallery .ph { aspect-ratio:16/10; }
+    .pkgs, .steps, .ba { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
   }
 </style></head>
 <body>
 <div class="wrap">
   <header class="top">
-    <a class="mark" href="#">BP Design <em>Group</em></a>
+    <a class="brand" href="#" aria-label="BP Design Group, home"><img class="brand-mark" src="logo-mark.svg" width="38" height="40" alt=""><img class="brand-word" src="logo-wordmark.svg" width="190" height="12" alt="BP Design Group"></a>
     <nav><a href="#packages">Packages</a><a href="#process">Process</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
   </header>
 
   <div class="hero">
     <p class="eyebrow">Kitchen &amp; bath design · Chicago &amp; NW suburbs</p>
-    <h1>See your new kitchen <em>before</em> you build it.</h1>
-    <p class="lede">We design kitchen and bathroom renovations and render the finished room, so every decision is made on paper, not in the middle of demolition.</p>
+    <h1>Kitchens and baths, <em>designed</em> around you.</h1>
+    <p class="lede">We design your renovation from layout and cabinetry to tile, lighting, and fixtures, and show you renderings of the finished room before work begins.</p>
     <a class="btn" href="#packages">Book a home visit</a>
 
     <div class="compare" id="compare">
-      <svg viewBox="0 0 600 380" aria-hidden="true" stroke-linejoin="round">
-        <rect width="600" height="340" fill="#E6E0D6"/>
-        <rect x="40" y="170" width="520" height="66" fill="#F3F0EA"/>
-        <path d="M40 184h520M40 198h520M40 212h520M40 226h520" stroke="#D6CFC3" stroke-width="1"/>
-        <path d="M80 170v14M120 170v14M160 170v14M200 170v14M240 170v14M360 170v14M400 170v14M440 170v14M480 170v14M520 170v14M60 184v14M100 184v14M140 184v14M180 184v14M220 184v14M380 184v14M420 184v14M460 184v14M500 184v14M540 184v14" stroke="#D6CFC3" stroke-width="1"/>
-        <g fill="#687A68" stroke="#4F5E50" stroke-width="1.2"><path d="M40 60h190v110H40z"/><path d="M370 60h190v110H370z"/><path d="M40 244h520v96H40z"/></g>
-        <path d="M135 60v110M465 60v110M140 244v96M240 244v96M360 244v96M460 244v96M190 244v96M410 244v96M40 276h100M40 308h100M460 276h100M460 308h100" stroke="#4F5E50" stroke-width="1.2"/>
-        <path d="M129 150v12M141 150v12M459 150v12M471 150v12M184 256v14M196 256v14M404 256v14M416 256v14" stroke="#C4A469" stroke-width="3" stroke-linecap="round"/>
-        <path d="M250 60h100v50l22 40H228l22-40z" fill="#EFEBE4" stroke="#CFC8BC" stroke-width="1.2"/>
-        <path d="M228 150h144" stroke="#BFB7AA" stroke-width="3"/>
-        <rect x="240" y="244" width="120" height="96" fill="#C9C6C0"/>
-        <rect x="252" y="262" width="96" height="58" fill="#2B2C2D"/><path d="M262 268h76" stroke="#8D8A85" stroke-width="3" stroke-linecap="round"/>
-        <g fill="#2B2C2D"><circle cx="262" cy="252" r="3.5"/><circle cx="284" cy="252" r="3.5"/><circle cx="316" cy="252" r="3.5"/><circle cx="338" cy="252" r="3.5"/></g>
-        <rect x="30" y="236" width="540" height="8" fill="#FAF8F4" stroke="#DDD7CC"/>
-        <path d="M404 236v-22q0-10 10-10t10 10" fill="none" stroke="#C4A469" stroke-width="3" stroke-linecap="round"/>
-        <rect y="340" width="600" height="40" fill="#A98460"/><path d="M0 340H600" stroke="#8C6B4B" stroke-width="2"/>
-        <path d="M90 340l-20 40M210 340l-10 40M330 340v40M450 340l10 40M560 340l20 40" stroke="#977452" stroke-width="1"/>
-      </svg>
-      <div class="top">
-        <svg viewBox="0 0 600 380" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M0 340H600"/><path d="M40 60h190v110H40zM135 60v110M129 150v12M141 150v12"/><path d="M370 60h190v110H370zM465 60v110M459 150v12M471 150v12"/>
-          <path d="M250 60h100v50l22 40H228l22-40z"/><path class="t" d="M40 184h520M40 198h520M40 212h520M40 226h520"/><path d="M30 236h540v8H30z"/>
-          <path d="M40 244h520v96H40zM140 244v96M240 244v96M360 244v96M460 244v96M190 244v96M410 244v96"/>
-          <path d="M40 276h100M40 308h100M460 276h100M460 308h100M184 256v14M196 256v14M404 256v14M416 256v14"/><path d="M252 262h96v58h-96zM262 268h76"/>
-          <circle cx="262" cy="252" r="3"/><circle cx="284" cy="252" r="3"/><circle cx="316" cy="252" r="3"/><circle cx="338" cy="252" r="3"/><path d="M404 236v-22q0-10 10-10t10 10"/>
-        </svg>
-      </div>
-      <input type="range" min="0" max="100" value="50" aria-label="Compare the design drawing with the rendering">
+      <img src="img/kitchen-after.jpg" width="1320" height="990" alt="The kitchen after: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
+      <div class="top"><img src="img/kitchen-before.jpg" width="1320" height="990" alt="The kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors."></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare the kitchen before and after the redesign">
       <div class="handle"></div>
-      <span class="tag l">Drawing</span><span class="tag r">Rendering</span>
+      <span class="tag l">Before</span><span class="tag r">After</span>
     </div>
-    <p class="hint">Drag to compare the plan with the finished room.</p>
+    <p class="hint">Drag to compare. A kitchen we redesigned, from oak and vinyl to sage cabinetry, a stone island, and new lighting.</p>
   </div>
 </div>
 
@@ -216,15 +198,18 @@
   <p class="intro">Three steps from first visit to a plan you can build.</p>
   <ol class="steps">
     <li><h3>Home visit</h3><p>We walk the space, take measurements and talk through how you use the room.</p></li>
-    <li><h3>Design and renderings</h3><p>You get a design plan and renderings that show the finished room.</p></li>
+    <li><h3>Design your space</h3><p>We plan the layout, cabinetry, finishes, and lighting, and show you renderings of the finished room.</p></li>
     <li><h3>Build with confidence</h3><p>Take the plan to your contractor knowing exactly how it will look.</p></li>
   </ol>
 </div></section>
 
 <section id="work"><div class="wrap">
-  <h2>Renderings and <em>finished rooms</em></h2>
-  <p class="intro">Your project photos and renderings go here.</p>
-  <div class="gallery"><div class="ph">Rendering</div><div class="ph">Kitchen</div><div class="ph">Bath</div></div>
+  <h2>Before <em>&amp; after</em></h2>
+  <p class="intro">A recent kitchen redesign: new cabinetry, an island with seating, stone counters, a hexagon backsplash, and layered lighting.</p>
+  <div class="ba">
+    <figure><img src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The kitchen before the redesign."><figcaption>Before</figcaption></figure>
+    <figure><img src="img/kitchen-after.jpg" width="1320" height="990" loading="lazy" alt="The kitchen after the redesign."><figcaption>After</figcaption></figure>
+  </div>
 </div></section>
 
 <section id="contact" class="contact-bg"><div class="wrap contact">
@@ -294,7 +279,7 @@
   </form>
 </dialog>
 
-<div class="wrap"><footer><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span><a href="terms.html">Terms &amp; conditions</a> · Kitchen &amp; bath design · Renderings</span></footer></div>
+<div class="wrap"><footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span><a href="terms.html">Terms &amp; conditions</a> · Kitchen &amp; bath design · Renderings</span></footer></div>
 <script>
   // Stripe Payment Links for the retainer buttons. Until a link is set, the button scrolls to the inquiry form.
   const STRIPE_LINKS = {
