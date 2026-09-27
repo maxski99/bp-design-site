@@ -483,7 +483,7 @@
     const need = h => { if (y + h > H - M) { doc.addPage(); y = M; } };
     const write = (text, size, style, gap) => {
       doc.setFont("helvetica", style || "normal"); doc.setFontSize(size);
-      doc.splitTextToSize(text, W).forEach(line => { need(size * 1.35); doc.text(line, M, y); y += size * 1.35; });
+      doc.splitTextToSize(text, W).forEach(line => { need(size * 1.35); doc.text(line, M, y + size); y += size * 1.35; });
       y += gap || 0;
     };
     write("BP Design Group LLC", 10, "bold");
