@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BP Design Group | Kitchen &amp; Bath Design in Chicago</title>
-<meta name="description" content="BP Design Group designs kitchen and bathroom renovations for homes in Chicago and the northwest suburbs: layout, cabinetry, finishes, and lighting, with renderings of the finished room before work begins.">
+<meta name="description" content="BP Design Group designs kitchen and bathroom renovations for homes across the Chicagoland Area: layout, cabinetry, finishes, and lighting, with renderings of the finished room before work begins.">
 <meta property="og:title" content="BP Design Group">
-<meta property="og:description" content="Kitchen and bath design for Chicago and the northwest suburbs. See your new room before you build it.">
+<meta property="og:description" content="Kitchen and bath design for the Chicagoland Area. See your new room before you build it.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://bpdesignchi.com/img/kitchen-after.jpg">
 <meta property="og:url" content="https://bpdesignchi.com/">
@@ -21,7 +21,7 @@
   "url": "https://bpdesignchi.com/",
   "email": "info@bpdesignchi.com",
   "address": { "@type": "PostalAddress", "addressLocality": "Chicago", "addressRegion": "IL", "addressCountry": "US" },
-  "areaServed": ["Chicago, IL", "Northwest suburbs of Chicago"],
+  "areaServed": ["Chicagoland Area", "Chicago, IL"],
   "priceRange": "$$"
 }
 </script>
@@ -146,6 +146,14 @@
   .agree .check input { width:18px; height:18px; margin:3px 0 0; accent-color:var(--acc); flex:none; }
   .agree .fine { font-size:13px; color:var(--soft); margin:0; max-width:34ch; }
   .agree input::placeholder { color:#6E6C67; }
+  .agree .addr { border:0; padding:0; margin:0; display:grid; gap:18px; min-width:0; }
+  .agree .addr legend { padding:0; margin-bottom:4px; font-size:13px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
+  .agree .addr legend small { display:block; margin-top:4px; font:italic 400 15px "Bodoni Moda", serif; letter-spacing:0; text-transform:none; color:var(--soft); }
+  .agree .addr select { padding-right:24px; }
+  .agree .addr-status { margin:-4px 0 0; font-size:14px; min-height:1.3em; color:var(--soft); }
+  .agree .addr-status.ok { color:var(--acc); }
+  .agree .addr-status.warn { color:#E6B872; }
+  .agree .hidden { display:none; }
   @media (max-width:600px) { .agree form { padding:28px 20px 22px; } .agree h2 { font-size:26px; } }
   @media (max-width:880px) {
     .pkgs, .steps { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
@@ -161,7 +169,7 @@
   </header>
 
   <div class="hero">
-    <p class="eyebrow">Kitchen &amp; bath design · Chicago &amp; NW suburbs</p>
+    <p class="eyebrow">Kitchen &amp; bath design · Chicagoland Area</p>
     <h1>Kitchens and baths, <em>designed</em> around you.</h1>
     <p class="lede">We design your kitchen or bathroom before construction begins and provide a realistic rendering of the finished space, so every decision is made on paper&mdash;not in the middle of demolition.</p>
     <div class="hero-ctas"><a class="btn ghost" href="about.html">About us</a><a class="btn" href="#packages">Book a home visit</a><a class="btn ghost" href="work.html">See our work</a></div>
@@ -262,11 +270,25 @@
       </div>
       <p class="full">Design Services Terms and Conditions, last updated September 27, 2026 · <a href="terms.html" target="_blank" rel="noopener">Open in a new tab</a></p>
     </div>
+    <div class="field"><label for="sig-name">Full legal name</label><input id="sig-name" name="signer" type="text" autocomplete="name" required></div>
     <div class="row">
-      <div class="field"><label for="sig-name">Full legal name</label><input id="sig-name" name="signer" type="text" autocomplete="name" required></div>
       <div class="field"><label for="sig-email">Email</label><input id="sig-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="sig-phone">Phone</label><input id="sig-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(847) 555-0123" required></div>
     </div>
-    <div class="field"><label for="sig-address">Project address</label><input id="sig-address" name="project_address" type="text" autocomplete="street-address" placeholder="Where the home visit and design work will take place" required></div>
+    <fieldset class="addr">
+      <legend>Project address <small>where the home visit and design work will take place</small></legend>
+      <div class="field"><label for="addr-line1">Street address</label><input id="addr-line1" name="address_line1" type="text" autocomplete="address-line1" required></div>
+      <div class="row">
+        <div class="field"><label for="addr-line2">Apt / unit <small>(optional)</small></label><input id="addr-line2" name="address_line2" type="text" autocomplete="address-line2"></div>
+        <div class="field"><label for="addr-zip">ZIP code</label><input id="addr-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" required></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="addr-city">City</label><input id="addr-city" name="city" type="text" autocomplete="address-level2" required></div>
+        <div class="field"><label for="addr-state">State</label><select id="addr-state" name="state" autocomplete="address-level1"><option selected>IL</option><option>IN</option><option>WI</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WY</option></select></div>
+      </div>
+      <p class="addr-status" id="addr-status" aria-live="polite"></p>
+      <label class="check hidden" id="addr-confirm-wrap"><input type="checkbox" id="addr-confirm"> <span>This address is correct as entered.</span></label>
+    </fieldset>
     <div class="field">
       <div class="sig-head">
         <label for="sig-pad">Sign here</label>
@@ -493,7 +515,7 @@
     };
     write("BP Design Group LLC", 10, "bold");
     write("Design Services Agreement", 20, "bold", 8);
-    [["Client", rec.signed_name], ["Email", rec.email], ["Project address", rec.project_address], ["Package", rec.package], ["Payment", rec.payment], ["Reference", rec.reference], ["Signed", rec.signed_at_local]]
+    [["Client", rec.signed_name], ["Email", rec.email], ["Phone", rec.phone], ["Project address", rec.project_address], ["Package", rec.package], ["Payment", rec.payment], ["Reference", rec.reference], ["Signed", rec.signed_at_local]]
       .forEach(([k, v]) => write(k + ": " + v, 10));
     y += 10;
     write(rec.signed_name + ' ("Client") agrees to the Design Services Terms and Conditions below (last updated September 27, 2026, published at https://bpdesignchi.com/terms.html).', 10, "normal", 10);
@@ -522,13 +544,68 @@
     doc.save("BP-Design-Group-Agreement-" + rec.reference + ".pdf");
   };
 
+  // Phone: format as the client types
+  const phoneDigits = v => { let d = v.replace(/\D/g, ""); if (d.length === 11 && d[0] === "1") d = d.slice(1); return d.slice(0, 10); };
+  af.phone.addEventListener("input", () => {
+    const d = phoneDigits(af.phone.value);
+    af.phone.value = d.length > 6 ? "(" + d.slice(0, 3) + ") " + d.slice(3, 6) + "-" + d.slice(6) : d.length > 3 ? "(" + d.slice(0, 3) + ") " + d.slice(3) : d;
+  });
+
+  // Address: ZIP fills city and state; the full address is checked against U.S. Census Bureau address data
+  const addrStatus = document.getElementById("addr-status"), confirmWrap = document.getElementById("addr-confirm-wrap"), addrConfirm = document.getElementById("addr-confirm");
+  let addrState = "unchecked", addrTimer = null, addrSeq = 0;
+  const showAddr = (text, kind) => { addrStatus.textContent = text; addrStatus.className = "addr-status" + (kind ? " " + kind : ""); };
+  const addrFields = ["address_line1", "address_line2", "city", "state", "zip"];
+  const addrReady = () => af.address_line1.value.trim().length > 3 && /^\d{5}/.test(af.zip.value.trim()) && af.city.value.trim();
+  const composeAddress = () => af.address_line1.value.trim() + (af.address_line2.value.trim() ? ", " + af.address_line2.value.trim() : "") + ", " + af.city.value.trim() + ", " + af.state.value + " " + af.zip.value.trim();
+  const verifyAddress = async () => {
+    if (!AGREEMENT_API || !addrReady()) return addrState;
+    const seq = ++addrSeq; addrState = "checking"; showAddr("Checking address…");
+    try {
+      const q = new URLSearchParams({ street: af.address_line1.value.trim(), city: af.city.value.trim(), state: af.state.value, zip: af.zip.value.trim().slice(0, 5) });
+      const r = await (await fetch(AGREEMENT_API + "/verify-address?" + q)).json();
+      if (seq !== addrSeq) return addrState;
+      if (r.match) {
+        const before = composeAddress();
+        af.address_line1.value = r.address.line1; af.city.value = r.address.city; af.state.value = r.address.state; af.zip.value = r.address.zip;
+        const after = composeAddress();
+        addrState = "verified"; confirmWrap.classList.add("hidden"); addrConfirm.checked = false;
+        showAddr(before.toLowerCase() === after.toLowerCase() ? "✓ Address verified." : "✓ Address verified and corrected to: " + after, "ok");
+      } else if (r.match === false) {
+        addrState = "notfound"; confirmWrap.classList.remove("hidden");
+        showAddr("We couldn't find this address. Check the street number, street name, and ZIP code, or confirm it's correct below.", "warn");
+      } else { addrState = "unavailable"; showAddr(""); }
+    } catch (e) { if (seq === addrSeq) { addrState = "unavailable"; showAddr(""); } }
+    return addrState;
+  };
+  addrFields.forEach(n => af[n].addEventListener("input", () => {
+    addrState = "unchecked"; showAddr(""); confirmWrap.classList.add("hidden"); addrConfirm.checked = false;
+    clearTimeout(addrTimer); addrTimer = setTimeout(verifyAddress, 900);
+  }));
+  af.zip.addEventListener("input", async () => {
+    const z = af.zip.value.trim();
+    if (!AGREEMENT_API || !/^\d{5}$/.test(z)) return;
+    try {
+      const r = await (await fetch(AGREEMENT_API + "/zip?code=" + z)).json();
+      if (!r.found || !r.places.length || af.zip.value.trim() !== z) return;
+      const cities = r.places.map(p => p.city.toLowerCase());
+      if (!af.city.value.trim() || !cities.includes(af.city.value.trim().toLowerCase())) af.city.value = r.places[0].city;
+      af.state.value = r.places[0].state;
+      clearTimeout(addrTimer); addrTimer = setTimeout(verifyAddress, 400);
+    } catch (e) { /* the client can still type the city */ }
+  });
+
   agreeForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (af.botcheck.checked || !chosen) return;
-    const signer = af.signer.value.trim(), email = af.email.value.trim(), address = af.project_address.value.trim();
+    const signer = af.signer.value.trim(), email = af.email.value.trim(), phone = af.phone.value.trim();
     if (!signer || !email) { setAgreeStatus("Type your full legal name and email.", "error"); return; }
     if (!af.email.checkValidity()) { setAgreeStatus("Check your email address. It should look like name@example.com.", "error"); af.email.focus(); return; }
-    if (address.length < 6) { setAgreeStatus("Add the project address, where the home visit and design work will take place.", "error"); af.project_address.focus(); return; }
+    if (phoneDigits(phone).length !== 10) { setAgreeStatus("Enter a 10-digit phone number so we can reach you about your home visit.", "error"); af.phone.focus(); return; }
+    if (!af.address_line1.value.trim() || !af.city.value.trim() || !/^\d{5}(-\d{4})?$/.test(af.zip.value.trim())) { setAgreeStatus("Complete the project address: street, city, state, and a 5-digit ZIP code.", "error"); (af.address_line1.value.trim() ? (af.city.value.trim() ? af.zip : af.city) : af.address_line1).focus(); return; }
+    if (addrState === "unchecked" || addrState === "checking") { setAgreeStatus("Checking the address…"); await verifyAddress(); setAgreeStatus(""); }
+    if (addrState === "notfound" && !addrConfirm.checked) { setAgreeStatus("We couldn't verify the project address. Fix it, or check “This address is correct as entered.”", "error"); return; }
+    const address = composeAddress();
     if (!inked) { setAgreeStatus("Sign in the box, or choose “Use my typed name”.", "error"); return; }
     if (!af.agree.checked) { setAgreeStatus("Check the box to agree to the terms before continuing.", "error"); return; }
 
@@ -539,7 +616,9 @@
       package: p.name + " (" + p.rooms + (p.rooms === 1 ? " room" : " rooms") + ", " + p.revisions + " free revision" + (p.revisions === 1 ? "" : "s") + ")",
       payment: paymentLine(p),
       rooms: p.rooms, total: p.total, pay_now: p.payNow,
-      signed_name: signer, email, project_address: address,
+      signed_name: signer, email, phone, project_address: address,
+      address_line1: af.address_line1.value.trim(), address_line2: af.address_line2.value.trim(), city: af.city.value.trim(), state: af.state.value, zip: af.zip.value.trim(),
+      address_verified: addrState === "verified",
       agreement: TERMS_VERSION,
       terms_url: "https://bpdesignchi.com/terms.html",
       consent: "Checked: I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.",
