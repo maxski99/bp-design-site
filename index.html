@@ -223,7 +223,7 @@
 <div class="wrap"><footer><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span>Kitchen &amp; bath design · Renderings · Renovation planning</span></footer></div>
 <script>
   // Stripe Payment Links for the retainer buttons. Until a link is set, the button scrolls to the inquiry form.
-  const STRIPE_LINKS = { oneRoom: "", twoRooms: "" };
+  const STRIPE_LINKS = { oneRoom: "https://buy.stripe.com/7sYbJ2gzKbffdax8pha3u00", twoRooms: "https://buy.stripe.com/8x24gA6Za3MN6M90WPa3u01" };
   document.querySelectorAll("[data-pay]").forEach(a => { const url = STRIPE_LINKS[a.dataset.pay]; if (url) a.href = url; });
   document.getElementById("year").textContent = new Date().getFullYear();
 
