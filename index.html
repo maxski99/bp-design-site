@@ -50,16 +50,6 @@
   .btn:hover { background:transparent; color:var(--text); }
   .btn.ghost { background:transparent; color:var(--text); } .btn.ghost:hover { background:var(--text); color:var(--bg); }
   /* signature: drag from drawing to rendering */
-  .compare { position:relative; margin:56px auto 0; max-width:980px; border:1px solid var(--rule); background:var(--raised); --pos:50%; user-select:none; }
-  .compare img { display:block; width:100%; height:auto; }
-  .compare .top { position:absolute; inset:0; background:var(--raised); color:var(--text); clip-path:inset(0 calc(100% - var(--pos)) 0 0); }
-  .compare .handle { position:absolute; top:0; bottom:0; left:var(--pos); width:1px; background:var(--text); pointer-events:none; }
-  .compare .handle::after { content:"‹ ›"; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%; background:var(--text); color:var(--bg); display:grid; place-items:center; font-size:18px; letter-spacing:4px; }
-  .compare input { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:ew-resize; margin:0; }
-  .compare input:focus-visible + .handle::after { outline:2px solid var(--acc); outline-offset:3px; }
-  .tag { position:absolute; bottom:14px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px; background:rgba(21,23,26,.8); pointer-events:none; }
-  .tag.l { left:14px; } .tag.r { right:14px; }
-  .hint { font-size:13px; color:var(--soft); margin-top:12px; }
   section { padding:90px 0; border-top:1px solid var(--rule); }
   h2 { font:400 clamp(30px,3.6vw,46px)/1.1 "Bodoni Moda", serif; margin:0 0 12px; }
   h2 em { font-style:italic; color:var(--acc); }
@@ -82,10 +72,6 @@
   .steps li::before { content:counter(s); font:italic 400 36px/1 "Bodoni Moda", serif; color:var(--acc); display:block; margin-bottom:14px; }
   .steps h3 { margin:0 0 8px; font-size:18px; font-weight:600; }
   .steps p { margin:0; color:var(--soft); font-size:15.5px; }
-  .ba { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .ba figure { margin:0; }
-  .ba img { display:block; width:100%; height:auto; border:1px solid var(--rule); }
-  .ba figcaption { margin-top:10px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
   .contact-bg { background:var(--raised); }
   .contact { max-width:760px; }
   .contact .head { text-align:center; margin-bottom:52px; }
@@ -112,6 +98,21 @@
   .foot-mark { display:block; width:26px; height:auto; opacity:.8; }
   footer { align-items:center; padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; }
   a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+  /* after-first project photos; the before is one tap away */
+  .hero .reveal { margin:56px auto 0; max-width:980px; }
+  .reveal { margin:0; }
+  .reveal .frame { position:relative; border:1px solid var(--rule); background:var(--raised); overflow:hidden; }
+  .reveal img { display:block; width:100%; height:auto; }
+  .reveal .before { position:absolute; inset:0; height:100%; object-fit:cover; opacity:0; transition:opacity .45s ease; }
+  .reveal.showing-before .before { opacity:1; }
+  .reveal .state { position:absolute; top:14px; left:14px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px; background:rgba(21,23,26,.8); pointer-events:none; }
+  .reveal-btn { position:absolute; right:14px; bottom:14px; font:600 13px/1 "Hanken Grotesk", sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--bg); background:var(--text); border:0; padding:12px 16px; cursor:pointer; transition:background .2s; }
+  .reveal-btn:hover { background:#fff; }
+  .reveal-btn:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+  .reveal figcaption { margin-top:12px; font-size:14px; color:var(--soft); }
+  .hero .reveal figcaption { text-align:center; }
+  .projects { display:grid; gap:40px; }
+  @media (prefers-reduced-motion: reduce) { .reveal .before { transition:none; } }
   /* retainer agreement: signed before checkout */
   dialog.agree { width:min(660px, calc(100vw - 32px)); max-height:calc(100vh - 32px); overflow:auto; padding:0; border:1px solid var(--rule); background:var(--raised); color:var(--text); }
   dialog.agree::backdrop { background:rgba(8,9,10,.72); }
@@ -142,7 +143,7 @@
   .agree .fine { font-size:13px; color:var(--soft); margin:0; }
   @media (max-width:600px) { .agree form { padding:28px 20px 22px; } .agree h2 { font-size:26px; } }
   @media (max-width:880px) {
-    .pkgs, .steps, .ba { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
+    .pkgs, .steps { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
   }
 </style></head>
 <body>
@@ -158,14 +159,15 @@
     <p class="lede">We design your kitchen or bathroom before construction begins and provide a realistic rendering of the finished space, so every decision is made on paper&mdash;not in the middle of demolition.</p>
     <a class="btn" href="#packages">Book a home visit</a>
 
-    <div class="compare" id="compare">
-      <img src="img/kitchen-after.jpg" width="1320" height="990" alt="The kitchen after: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
-      <div class="top"><img src="img/kitchen-before.jpg" width="1320" height="990" alt="The kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors."></div>
-      <input type="range" min="0" max="100" value="50" aria-label="Compare the kitchen before and after the redesign">
-      <div class="handle"></div>
-      <span class="tag l">Before</span><span class="tag r">After</span>
-    </div>
-    <p class="hint">Drag to compare. A kitchen we redesigned, from oak and vinyl to sage cabinetry, a stone island, and new lighting.</p>
+    <figure class="reveal">
+      <div class="frame">
+        <img class="after" src="img/kitchen-after.jpg" width="1320" height="990" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
+        <img class="before" src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The same kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors.">
+        <span class="state">After</span>
+        <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+      </div>
+      <figcaption>Kitchen redesign: sage shaker cabinetry, a stone island with seating, a hexagon backsplash, and layered lighting.</figcaption>
+    </figure>
   </div>
 </div>
 
@@ -204,11 +206,18 @@
 </div></section>
 
 <section id="work"><div class="wrap">
-  <h2>Before <em>&amp; after</em></h2>
-  <p class="intro">A recent kitchen redesign: new cabinetry, an island with seating, stone counters, a hexagon backsplash, and layered lighting.</p>
-  <div class="ba">
-    <figure><img src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The kitchen before the redesign."><figcaption>Before</figcaption></figure>
-    <figure><img src="img/kitchen-after.jpg" width="1320" height="990" loading="lazy" alt="The kitchen after the redesign."><figcaption>After</figcaption></figure>
+  <h2>Recent <em>work</em></h2>
+  <p class="intro">From dated to designed. Tap &ldquo;See the before&rdquo; to see where each project started.</p>
+  <div class="projects">
+    <figure class="reveal">
+      <div class="frame">
+        <img class="after" src="img/kitchen-after.jpg" width="1320" height="990" loading="lazy" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
+        <img class="before" src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The same kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors.">
+        <span class="state">After</span>
+        <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+      </div>
+      <figcaption>Kitchen redesign: sage shaker cabinetry, a stone island with seating, a hexagon backsplash, and layered lighting.</figcaption>
+    </figure>
   </div>
 </div></section>
 
@@ -292,9 +301,15 @@
   document.querySelectorAll("[data-pay]").forEach(a => { const url = STRIPE_LINKS[a.dataset.pay]; if (url) a.href = url; });
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  const c = document.getElementById('compare'), r = c.querySelector('input');
-  const set = v => c.style.setProperty('--pos', v + '%');
-  r.addEventListener('input', () => set(r.value)); set(r.value);
+  document.querySelectorAll(".reveal").forEach(fig => {
+    const btn = fig.querySelector(".reveal-btn"), state = fig.querySelector(".state");
+    btn.addEventListener("click", () => {
+      const before = fig.classList.toggle("showing-before");
+      btn.textContent = before ? "See the after" : "See the before";
+      btn.setAttribute("aria-pressed", before);
+      state.textContent = before ? "Before" : "After";
+    });
+  });
 
   // Web3Forms access key: submissions are emailed to the address it was created with.
   const WEB3FORMS_KEY = "d686482e-3d99-4ef3-9374-ea9e5fa4a6bb";
