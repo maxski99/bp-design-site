@@ -127,9 +127,6 @@
   .agree .close:hover { color:var(--text); }
   .agree h2 { margin:0; font-size:32px; }
   .agree .pkgline { margin:6px 0 0; color:var(--soft); }
-  .agree .keyterms { margin:0; padding:16px 20px; list-style:none; border:1px solid var(--rule); font-size:15px; }
-  .agree .keyterms li { padding:5px 0; }
-  .agree .keyterms li::before { content:"—"; color:var(--acc); margin-right:10px; }
   .agree .full { font-size:14px; color:var(--soft); margin:-8px 0 0; }
   .agree .full a { color:var(--text); }
   .agree .contract { max-height:230px; overflow:auto; border:1px solid var(--rule); background:#17191C; padding:14px 18px; font-size:13.5px; line-height:1.6; }
@@ -144,16 +141,25 @@
   .agree .linkbtn { background:none; border:0; padding:0; color:var(--soft); font:inherit; font-size:13px; text-decoration:underline; cursor:pointer; }
   .agree .linkbtn:hover { color:var(--text); }
   .agree .sig-pad { display:block; width:100%; height:120px; margin-top:8px; background:#F4F2EE; border-radius:2px; touch-action:none; cursor:crosshair; }
-  .agree .initials { border:1px solid var(--rule); padding:6px 20px 8px; margin:0; min-width:0; }
+  .agree .initials { border:1px solid var(--rule); padding:4px 20px 12px; margin:0; min-width:0; }
   .agree .initials legend { padding:0 8px; margin-left:-8px; font-size:13px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
-  .agree .initial-row { display:grid; grid-template-columns:minmax(0, 1fr) 92px; gap:8px 20px; align-items:end; padding:14px 0; border-top:1px solid var(--rule); }
-  .agree .initial-row:first-of-type { border-top:0; }
-  .agree .initial-row h4 { margin:0 0 4px; font-size:15px; font-weight:600; color:var(--text); }
-  .agree .initial-row h4 span { font-weight:400; color:var(--soft); font-size:13px; margin-left:6px; }
-  .agree .initial-row p { margin:0; font-size:14px; line-height:1.55; color:#CFCBC4; }
-  .agree .initial-row label { display:grid; gap:4px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--soft); }
-  .agree .initial-row input { text-align:center; text-transform:uppercase; letter-spacing:.12em; font-size:18px; font-weight:600; padding-left:4px; padding-right:4px; }
-  @media (max-width:600px) { .agree .initial-row { grid-template-columns:1fr; } .agree .initial-row label { max-width:120px; } }
+  .agree .init-head { display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:12px 24px; padding:10px 0 14px; border-bottom:1px solid var(--rule); }
+  .agree .init-head label { display:grid; gap:4px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--soft); }
+  .agree .init-head input { width:110px; text-align:center; text-transform:uppercase; letter-spacing:.12em; font-size:18px; font-weight:600; }
+  .agree .init-head p { margin:0; font-size:14px; color:var(--soft); flex:1 1 220px; }
+  .agree .init-count { font-size:13px; font-weight:600; letter-spacing:.08em; color:var(--soft); white-space:nowrap; }
+  .agree .init-count.done { color:var(--acc); }
+  .agree .init-group h4 { margin:18px 0 2px; font-size:12px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--acc); }
+  .agree .init-item { display:grid; grid-template-columns:minmax(0, 1fr) 96px; gap:16px; align-items:center; padding:10px 0; border-top:1px solid var(--rule); }
+  .agree .init-group h4 + .init-item { border-top:0; }
+  .agree .init-item p { margin:0; font-size:14.5px; line-height:1.55; color:#D9D6D0; }
+  .agree .init-item p strong { color:var(--text); }
+  .agree .init-btn { height:40px; border:1px dashed var(--soft); background:transparent; color:var(--text); font:600 12px/1 "Hanken Grotesk", sans-serif; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; }
+  .agree .init-btn:hover { border-color:var(--text); }
+  .agree .init-btn.on { border:1px solid var(--acc); background:rgba(134,163,150,.14); color:var(--text); font:400 26px/1 Allura, cursive; letter-spacing:0; text-transform:none; }
+  .agree .init-btn:focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
+  .agree .init-item.missing .init-btn { border-color:#E6B872; color:#E6B872; }
+  @media (max-width:600px) { .agree .init-item { grid-template-columns:minmax(0, 1fr) 84px; gap:12px; } }
   .agree .check { display:flex; gap:12px; align-items:flex-start; font-size:15px; color:#D9D6D0; cursor:pointer; }
   .agree .check input { width:18px; height:18px; margin:3px 0 0; accent-color:var(--acc); flex:none; }
   .agree .fine { font-size:13px; color:var(--soft); margin:0; max-width:34ch; }
@@ -229,10 +235,10 @@
   <p class="intro">Pay your retainer online to book. Every package starts with a home visit and consultation.</p>
   <div class="pkgs">
     <div class="pkg"><h3>One room</h3><div class="price">$250</div><div class="per">retainer</div>
-      <ul><li>Home visit and consultation</li><li>Design plan and rendering for one room</li><li>1 free revision</li></ul>
+      <ul><li>Home visit and consultation</li><li>Phone consultation after the visit</li><li>Design plan and rendering for one room</li><li>1 free revision</li></ul>
       <a class="btn" href="#packages" data-pay="oneRoom">Book one room</a></div>
     <div class="pkg"><h3>Two rooms</h3><div class="price">$500</div><div class="per">retainer</div>
-      <ul><li>Home visit and consultation</li><li>Design plans and renderings for two rooms</li><li>2 free revisions</li></ul>
+      <ul><li>Home visit and consultation</li><li>Phone consultation after the visit</li><li>Design plans and renderings for two rooms</li><li>2 free revisions</li></ul>
       <a class="btn" href="#packages" data-pay="twoRooms">Book two rooms</a></div>
     <div class="pkg" id="multi-card"><h3>Three or more rooms</h3>
       <div class="price multi-price" id="rooms-price" aria-live="polite"><span class="choose">Choose your rooms</span></div><div class="per" id="rooms-per">Select how many rooms to see your total.</div>
@@ -243,7 +249,7 @@
           <option value="7">7 rooms</option><option value="8">8 rooms</option><option value="9">9 rooms</option><option value="10">10 rooms</option>
         </select>
       </label>
-      <ul><li>Home visit and consultation</li><li>Design plans and renderings for every room</li><li>2 free revisions</li></ul>
+      <ul><li>Home visit and consultation</li><li>Phone consultation after the visit</li><li>Design plans and renderings for every room</li><li>2 free revisions</li></ul>
       <a class="btn is-disabled" href="#packages" data-pay="multi" id="rooms-pay" aria-disabled="true">Select rooms to continue</a></div>
   </div>
   <div class="notes">
@@ -317,7 +323,10 @@
     <!-- Step 2: contact details and project address -->
     <section class="step" data-step="2" aria-labelledby="s2-title" hidden>
       <h3 id="s2-title">Your details</h3>
-      <div class="field"><label for="sig-name">Full legal name</label><input id="sig-name" name="signer" type="text" autocomplete="name" required></div>
+      <div class="row">
+        <div class="field"><label for="sig-first">First name</label><input id="sig-first" name="first_name" type="text" autocomplete="given-name" required></div>
+        <div class="field"><label for="sig-last">Last name</label><input id="sig-last" name="last_name" type="text" autocomplete="family-name" required></div>
+      </div>
       <div class="row">
         <div class="field"><label for="sig-email">Email</label><input id="sig-email" name="email" type="email" autocomplete="email" required></div>
         <div class="field"><label for="sig-phone">Phone</label><input id="sig-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(847) 555-0123" required></div>
@@ -342,7 +351,6 @@
     <section class="step" data-step="3" aria-labelledby="s3-title" hidden>
       <h3 id="s3-title">Review &amp; sign</h3>
       <dl class="summary" id="summary"></dl>
-      <ul class="keyterms" id="agree-keys"></ul>
       <div>
         <div class="contract" id="contract" tabindex="0" role="document" aria-label="Design Services Terms and Conditions">
           <p>Read the full <a href="terms.html" target="_blank" rel="noopener">Design Services Terms and Conditions</a>.</p>
@@ -350,7 +358,13 @@
         <p class="full">Design Services Terms and Conditions, last updated September 27, 2026 · <a href="terms.html" target="_blank" rel="noopener">Open in a new tab</a></p>
       </div>
       <fieldset class="initials" id="initials">
-        <legend>Initial to confirm</legend>
+        <legend>Initial each item</legend>
+        <div class="init-head">
+          <label>Your initials<input type="text" id="init-value" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false"></label>
+          <p>Then tap <strong>Initial</strong> next to each item to confirm you've read it.</p>
+          <span class="init-count" id="init-count" aria-live="polite"></span>
+        </div>
+        <div id="init-groups"></div>
       </fieldset>
       <div class="field">
         <div class="sig-head">
@@ -445,16 +459,40 @@
   // ---- Packages ----
   const fmt = n => "$" + n.toLocaleString("en-US");
   const roomsSelect = document.getElementById("rooms");
-  // What the client initials. Keep in step with INITIAL_ACKS in bp-agreements/src/pdf.js.
-  const INITIALS = {
-    cancellation: {
-      title: "Cancellation and refund policy", section: "Section 4",
-      text: "I understand that I must cancel at least 48 hours before my home visit for a full refund. Cancellations made less than 48 hours before the visit, missed appointments, and cancellations after the home visit are non-refundable.",
-    },
-    contractors: {
-      title: "Contractors and construction", section: "Sections 1, 5 and 6",
-      text: "I understand that BP Design Group is a design firm, not a contractor. I hire my own contractors, and BP Design Group is not responsible for the work, mistakes, or performance of contractors, installers, suppliers, or other third parties, who must verify all measurements and site conditions.",
-    },
+  // The items the Client initials, one by one, for this booking. **text** is bold.
+  // Keep identical in bp-design-site/index.html and bp-agreements/src/pdf.js.
+  const initialItems = r => {
+    const n = Number(r.rooms), usd = v => "$" + Number(v).toLocaleString("en-US");
+    const rooms = (r.room_list || []).map(x => String(x).replace(/\*/g, "")).join(", ");
+    const payment = n === 1 ? "The **$250 One-Room Design Retainer must be paid in full at the time of booking**."
+      : n === 2 ? "The **$500 Two-Room Design Retainer must be paid in full at the time of booking**."
+      : n === 3 ? "The **" + usd(r.total) + " Three-Room Design Package must be paid in full at the time of booking**."
+      : "A **" + usd(r.pay_now) + " deposit is due at the time of booking** and is applied toward the **" + usd(r.total) + " package total**. The **" + usd(r.total - r.pay_now) + " balance is due when the designs are delivered**.";
+    return [
+      { title: "Additional Services", items: [
+        { id: "revisions", text: "If additional revisions are needed, they may be purchased for **$200 per revision**." },
+        { id: "hourly", text: "For more hands-on design support, hourly consultations are available at **$300 per hour**, with a **$600 deposit required before services begin**." },
+      ] },
+      { title: "Your " + n + "-Room Package Includes", items: [
+        { id: "visit", text: "**1 in-person home visit and design consultation**" },
+        { id: "phone", text: "**1 phone consultation after the home visit**" },
+        { id: "plans", text: (n === 1 ? "Design plan and rendering for **1 room only**" : "Design plans and renderings for **" + n + " rooms only**") + (rooms ? " (" + rooms + ")" : "") },
+        { id: "free_revisions", text: n === 1 ? "**1 free revision**, if needed" : "**2 free revisions**, if needed" },
+        { id: "payment", text: payment },
+      ] },
+      { title: "Rescheduling and Cancellation — Section 4", items: [
+        { id: "reschedule_free", text: "You may reschedule your home visit **one time at no charge** if you provide at least **24 hours' notice**." },
+        { id: "reschedule_fee", text: "Rescheduling with less than **24 hours' notice** will result in a **$250 rescheduling fee**." },
+        { id: "refund", text: "I understand that I will receive a full refund **only if I cancel at least 48 hours before my scheduled home visit**." },
+        { id: "nonrefundable", text: "Cancellations made less than **48 hours before the scheduled home visit**, missed appointments, and cancellations made after the home visit are **non-refundable**." },
+      ] },
+      { title: "Contractors and Construction — Sections 1, 5, and 6", items: [
+        { id: "design_only", text: "I understand that BP Design Group provides **design services only and is not a contractor**." },
+        { id: "hire_own", text: "I am responsible for hiring my own contractors and installers." },
+        { id: "not_responsible", text: "BP Design Group is **not responsible for the work, mistakes, delays, workmanship, or performance of any contractor or installer I hire**." },
+        { id: "verify", text: "My contractor or installer must verify **all measurements, dimensions, quantities, and site conditions before ordering materials or beginning construction or installation**." },
+      ] },
+    ];
   };
   const ROOM_TYPES = ["Kitchen", "Primary bathroom", "Guest bathroom", "Powder room", "Laundry room", "Mudroom", "Primary bedroom", "Bedroom", "Living room", "Family room", "Dining room", "Home office", "Basement", "Entryway", "Other"];
   const packageFor = key => {
@@ -607,7 +645,7 @@
   ["pointerup", "pointercancel"].forEach(t => pad.addEventListener(t, () => { drawing = false; }));
   document.getElementById("sig-clear").addEventListener("click", resetPad);
   document.getElementById("sig-typed").addEventListener("click", async () => {
-    const name = af.signer.value.trim();
+    const name = fullName();
     resetPad();
     const r = pad.getBoundingClientRect();
     let size = Math.min(52, r.height * 0.55);
@@ -623,33 +661,52 @@
     const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, w, h); x.drawImage(pad, 0, 0, w, h);
     return c.toDataURL(type, q);
   };
+  const fullName = () => (af.first_name.value.trim() + " " + af.last_name.value.trim()).trim();
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const renderReview = () => {
     const rooms = chosenRooms();
     const rows = [
       ["Package", pkg.name, 1], ["Rooms", rooms.join(", "), 1], ["Payment", payShort(pkg), 0],
-      ["Name", af.signer.value.trim(), 2], ["Email", af.email.value.trim(), 2], ["Phone", af.phone.value.trim(), 2], ["Project address", composeAddress(), 2],
+      ["Name", fullName(), 2], ["Email", af.email.value.trim(), 2], ["Phone", af.phone.value.trim(), 2], ["Project address", composeAddress(), 2],
     ];
     document.getElementById("summary").innerHTML = rows.map(([k, v, s]) =>
       "<div><dt>" + k + "</dt><dd>" + esc(v) + (s ? ' <button type="button" class="linkbtn" data-goto="' + s + '">Edit</button>' : "") + "</dd></div>").join("");
-    const keys = [
-      "Includes one home visit and consultation, design plans and renderings for " + (pkg.rooms === 1 ? "one room" : pkg.rooms + " rooms") + ", and " + pkg.revisions + " free revision" + (pkg.revisions === 1 ? "" : "s") + ".",
-      paymentLine(pkg),
-      "Reschedule once at no charge with <strong>24 hours' notice</strong>. Less notice may result in a <strong>$50 rescheduling fee</strong>.",
-      "Additional revisions are available at <strong>$200 per revision</strong>. Additional design consultations are offered at <strong>$300 per hour and require a $600 deposit to begin services.</strong>",
-    ];
-    document.getElementById("agree-keys").replaceChildren(...keys.map(t => Object.assign(document.createElement("li"), { innerHTML: t })));
-    const box = document.getElementById("initials");
-    if (!box.querySelector(".initial-row")) Object.entries(INITIALS).forEach(([key, a]) => {
-      const row = document.createElement("div"); row.className = "initial-row";
-      row.innerHTML = '<div><h4>' + a.title + '<span>' + a.section + '</span></h4><p>' + a.text + '</p></div>' +
-        '<label>Initials<input type="text" name="init_' + key + '" data-initial="' + key + '" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Your initials: ' + a.title + '"></label>';
-      const inp = row.querySelector("input");
-      inp.addEventListener("input", () => { inp.value = inp.value.replace(/[^A-Za-z]/g, "").toUpperCase(); setAgreeStatus(""); });
-      box.appendChild(row);
-    });
+    renderInitials();
   };
-  const initialsGiven = () => Object.fromEntries(Object.keys(INITIALS).map(k => [k, af["init_" + k].value.trim().toUpperCase()]));
+
+  // ---- Initials: adopt once, then tap each item ----
+  const initValue = document.getElementById("init-value"), initGroups = document.getElementById("init-groups"), initCount = document.getElementById("init-count");
+  let stamped = {}, itemsKey = "";
+  const bold = t => esc(t).split("**").map((x, i) => i % 2 ? "<strong>" + x + "</strong>" : x).join("");
+  const currentItems = () => initialItems({ rooms: pkg.rooms, total: pkg.total, pay_now: pkg.payNow, room_list: chosenRooms() });
+  const adopted = () => /^[A-Z]{2,4}$/.test(initValue.value) ? initValue.value : "";
+  const updateInitials = () => {
+    const all = initGroups.querySelectorAll(".init-btn"), who = adopted();
+    let n = 0;
+    all.forEach(b => {
+      const on = !!stamped[b.dataset.id] && !!who; if (on) n++;
+      b.classList.toggle("on", on); b.textContent = on ? who : "Initial";
+      b.setAttribute("aria-pressed", on);
+      if (on) b.closest(".init-item").classList.remove("missing");
+    });
+    initCount.textContent = n + " of " + all.length + " initialed";
+    initCount.classList.toggle("done", n === all.length);
+  };
+  const renderInitials = () => {
+    const groups = currentItems(), key = JSON.stringify(groups);
+    if (key !== itemsKey) { stamped = {}; itemsKey = key; }
+    if (!initValue.value) initValue.value = [af.first_name.value, af.last_name.value].map(v => v.trim().replace(/[^A-Za-z]/g, "").charAt(0).toUpperCase()).join("");
+    initGroups.innerHTML = groups.map(g => '<div class="init-group"><h4>' + esc(g.title) + "</h4>" +
+      g.items.map(it => '<div class="init-item" data-id="' + it.id + '"><p>' + bold(it.text) + '</p><button type="button" class="init-btn" data-id="' + it.id + '" aria-label="Initial: ' + esc(it.text.replace(/\*\*/g, "")) + '">Initial</button></div>').join("") + "</div>").join("");
+    updateInitials();
+  };
+  initValue.addEventListener("input", () => { initValue.value = initValue.value.replace(/[^A-Za-z]/g, "").toUpperCase(); updateInitials(); setAgreeStatus(""); });
+  initGroups.addEventListener("click", e => {
+    const b = e.target.closest(".init-btn"); if (!b) return;
+    if (!adopted()) { setAgreeStatus("Type your initials (2–4 letters) first.", "error"); initValue.focus(); return; }
+    if (stamped[b.dataset.id]) delete stamped[b.dataset.id]; else stamped[b.dataset.id] = new Date().toISOString();
+    setAgreeStatus(""); updateInitials();
+  });
   document.getElementById("summary").addEventListener("click", e => { const b = e.target.closest("[data-goto]"); if (b) goTo(Number(b.dataset.goto)); });
 
   // ---- Step navigation ----
@@ -660,7 +717,7 @@
     btnBack.hidden = n === 1; btnNext.hidden = n === 3; btnSubmit.hidden = n !== 3;
     document.getElementById("agree-fine").textContent = n === 3 ? (AGREEMENT_API ? "After payment, we'll email you a copy of your signed agreement." : "You'll download a signed PDF copy, then pay securely with Stripe.") : "";
     setAgreeStatus("");
-    if (n === 3) { renderReview(); requestAnimationFrame(() => { resetPad(); if (af.signer.value.trim()) document.getElementById("sig-typed").dataset.ready = "1"; }); }
+    if (n === 3) { renderReview(); requestAnimationFrame(() => { resetPad(); if (fullName()) document.getElementById("sig-typed").dataset.ready = "1"; }); }
     const first = agreeForm.querySelector('.step[data-step="' + n + '"] select, .step[data-step="' + n + '"] input');
     if (first && n !== 3) first.focus();
     dlg.scrollTop = 0;
@@ -675,7 +732,8 @@
       return true;
     }
     if (n === 2) {
-      if (!af.signer.value.trim()) { setAgreeStatus("Enter your full legal name.", "error"); af.signer.focus(); return false; }
+      if (!af.first_name.value.trim()) { setAgreeStatus("Enter your first name as it appears on legal documents.", "error"); af.first_name.focus(); return false; }
+      if (!af.last_name.value.trim()) { setAgreeStatus("Enter your last name.", "error"); af.last_name.focus(); return false; }
       if (!af.email.value.trim() || !af.email.checkValidity()) { setAgreeStatus("Check your email address. It should look like name@example.com.", "error"); af.email.focus(); return false; }
       if (phoneDigits(af.phone.value).length !== 10) { setAgreeStatus("Enter a 10-digit phone number so we can reach you about your home visit.", "error"); af.phone.focus(); return false; }
       if (!af.address_line1.value.trim() || !af.city.value.trim() || !/^\d{5}(-\d{4})?$/.test(af.zip.value.trim())) { setAgreeStatus("Complete the project address: street, city, state, and a 5-digit ZIP code.", "error"); (af.address_line1.value.trim() ? (af.city.value.trim() ? af.zip : af.city) : af.address_line1).focus(); return false; }
@@ -720,21 +778,16 @@
       ls.forEach(line => { doc.text(line, M, y + size); y += size * 1.35; });
       y += gap || 0;
     };
-    const initialsBox = key => {
-      const a = INITIALS[key], tw = W - 130;
-      const tl = lines(a.title + " (" + a.section + ")", 9.5, "bold", tw), bl = lines(a.text, 9, "normal", tw);
-      const h = 24 + tl.length * 13 + bl.length * 12.5;
-      y += 2; need(h + 10);
-      doc.setDrawColor(135, 163, 150); doc.setFillColor(242, 246, 244); doc.rect(M, y, W, h, "FD");
-      doc.setTextColor(41, 69, 59); doc.setFont("helvetica", "bold"); doc.setFontSize(9.5);
-      let ty = y + 12; tl.forEach(l => { doc.text(l, M + 12, ty + 9.5); ty += 13; });
-      doc.setTextColor(0); doc.setFont("helvetica", "normal"); doc.setFontSize(9);
-      bl.forEach(l => { doc.text(l, M + 12, ty + 9); ty += 12.5; });
-      const cx = M + W - 104, mid = y + h / 2;
-      doc.setFontSize(7); doc.setTextColor(110); doc.text("CLIENT INITIALS", cx, mid - 10); doc.setTextColor(0);
-      doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.text(rec.initials[key] || "", cx + 4, mid + 10);
-      doc.setDrawColor(30); doc.line(cx, mid + 14, cx + 92, mid + 14);
-      y += h + 12;
+    const ackItem = it => {
+      const ls = lines(it.text.replace(/\*\*/g, ""), 9.5, "normal", W - 120), h = Math.max(ls.length * 12.8, 22) + 8;
+      need(h);
+      doc.setFont("helvetica", "normal"); doc.setFontSize(9.5);
+      ls.forEach((l, i) => doc.text(l, M, y + 9.5 + i * 12.8));
+      const cx = M + W - 96;
+      doc.setFont("helvetica", "bold"); doc.setFontSize(14); doc.text(rec.initials.items[it.id] ? rec.initials.value : "", cx + 6, y + 14);
+      doc.setDrawColor(30); doc.line(cx, y + 18, cx + 96, y + 18);
+      doc.setFont("helvetica", "normal"); doc.setFontSize(6.5); doc.setTextColor(110); doc.text("Client initials", cx, y + 26); doc.setTextColor(0);
+      y += h;
     };
     write("BP Design Group LLC", 10, "bold");
     write("Design Services Agreement", 20, "bold", 8);
@@ -742,15 +795,17 @@
       .forEach(([k, v]) => write(k + ": " + v, 10));
     y += 10;
     write(rec.signed_name + ' ("Client") agrees to the Design Services Terms and Conditions below (last updated September 27, 2026, published at https://bpdesignchi.com/terms.html).', 10, "normal", 10);
-    let pending = null;
     const firstH = b => !b ? 0 : b.type === "ul" ? 14 : b.type === "p" ? lines(b.text, 9).length * 9 * 1.35 : 20;
     if (termsBlocks) termsBlocks.forEach((b, i) => {
-      if (b.type === "h2") { if (pending) { initialsBox(pending); pending = null; } y += 6; write(b.text, 11, "bold", 2, 2 + firstH(termsBlocks[i + 1])); if (b.initial) pending = b.initial; }
+      if (b.type === "h2") { y += 6; write(b.text, 11, "bold", 2, 2 + firstH(termsBlocks[i + 1])); }
       else if (b.type === "h3") write(b.text, 9.5, "bold", 1, 1 + firstH(termsBlocks[i + 1]));
       else if (b.type === "ul") b.items.forEach(it => write("-  " + it, 9));
       else write(b.text, 9, "normal", 4);
     });
-    if (pending) initialsBox(pending);
+    y += 18; need(90);
+    write("Client Acknowledgments", 12, "bold", 2);
+    write("The Client initialed each item below when signing.", 9, "normal", 6);
+    initialItems(rec).forEach(g => { y += 4; write(g.title, 10, "bold", 4, 34); g.items.forEach(ackItem); });
     y += 18; need(230);
     write("Electronic Signature", 12, "bold", 4);
     write("By checking the acceptance box, the Client confirmed:", 9, "normal", 2);
@@ -758,7 +813,7 @@
     doc.addImage(signatureImage(480, 160, "image/png"), "PNG", M, y, 210, 70); y += 78;
     doc.setDrawColor(150); doc.line(M, y, M + 260, y); y += 14;
     write(rec.signed_name + "  ·  " + rec.email, 10);
-    write("Initialed: " + Object.keys(INITIALS).map(k => INITIALS[k].title + " (" + rec.initials[k] + ")").join("; "), 8.5);
+    write("Initials: " + rec.initials.value + " (" + Object.keys(rec.initials.items).length + " items initialed)", 8.5);
     write("Signed " + rec.signed_at_local + "  ·  Reference " + rec.reference + "  ·  Signature method: " + rec.signature_method, 8.5);
     const pages = doc.getNumberOfPages();
     for (let i = 1; i <= pages; i++) {
@@ -774,14 +829,16 @@
     event.preventDefault();
     if (af.botcheck.checked || !pkg) return;
     if (step !== 3) { btnNext.click(); return; }
-    const initials = initialsGiven();
-    const missingInit = Object.keys(INITIALS).find(k => !/^[A-Z]{2,4}$/.test(initials[k]));
-    if (missingInit) { setAgreeStatus("Type your initials (2–4 letters) next to “" + INITIALS[missingInit].title + ".”", "error"); af["init_" + missingInit].focus(); return; }
+    if (!adopted()) { setAgreeStatus("Type your initials (2–4 letters) above the list of items.", "error"); initValue.focus(); return; }
+    const missingItem = [...initGroups.querySelectorAll(".init-item")].filter(r => !stamped[r.dataset.id]);
+    missingItem.forEach(r => r.classList.add("missing"));
+    if (missingItem.length) { setAgreeStatus("Initial every item. " + missingItem.length + (missingItem.length === 1 ? " item still needs" : " items still need") + " your initials.", "error"); missingItem[0].querySelector(".init-btn").focus(); missingItem[0].scrollIntoView({ block: "center", behavior: "smooth" }); return; }
+    const initials = { value: adopted(), items: { ...stamped } };
     if (!inked) { setAgreeStatus("Sign in the box, or choose “Use my typed name”.", "error"); return; }
     if (!af.agree.checked) { setAgreeStatus("Check the box to agree to the terms before continuing.", "error"); return; }
 
     const p = pkg, signedAt = new Date(), rooms = chosenRooms();
-    const signer = af.signer.value.trim(), email = af.email.value.trim();
+    const signer = fullName(), email = af.email.value.trim();
     const rec = {
       reference: newReference(p.rooms),
       package_name: p.name,
@@ -790,7 +847,7 @@
       initials,
       payment: paymentLine(p),
       rooms: p.rooms, total: p.total, pay_now: p.payNow,
-      signed_name: signer, email, phone: af.phone.value.trim(), project_address: composeAddress(),
+      signed_name: signer, first_name: af.first_name.value.trim(), last_name: af.last_name.value.trim(), email, phone: af.phone.value.trim(), project_address: composeAddress(),
       address_line1: af.address_line1.value.trim(), address_line2: af.address_line2.value.trim(), city: af.city.value.trim(), state: af.state.value, zip: af.zip.value.trim(),
       address_verified: addrState === "verified",
       agreement: TERMS_VERSION,
@@ -834,7 +891,7 @@
           subject: "Signed agreement: " + p.name + " – " + signer + " – " + rec.reference,
           from_name: "BP Design Group website",
           replyto: email,
-        }, rec, { room_list: rooms.join(", "), initials: Object.entries(initials).map(([k, v]) => INITIALS[k].title + ": " + v).join("; "), signature_image: signatureImage(300, 100, "image/jpeg", 0.6) })),
+        }, rec, { room_list: rooms.join(", "), initials: initials.value + " on all " + Object.keys(initials.items).length + " items: " + currentItems().flatMap(g => g.items).map(it => it.text.replace(/\*\*/g, "")).join(" | "), signature_image: signatureImage(300, 100, "image/jpeg", 0.6) })),
       });
       const result = await response.json();
       if (!result.success) throw new Error(result.message);
