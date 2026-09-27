@@ -99,6 +99,8 @@
   footer { align-items:center; padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; }
   a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
   /* after-first project photos; the before is one tap away */
+  .hero-ctas { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:40px; }
+  .hero .hero-ctas .btn { margin-top:0; }
   .hero .reveal { margin:56px auto 0; max-width:980px; }
   .reveal { margin:0; }
   .reveal .frame { position:relative; border:1px solid var(--rule); background:var(--raised); overflow:hidden; }
@@ -111,7 +113,6 @@
   .reveal-btn:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
   .reveal figcaption { margin-top:12px; font-size:14px; color:var(--soft); }
   .hero .reveal figcaption { text-align:center; }
-  .projects { display:grid; gap:40px; }
   @media (prefers-reduced-motion: reduce) { .reveal .before { transition:none; } }
   /* retainer agreement: signed before checkout */
   dialog.agree { width:min(660px, calc(100vw - 32px)); max-height:calc(100vh - 32px); overflow:auto; padding:0; border:1px solid var(--rule); background:var(--raised); color:var(--text); }
@@ -150,14 +151,14 @@
 <div class="wrap">
   <header class="top">
     <a class="brand" href="#" aria-label="BP Design Group, home"><img class="brand-mark" src="logo-mark.svg" width="38" height="40" alt=""><img class="brand-word" src="logo-wordmark.svg" width="190" height="12" alt="BP Design Group"></a>
-    <nav><a href="#packages">Packages</a><a href="#process">Process</a><a href="#work">Work</a><a href="about.html">About</a><a href="#contact">Contact</a></nav>
+    <nav><a href="#packages">Packages</a><a href="#process">Process</a><a href="work.html">Work</a><a href="about.html">About</a><a href="#contact">Contact</a></nav>
   </header>
 
   <div class="hero">
     <p class="eyebrow">Kitchen &amp; bath design · Chicago &amp; NW suburbs</p>
     <h1>Kitchens and baths, <em>designed</em> around you.</h1>
     <p class="lede">We design your kitchen or bathroom before construction begins and provide a realistic rendering of the finished space, so every decision is made on paper&mdash;not in the middle of demolition.</p>
-    <a class="btn" href="#packages">Book a home visit</a>
+    <div class="hero-ctas"><a class="btn" href="#packages">Book a home visit</a><a class="btn ghost" href="work.html">See our work</a></div>
 
     <figure class="reveal">
       <div class="frame">
@@ -203,22 +204,6 @@
     <li><h3>Design your space</h3><p>We plan the layout, cabinetry, finishes, and lighting, and show you renderings of the finished room.</p></li>
     <li><h3>Build with confidence</h3><p>Take the plan to your contractor knowing exactly how it will look.</p></li>
   </ol>
-</div></section>
-
-<section id="work"><div class="wrap">
-  <h2>Recent <em>work</em></h2>
-  <p class="intro">From dated to designed. Tap &ldquo;See the before&rdquo; to see where each project started.</p>
-  <div class="projects">
-    <figure class="reveal">
-      <div class="frame">
-        <img class="after" src="img/kitchen-after.jpg" width="1320" height="990" loading="lazy" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
-        <img class="before" src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The same kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors.">
-        <span class="state">After</span>
-        <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
-      </div>
-      <figcaption>A kitchen designed by BP Design Group.</figcaption>
-    </figure>
-  </div>
 </div></section>
 
 <section id="contact" class="contact-bg"><div class="wrap contact">

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Work | BP Design Group</title>
+<meta name="description" content="Kitchens and bathrooms designed by BP Design Group in Chicago and the northwest suburbs.">
+<meta property="og:title" content="Our Work | BP Design Group">
+<meta property="og:description" content="Kitchens and bathrooms designed by BP Design Group.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bpdesignchi.com/work.html">
+<meta property="og:image" content="https://bpdesignchi.com/img/kitchen-after.jpg">
+<meta name="theme-color" content="#15171A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://bpdesignchi.com/work.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#15171A; --raised:#1C1F23; --text:#ECE9E3; --soft:#9D9A93; --rule:#2D3035; --acc:#86A396; --g:24px; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:400 17px/1.7 "Hanken Grotesk", system-ui, sans-serif; }
+  a { color:inherit; }
+  .wrap { max-width:1140px; margin:0 auto; padding:0 var(--g); }
+  header.top { display:flex; justify-content:space-between; align-items:center; padding:26px 0; }
+  .brand { display:inline-flex; align-items:center; gap:14px; text-decoration:none; }
+  .brand img { display:block; height:auto; }
+  .brand-mark { width:38px; } .brand-word { width:190px; }
+  nav a { margin-left:28px; text-decoration:none; font-size:14px; font-weight:500; letter-spacing:.08em; color:var(--soft); }
+  nav a:hover, nav a[aria-current] { color:var(--text); }
+  .intro-block { padding:48px 0 44px; max-width:640px; }
+  .eyebrow { font-size:13px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--acc); margin:0 0 18px; }
+  h1 { font:400 clamp(40px,5vw,64px)/1.05 "Bodoni Moda", serif; margin:0; }
+  h1 em { font-style:italic; }
+  .lede { color:var(--soft); margin:18px 0 0; }
+  /* portfolio grid: a lone project spans the full width */
+  .projects { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:40px 28px; padding-bottom:80px; }
+  .projects > .reveal:only-child { grid-column:1 / -1; }
+  /* after-first project photos; the before is one tap away */
+  .reveal { margin:0; }
+  .reveal .frame { position:relative; border:1px solid var(--rule); background:var(--raised); overflow:hidden; }
+  .reveal img { display:block; width:100%; height:auto; }
+  .reveal .before { position:absolute; inset:0; height:100%; object-fit:cover; opacity:0; transition:opacity .45s ease; }
+  .reveal.showing-before .before { opacity:1; }
+  .reveal .state { position:absolute; top:14px; left:14px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px; background:rgba(21,23,26,.8); pointer-events:none; }
+  .reveal-btn { position:absolute; right:14px; bottom:14px; font:600 13px/1 "Hanken Grotesk", sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--bg); background:var(--text); border:0; padding:12px 16px; cursor:pointer; transition:background .2s; }
+  .reveal-btn:hover { background:#fff; }
+  .reveal-btn:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+  .reveal figcaption { margin-top:12px; font-size:14px; color:var(--soft); }
+  .cta { border-top:1px solid var(--rule); padding:64px 0 80px; text-align:center; }
+  .cta h2 { font:400 clamp(30px,3.6vw,44px)/1.1 "Bodoni Moda", serif; margin:0 0 26px; }
+  .cta h2 em { font-style:italic; color:var(--acc); }
+  .btn { display:inline-block; padding:15px 28px; background:var(--text); color:var(--bg); text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--text); transition:background .2s,color .2s; }
+  .btn:hover { background:transparent; color:var(--text); }
+  footer { padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; align-items:center; }
+  .foot-mark { display:block; width:26px; height:auto; opacity:.8; }
+  a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+  @media (max-width:880px) { nav { display:none; } .projects { grid-template-columns:1fr; } .intro-block { padding-top:24px; } }
+  @media (max-width:420px) { .brand-word { width:150px; } .brand-mark { width:32px; } }
+  @media (prefers-reduced-motion: reduce) { .reveal .before { transition:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/" aria-label="BP Design Group, home"><img class="brand-mark" src="logo-mark.svg" width="38" height="40" alt=""><img class="brand-word" src="logo-wordmark.svg" width="190" height="12" alt="BP Design Group"></a>
+    <nav><a href="/#packages">Packages</a><a href="/#process">Process</a><a href="work.html" aria-current="page">Work</a><a href="about.html">About</a><a href="/#contact">Contact</a></nav>
+  </header>
+
+  <main>
+    <div class="intro-block">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Our <em>work</em></h1>
+      <p class="lede">Kitchens and bathrooms designed by BP Design Group. Tap &ldquo;See the before&rdquo; to see where each project started.</p>
+    </div>
+
+    <!-- Each project is one <figure class="reveal">. For a project without a before photo, leave out the .before image and the button. -->
+    <div class="projects">
+      <figure class="reveal">
+        <div class="frame">
+          <img class="after" src="img/kitchen-after.jpg" width="1320" height="990" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
+          <img class="before" src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The same kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors.">
+          <span class="state">After</span>
+          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+        </div>
+        <figcaption>A kitchen designed by BP Design Group.</figcaption>
+      </figure>
+    </div>
+  </main>
+
+  <section class="cta">
+    <h2>Ready to design <em>yours</em>?</h2>
+    <a class="btn" href="/#packages">Book a home visit</a>
+  </section>
+
+  <footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span><a href="terms.html">Terms &amp; conditions</a> · Kitchen &amp; bath design · Renderings</span></footer>
+</div>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.querySelectorAll(".reveal").forEach(fig => {
+    const btn = fig.querySelector(".reveal-btn"), state = fig.querySelector(".state");
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+      const before = fig.classList.toggle("showing-before");
+      btn.textContent = before ? "See the after" : "See the before";
+      btn.setAttribute("aria-pressed", before);
+      state.textContent = before ? "Before" : "After";
+    });
+  });
+</script>
+</body>
+</html>
