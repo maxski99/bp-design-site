@@ -65,7 +65,9 @@
   .pkg .btn { text-align:center; }
   .rooms { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:20px 0 0; font-size:13px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
   .rooms select { width:auto; min-width:128px; font-size:16px; letter-spacing:0; text-transform:none; padding:6px 26px 6px 0; }
-  .total { margin:10px 0 0; font-size:14px; color:var(--acc); min-height:2.6em; }
+  .multi-price .choose { display:block; font:italic 400 34px/1.1 "Bodoni Moda", serif; color:var(--soft); padding:12px 0 6px; }
+  .btn.is-disabled { opacity:.45; cursor:not-allowed; }
+  [hidden] { display:none !important; }
   .notes { margin-top:22px; display:grid; gap:4px; }
   .note { font-size:14px; color:var(--soft); margin:0; }
   .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; list-style:none; margin:0; padding:0; counter-reset:s; }
@@ -154,6 +156,32 @@
   .agree .addr-status.ok { color:var(--acc); }
   .agree .addr-status.warn { color:#E6B872; }
   .agree .hidden { display:none; }
+  .agree .stepper { display:flex; flex-wrap:wrap; gap:6px; list-style:none; margin:-6px 0 0; padding:0; counter-reset:st; }
+  .agree .stepper li { counter-increment:st; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); border:1px solid var(--rule); padding:7px 10px; }
+  .agree .stepper li::before { content:counter(st) " · "; }
+  .agree .stepper li.on { color:var(--bg); background:var(--text); border-color:var(--text); }
+  .agree .stepper li.done { color:var(--acc); border-color:var(--acc); }
+  .agree .step { display:grid; gap:20px; padding:0; border-top:0; }
+  .agree .step h3 { font:400 26px/1.15 "Bodoni Moda", serif; margin:0; }
+  .agree .step > .fine { margin-top:-12px; max-width:none; }
+  .agree .room-list { display:grid; gap:14px; }
+  .agree .room-row { display:grid; grid-template-columns:84px minmax(0, 1fr); gap:8px 16px; align-items:center; }
+  .agree .room-row label { font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+  .agree .room-row .room-other { grid-column:2; }
+  .agree .step-total { margin:0; color:var(--acc); }
+  .agree .summary { margin:0; border:1px solid var(--rule); }
+  .agree .summary div { display:grid; grid-template-columns:132px minmax(0, 1fr); gap:12px; padding:9px 14px; border-top:1px solid var(--rule); }
+  .agree .summary div:first-child { border-top:0; }
+  .agree .summary dt { font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); padding-top:3px; }
+  .agree .summary dd { margin:0; font-size:15px; overflow-wrap:anywhere; }
+  .agree .summary .linkbtn { margin-left:8px; }
+  .agree .step-nav { flex-wrap:nowrap; }
+  .agree .step-nav .fine { flex:1; }
+  @media (max-width:600px) {
+    .agree .room-row { grid-template-columns:1fr; } .agree .room-row .room-other { grid-column:1; }
+    .agree .summary div { grid-template-columns:1fr; gap:2px; }
+    .agree .step-nav { flex-wrap:wrap; } .agree .step-nav .btn { flex:1; }
+  }
   @media (max-width:600px) { .agree form { padding:28px 20px 22px; } .agree h2 { font-size:26px; } }
   @media (max-width:880px) {
     .pkgs, .steps { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
@@ -192,20 +220,21 @@
   <div class="pkgs">
     <div class="pkg"><h3>One room</h3><div class="price">$250</div><div class="per">retainer</div>
       <ul><li>Home visit and consultation</li><li>Design plan and rendering for one room</li><li>1 free revision</li></ul>
-      <a class="btn" href="#contact" data-pay="oneRoom">Pay $250 retainer</a></div>
+      <a class="btn" href="#packages" data-pay="oneRoom">Book one room</a></div>
     <div class="pkg"><h3>Two rooms</h3><div class="price">$500</div><div class="per">retainer</div>
       <ul><li>Home visit and consultation</li><li>Design plans and renderings for two rooms</li><li>2 free revisions</li></ul>
-      <a class="btn" href="#contact" data-pay="twoRooms">Pay $500 retainer</a></div>
-    <div class="pkg"><h3>Three or more rooms</h3><div class="price">$250</div><div class="per">per room</div>
+      <a class="btn" href="#packages" data-pay="twoRooms">Book two rooms</a></div>
+    <div class="pkg" id="multi-card"><h3>Three or more rooms</h3>
+      <div class="price multi-price" id="rooms-price" aria-live="polite"><span class="choose">Choose your rooms</span></div><div class="per" id="rooms-per">Select how many rooms to see your total.</div>
       <label class="rooms"><span>Rooms</span>
         <select id="rooms" aria-label="Number of rooms">
+          <option value="" selected disabled>Select</option>
           <option value="3">3 rooms</option><option value="4">4 rooms</option><option value="5">5 rooms</option><option value="6">6 rooms</option>
           <option value="7">7 rooms</option><option value="8">8 rooms</option><option value="9">9 rooms</option><option value="10">10 rooms</option>
         </select>
       </label>
-      <p class="total" id="rooms-total" aria-live="polite"></p>
       <ul><li>Home visit and consultation</li><li>Design plans and renderings for every room</li><li>2 free revisions</li></ul>
-      <a class="btn" href="#contact" data-pay="multi" id="rooms-pay">Pay $750</a></div>
+      <a class="btn is-disabled" href="#packages" data-pay="multi" id="rooms-pay" aria-disabled="true">Select rooms to continue</a></div>
   </div>
   <div class="notes">
     <p class="note">Secure checkout through Stripe. Pay by card or bank transfer.</p>
@@ -260,47 +289,72 @@
   <form id="agree-form" novalidate>
     <button type="button" class="close" aria-label="Close" data-close>&times;</button>
     <div>
-      <h2 id="agree-title">Design services <em>agreement</em></h2>
+      <h2 id="agree-title">Book your <em>design package</em></h2>
       <p class="pkgline" id="agree-pkg"></p>
     </div>
-    <ul class="keyterms" id="agree-keys"></ul>
-    <div>
-      <div class="contract" id="contract" tabindex="0" role="document" aria-label="Design Services Terms and Conditions">
-        <p>Read the full <a href="terms.html" target="_blank" rel="noopener">Design Services Terms and Conditions</a>.</p>
-      </div>
-      <p class="full">Design Services Terms and Conditions, last updated September 27, 2026 · <a href="terms.html" target="_blank" rel="noopener">Open in a new tab</a></p>
-    </div>
-    <div class="field"><label for="sig-name">Full legal name</label><input id="sig-name" name="signer" type="text" autocomplete="name" required></div>
-    <div class="row">
-      <div class="field"><label for="sig-email">Email</label><input id="sig-email" name="email" type="email" autocomplete="email" required></div>
-      <div class="field"><label for="sig-phone">Phone</label><input id="sig-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(847) 555-0123" required></div>
-    </div>
-    <fieldset class="addr">
-      <legend>Project address <small>where the home visit and design work will take place</small></legend>
-      <div class="field"><label for="addr-line1">Street address</label><input id="addr-line1" name="address_line1" type="text" autocomplete="address-line1" required></div>
+    <ol class="stepper" aria-label="Booking steps">
+      <li data-for="1">Rooms</li><li data-for="2">Your details</li><li data-for="3">Review &amp; sign</li>
+    </ol>
+
+    <!-- Step 1: which rooms -->
+    <section class="step" data-step="1" aria-labelledby="s1-title">
+      <h3 id="s1-title">Which rooms are we designing?</h3>
+      <p class="fine">Choose one room for each space in your package.</p>
+      <div class="room-list" id="room-list"></div>
+      <p class="step-total" id="s1-total"></p>
+    </section>
+
+    <!-- Step 2: contact details and project address -->
+    <section class="step" data-step="2" aria-labelledby="s2-title" hidden>
+      <h3 id="s2-title">Your details</h3>
+      <div class="field"><label for="sig-name">Full legal name</label><input id="sig-name" name="signer" type="text" autocomplete="name" required></div>
       <div class="row">
-        <div class="field"><label for="addr-line2">Apt / unit <small>(optional)</small></label><input id="addr-line2" name="address_line2" type="text" autocomplete="address-line2"></div>
-        <div class="field"><label for="addr-zip">ZIP code</label><input id="addr-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" required></div>
+        <div class="field"><label for="sig-email">Email</label><input id="sig-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="sig-phone">Phone</label><input id="sig-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(847) 555-0123" required></div>
       </div>
-      <div class="row">
-        <div class="field"><label for="addr-city">City</label><input id="addr-city" name="city" type="text" autocomplete="address-level2" required></div>
-        <div class="field"><label for="addr-state">State</label><select id="addr-state" name="state" autocomplete="address-level1"><option selected>IL</option><option>IN</option><option>WI</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WY</option></select></div>
+      <fieldset class="addr">
+        <legend>Project address <small>where the home visit and design work will take place</small></legend>
+        <div class="field"><label for="addr-line1">Street address</label><input id="addr-line1" name="address_line1" type="text" autocomplete="address-line1" required></div>
+        <div class="row">
+          <div class="field"><label for="addr-line2">Apt / unit <small>(optional)</small></label><input id="addr-line2" name="address_line2" type="text" autocomplete="address-line2"></div>
+          <div class="field"><label for="addr-zip">ZIP code</label><input id="addr-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" required></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="addr-city">City</label><input id="addr-city" name="city" type="text" autocomplete="address-level2" required></div>
+          <div class="field"><label for="addr-state">State</label><select id="addr-state" name="state" autocomplete="address-level1"><option selected>IL</option><option>IN</option><option>WI</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WY</option></select></div>
+        </div>
+        <p class="addr-status" id="addr-status" aria-live="polite"></p>
+        <label class="check hidden" id="addr-confirm-wrap"><input type="checkbox" id="addr-confirm"> <span>This address is correct as entered.</span></label>
+      </fieldset>
+    </section>
+
+    <!-- Step 3: review, terms, signature -->
+    <section class="step" data-step="3" aria-labelledby="s3-title" hidden>
+      <h3 id="s3-title">Review &amp; sign</h3>
+      <dl class="summary" id="summary"></dl>
+      <ul class="keyterms" id="agree-keys"></ul>
+      <div>
+        <div class="contract" id="contract" tabindex="0" role="document" aria-label="Design Services Terms and Conditions">
+          <p>Read the full <a href="terms.html" target="_blank" rel="noopener">Design Services Terms and Conditions</a>.</p>
+        </div>
+        <p class="full">Design Services Terms and Conditions, last updated September 27, 2026 · <a href="terms.html" target="_blank" rel="noopener">Open in a new tab</a></p>
       </div>
-      <p class="addr-status" id="addr-status" aria-live="polite"></p>
-      <label class="check hidden" id="addr-confirm-wrap"><input type="checkbox" id="addr-confirm"> <span>This address is correct as entered.</span></label>
-    </fieldset>
-    <div class="field">
-      <div class="sig-head">
-        <label for="sig-pad">Sign here</label>
-        <span><button type="button" class="linkbtn" id="sig-typed">Use my typed name</button> · <button type="button" class="linkbtn" id="sig-clear">Clear</button></span>
+      <div class="field">
+        <div class="sig-head">
+          <label for="sig-pad">Sign here</label>
+          <span><button type="button" class="linkbtn" id="sig-typed">Use my typed name</button> · <button type="button" class="linkbtn" id="sig-clear">Clear</button></span>
+        </div>
+        <canvas class="sig-pad" id="sig-pad" role="img" aria-label="Signature pad. Draw your signature with a mouse or finger, or use your typed name."></canvas>
       </div>
-      <canvas class="sig-pad" id="sig-pad" role="img" aria-label="Signature pad. Draw your signature with a mouse or finger, or use your typed name."></canvas>
-    </div>
-    <label class="check"><input type="checkbox" name="agree" required> <span>I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.</span></label>
+      <label class="check"><input type="checkbox" name="agree" required> <span>I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.</span></label>
+    </section>
+
     <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <div class="form-actions">
-      <p class="fine" id="agree-fine">After payment, we'll email you a copy of your signed agreement.</p>
-      <button class="btn" type="submit">Sign &amp; continue to payment</button>
+    <div class="form-actions step-nav">
+      <button type="button" class="btn ghost" id="step-back">Back</button>
+      <p class="fine" id="agree-fine"></p>
+      <button type="button" class="btn" id="step-next">Continue</button>
+      <button type="submit" class="btn" id="step-submit" hidden>Sign &amp; continue to payment</button>
     </div>
     <p class="form-status" role="status" aria-live="polite"></p>
   </form>
@@ -375,13 +429,16 @@
     }
   });
 
-  // ---- Packages and the rooms selector ----
+  // ---- Packages ----
   const fmt = n => "$" + n.toLocaleString("en-US");
   const roomsSelect = document.getElementById("rooms");
+  const ROOM_TYPES = ["Kitchen", "Primary bathroom", "Guest bathroom", "Powder room", "Laundry room", "Mudroom", "Primary bedroom", "Bedroom", "Living room", "Family room", "Dining room", "Home office", "Basement", "Entryway", "Other"];
   const packageFor = key => {
     if (key === "oneRoom") return { name: "One-Room Design Package", rooms: 1, revisions: 1, total: 250, payNow: 250, link: STRIPE_LINKS.oneRoom };
     if (key === "twoRooms") return { name: "Two-Room Design Package", rooms: 2, revisions: 2, total: 500, payNow: 500, link: STRIPE_LINKS.twoRooms };
-    const rooms = Number(roomsSelect.value), total = rooms * 250;
+    const rooms = Number(roomsSelect.value);
+    if (!rooms) return null;
+    const total = rooms * 250;
     return rooms === 3
       ? { name: "Three-Room Design Package", rooms, revisions: 2, total, payNow: total, link: STRIPE_LINKS.threeRooms }
       : { name: rooms + "-Room Design Package", rooms, revisions: 2, total, payNow: 1000, link: STRIPE_LINKS.deposit };
@@ -389,25 +446,24 @@
   const paymentLine = p => p.payNow === p.total
     ? "The " + fmt(p.total) + " package fee is paid in full today."
     : "A " + fmt(p.payNow) + " deposit is paid today and credited to the " + fmt(p.total) + " total. The " + fmt(p.total - p.payNow) + " balance is invoiced when your design plans are delivered.";
-  const updateRooms = () => {
-    const p = packageFor("multi");
-    document.getElementById("rooms-total").textContent = p.payNow === p.total
-      ? p.rooms + " rooms · " + fmt(p.total) + ", paid at booking"
-      : p.rooms + " rooms · " + fmt(p.total) + " total · " + fmt(p.payNow) + " deposit today, " + fmt(p.total - p.payNow) + " when your plans are delivered";
-    const pay = document.getElementById("rooms-pay");
-    pay.textContent = p.payNow === p.total ? "Pay " + fmt(p.total) : "Pay " + fmt(p.payNow) + " deposit";
-    pay.href = p.link;
-  };
-  roomsSelect.addEventListener("change", updateRooms); updateRooms();
+  const payShort = p => p.payNow === p.total ? fmt(p.total) + " paid at booking" : fmt(p.payNow) + " deposit today · " + fmt(p.total) + " total";
 
-  // ---- Retainer agreement: sign on the site, record to info@, PDF copy for the client, then Stripe ----
+  // 3+ rooms card: the total appears only after a room count is chosen
+  roomsSelect.addEventListener("change", () => {
+    const p = packageFor("multi"), pay = document.getElementById("rooms-pay");
+    document.getElementById("rooms-price").textContent = fmt(p.total);
+    document.getElementById("rooms-per").textContent = p.payNow === p.total ? "total for " + p.rooms + " rooms, paid at booking" : "total for " + p.rooms + " rooms · " + fmt(p.payNow) + " deposit today, " + fmt(p.total - p.payNow) + " when your plans are delivered";
+    pay.textContent = "Book " + p.rooms + " rooms"; pay.classList.remove("is-disabled"); pay.removeAttribute("aria-disabled");
+  });
+
+  // ---- Booking: 1 rooms · 2 details · 3 review & sign, then Stripe ----
   const dlg = document.getElementById("agree");
   const agreeForm = document.getElementById("agree-form");
   const af = agreeForm.elements;
   const agreeStatus = agreeForm.querySelector(".form-status");
-  const agreeButton = agreeForm.querySelector("button[type=submit]");
   const contractBox = document.getElementById("contract");
-  let chosen = null, termsBlocks = null;
+  const btnBack = document.getElementById("step-back"), btnNext = document.getElementById("step-next"), btnSubmit = document.getElementById("step-submit");
+  let chosen = null, pkg = null, step = 1, termsBlocks = null;
   const setAgreeStatus = (text, kind) => { agreeStatus.textContent = text; agreeStatus.className = "form-status" + (kind ? " is-" + kind : ""); };
   const newReference = rooms => {
     const d = new Date(), pad2 = n => String(n).padStart(2, "0");
@@ -429,7 +485,7 @@
     } catch (e) { termsBlocks = null; }
   };
 
-  // The PDF library loads only when someone opens the agreement.
+  // The PDF library is only needed for the backup path (automation unreachable).
   let pdfLib = null;
   const loadPdf = () => pdfLib || (pdfLib = new Promise((resolve, reject) => {
     const s = document.createElement("script");
@@ -440,122 +496,34 @@
     document.head.appendChild(s);
   }));
 
-  // Signature pad
-  const pad = document.getElementById("sig-pad"), ctx = pad.getContext("2d");
-  let inked = false, method = "drawn", drawing = false, last = null;
-  const resetPad = () => {
-    const r = pad.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
-    pad.width = Math.round(r.width * dpr); pad.height = Math.round(r.height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.lineWidth = 2.2; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#1F2124"; ctx.fillStyle = "#1F2124";
-    inked = false; method = "drawn";
+  // ---- Step 1: rooms ----
+  const roomList = document.getElementById("room-list");
+  const buildRooms = n => {
+    roomList.replaceChildren(...Array.from({ length: n }, (_, i) => {
+      const row = document.createElement("div"); row.className = "room-row";
+      const id = "room-" + (i + 1);
+      row.innerHTML = '<label for="' + id + '">Room ' + (i + 1) + '</label>' +
+        '<select id="' + id + '" class="room-type"><option value="" selected disabled>Choose a room</option>' + ROOM_TYPES.map(t => "<option>" + t + "</option>").join("") + '</select>' +
+        '<input type="text" class="room-other" maxlength="40" placeholder="Describe the room" aria-label="Describe room ' + (i + 1) + '" hidden>';
+      const sel = row.querySelector("select"), other = row.querySelector("input");
+      sel.addEventListener("change", () => { other.hidden = sel.value !== "Other"; if (!other.hidden) other.focus(); setAgreeStatus(""); });
+      return row;
+    }));
   };
-  const point = e => { const r = pad.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
-  pad.addEventListener("pointerdown", e => {
-    drawing = true; last = point(e); pad.setPointerCapture(e.pointerId);
-    ctx.beginPath(); ctx.arc(last.x, last.y, 1.1, 0, Math.PI * 2); ctx.fill();
-    inked = true; method = "drawn";
-  });
-  pad.addEventListener("pointermove", e => { if (!drawing) return; const p = point(e); ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p; });
-  ["pointerup", "pointercancel"].forEach(t => pad.addEventListener(t, () => { drawing = false; }));
-  document.getElementById("sig-clear").addEventListener("click", resetPad);
-  document.getElementById("sig-typed").addEventListener("click", async () => {
-    const name = af.signer.value.trim();
-    if (!name) { setAgreeStatus("Type your full legal name first.", "error"); af.signer.focus(); return; }
-    resetPad();
-    const r = pad.getBoundingClientRect();
-    let size = Math.min(52, r.height * 0.55);
-    await document.fonts.load(size + "px Allura").catch(() => {});
-    ctx.textBaseline = "middle";
-    while (size > 18) { ctx.font = size + "px Allura, cursive"; if (ctx.measureText(name).width < r.width - 32) break; size -= 2; }
-    ctx.fillText(name, 16, r.height / 2);
-    inked = true; method = "typed name";
-    setAgreeStatus("");
+  const chosenRooms = () => [...roomList.querySelectorAll(".room-row")].map(r => {
+    const v = r.querySelector("select").value;
+    return v === "Other" ? r.querySelector("input").value.trim() : v;
   });
 
-  document.querySelectorAll("[data-pay]").forEach(a => a.addEventListener("click", event => {
-    const p = packageFor(a.dataset.pay);
-    if (!p.link || typeof dlg.showModal !== "function") return;
-    event.preventDefault();
-    chosen = a.dataset.pay;
-    document.getElementById("agree-pkg").textContent = p.name + " · " + (p.payNow === p.total ? fmt(p.total) + " paid at booking" : fmt(p.payNow) + " deposit of " + fmt(p.total));
-    const keys = [
-      "BP Design Group is a design firm, not a contractor. You hire your own contractors and trades.",
-      "Includes one home visit and consultation, design plans and renderings for " + (p.rooms === 1 ? "one room" : p.rooms + " rooms") + ", and " + p.revisions + " free revision" + (p.revisions === 1 ? "" : "s") + ".",
-      paymentLine(p),
-      "Cancel <strong>48 hours or more before your home visit</strong> for a full refund. Cancellations made <strong>less than 48 hours before your visit</strong>, missed appointments, and cancellations made <strong>after the home visit</strong> are non-refundable.",
-      "Additional revisions are available at <strong>$200 per revision</strong>. Additional design consultations are offered at <strong>$300 per hour and require a $600 deposit to begin services.</strong>",
-    ];
-    document.getElementById("agree-keys").replaceChildren(...keys.map(t => Object.assign(document.createElement("li"), { innerHTML: t })));
-    setAgreeStatus("");
-    dlg.showModal();
-    resetPad();
-    loadTerms(); loadPdf().catch(() => {});
-    af.signer.focus();
-  }));
-  dlg.querySelector("[data-close]").addEventListener("click", () => dlg.close());
-  dlg.addEventListener("click", event => { if (event.target === dlg) dlg.close(); });
-
-  const signatureImage = (w, h, type, q) => {
-    const c = document.createElement("canvas"); c.width = w; c.height = h;
-    const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, w, h); x.drawImage(pad, 0, 0, w, h);
-    return c.toDataURL(type, q);
-  };
-
-  const makePdf = async rec => {
-    const JsPDF = await loadPdf();
-    const doc = new JsPDF({ unit: "pt", format: "letter" });
-    const M = 54, W = 612 - M * 2, H = 792;
-    let y = M;
-    const need = h => { if (y + h > H - M) { doc.addPage(); y = M; } };
-    const write = (text, size, style, gap) => {
-      doc.setFont("helvetica", style || "normal"); doc.setFontSize(size);
-      doc.splitTextToSize(text, W).forEach(line => { need(size * 1.35); doc.text(line, M, y + size); y += size * 1.35; });
-      y += gap || 0;
-    };
-    write("BP Design Group LLC", 10, "bold");
-    write("Design Services Agreement", 20, "bold", 8);
-    [["Client", rec.signed_name], ["Email", rec.email], ["Phone", rec.phone], ["Project address", rec.project_address], ["Package", rec.package], ["Payment", rec.payment], ["Reference", rec.reference], ["Signed", rec.signed_at_local]]
-      .forEach(([k, v]) => write(k + ": " + v, 10));
-    y += 10;
-    write(rec.signed_name + ' ("Client") agrees to the Design Services Terms and Conditions below (last updated September 27, 2026, published at https://bpdesignchi.com/terms.html).', 10, "normal", 10);
-    if (termsBlocks) {
-      termsBlocks.forEach(b => {
-        if (b.type === "h2") { y += 6; write(b.text, 11, "bold", 2); }
-        else if (b.type === "h3") write(b.text, 9.5, "bold", 1);
-        else if (b.type === "ul") b.items.forEach(i => write("-  " + i, 9));
-        else write(b.text, 9, "normal", 4);
-      });
-    }
-    need(190); y += 18;
-    write("Electronic Signature", 12, "bold", 4);
-    write("By checking the acceptance box, the Client confirmed:", 9, "normal", 2);
-    write("I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.", 9.5, "bold", 8);
-    doc.addImage(signatureImage(480, 160, "image/png"), "PNG", M, y, 210, 70); y += 78;
-    doc.setDrawColor(150); doc.line(M, y, M + 260, y); y += 14;
-    write(rec.signed_name + "  ·  " + rec.email, 10);
-    write("Signed " + rec.signed_at_local + "  ·  Reference " + rec.reference + "  ·  Signature method: " + rec.signature_method, 8.5);
-    const pages = doc.getNumberOfPages();
-    for (let i = 1; i <= pages; i++) {
-      doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(120);
-      doc.text("BP Design Group LLC · Design Services Agreement · " + rec.reference + " · Page " + i + " of " + pages, M, H - 28);
-      doc.setTextColor(0);
-    }
-    doc.save("BP-Design-Group-Agreement-" + rec.reference + ".pdf");
-  };
-
-  // Phone: format as the client types
+  // ---- Step 2: phone formatting, ZIP fill, address verification ----
   const phoneDigits = v => { let d = v.replace(/\D/g, ""); if (d.length === 11 && d[0] === "1") d = d.slice(1); return d.slice(0, 10); };
   af.phone.addEventListener("input", () => {
     const d = phoneDigits(af.phone.value);
     af.phone.value = d.length > 6 ? "(" + d.slice(0, 3) + ") " + d.slice(3, 6) + "-" + d.slice(6) : d.length > 3 ? "(" + d.slice(0, 3) + ") " + d.slice(3) : d;
   });
-
-  // Address: ZIP fills city and state; the full address is checked against U.S. Census Bureau address data
   const addrStatus = document.getElementById("addr-status"), confirmWrap = document.getElementById("addr-confirm-wrap"), addrConfirm = document.getElementById("addr-confirm");
   let addrState = "unchecked", addrTimer = null, addrSeq = 0;
   const showAddr = (text, kind) => { addrStatus.textContent = text; addrStatus.className = "addr-status" + (kind ? " " + kind : ""); };
-  const addrFields = ["address_line1", "address_line2", "city", "state", "zip"];
   const addrReady = () => af.address_line1.value.trim().length > 3 && /^\d{5}/.test(af.zip.value.trim()) && af.city.value.trim();
   const composeAddress = () => af.address_line1.value.trim() + (af.address_line2.value.trim() ? ", " + af.address_line2.value.trim() : "") + ", " + af.city.value.trim() + ", " + af.state.value + " " + af.zip.value.trim();
   const verifyAddress = async () => {
@@ -578,7 +546,7 @@
     } catch (e) { if (seq === addrSeq) { addrState = "unavailable"; showAddr(""); } }
     return addrState;
   };
-  addrFields.forEach(n => af[n].addEventListener("input", () => {
+  ["address_line1", "address_line2", "city", "state", "zip"].forEach(n => af[n].addEventListener("input", () => {
     addrState = "unchecked"; showAddr(""); confirmWrap.classList.add("hidden"); addrConfirm.checked = false;
     clearTimeout(addrTimer); addrTimer = setTimeout(verifyAddress, 900);
   }));
@@ -595,28 +563,173 @@
     } catch (e) { /* the client can still type the city */ }
   });
 
+  // ---- Step 3: summary, key terms, signature pad ----
+  const pad = document.getElementById("sig-pad"), ctx = pad.getContext("2d");
+  let inked = false, method = "drawn", drawing = false, last = null;
+  const resetPad = () => {
+    const r = pad.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    pad.width = Math.round(r.width * dpr); pad.height = Math.round(r.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.lineWidth = 2.2; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#1F2124"; ctx.fillStyle = "#1F2124";
+    inked = false; method = "drawn";
+  };
+  const point = e => { const r = pad.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  pad.addEventListener("pointerdown", e => {
+    drawing = true; last = point(e); pad.setPointerCapture(e.pointerId);
+    ctx.beginPath(); ctx.arc(last.x, last.y, 1.1, 0, Math.PI * 2); ctx.fill();
+    inked = true; method = "drawn";
+  });
+  pad.addEventListener("pointermove", e => { if (!drawing) return; const p = point(e); ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p; });
+  ["pointerup", "pointercancel"].forEach(t => pad.addEventListener(t, () => { drawing = false; }));
+  document.getElementById("sig-clear").addEventListener("click", resetPad);
+  document.getElementById("sig-typed").addEventListener("click", async () => {
+    const name = af.signer.value.trim();
+    resetPad();
+    const r = pad.getBoundingClientRect();
+    let size = Math.min(52, r.height * 0.55);
+    await document.fonts.load(size + "px Allura").catch(() => {});
+    ctx.textBaseline = "middle";
+    while (size > 18) { ctx.font = size + "px Allura, cursive"; if (ctx.measureText(name).width < r.width - 32) break; size -= 2; }
+    ctx.fillText(name, 16, r.height / 2);
+    inked = true; method = "typed name";
+    setAgreeStatus("");
+  });
+  const signatureImage = (w, h, type, q) => {
+    const c = document.createElement("canvas"); c.width = w; c.height = h;
+    const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, w, h); x.drawImage(pad, 0, 0, w, h);
+    return c.toDataURL(type, q);
+  };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const renderReview = () => {
+    const rooms = chosenRooms();
+    const rows = [
+      ["Package", pkg.name, 1], ["Rooms", rooms.join(", "), 1], ["Payment", payShort(pkg), 0],
+      ["Name", af.signer.value.trim(), 2], ["Email", af.email.value.trim(), 2], ["Phone", af.phone.value.trim(), 2], ["Project address", composeAddress(), 2],
+    ];
+    document.getElementById("summary").innerHTML = rows.map(([k, v, s]) =>
+      "<div><dt>" + k + "</dt><dd>" + esc(v) + (s ? ' <button type="button" class="linkbtn" data-goto="' + s + '">Edit</button>' : "") + "</dd></div>").join("");
+    const keys = [
+      "BP Design Group is a design firm, not a contractor. You hire your own contractors and trades.",
+      "Includes one home visit and consultation, design plans and renderings for " + (pkg.rooms === 1 ? "one room" : pkg.rooms + " rooms") + ", and " + pkg.revisions + " free revision" + (pkg.revisions === 1 ? "" : "s") + ".",
+      paymentLine(pkg),
+      "Cancel <strong>48 hours or more before your home visit</strong> for a full refund. Cancellations made <strong>less than 48 hours before your visit</strong>, missed appointments, and cancellations made <strong>after the home visit</strong> are non-refundable.",
+      "Additional revisions are available at <strong>$200 per revision</strong>. Additional design consultations are offered at <strong>$300 per hour and require a $600 deposit to begin services.</strong>",
+    ];
+    document.getElementById("agree-keys").replaceChildren(...keys.map(t => Object.assign(document.createElement("li"), { innerHTML: t })));
+  };
+  document.getElementById("summary").addEventListener("click", e => { const b = e.target.closest("[data-goto]"); if (b) goTo(Number(b.dataset.goto)); });
+
+  // ---- Step navigation ----
+  const goTo = n => {
+    step = n;
+    agreeForm.querySelectorAll(".step").forEach(s => { s.hidden = Number(s.dataset.step) !== n; });
+    agreeForm.querySelectorAll(".stepper li").forEach(li => { const f = Number(li.dataset.for); li.className = f < n ? "done" : f === n ? "on" : ""; li.toggleAttribute("aria-current", f === n); });
+    btnBack.hidden = n === 1; btnNext.hidden = n === 3; btnSubmit.hidden = n !== 3;
+    document.getElementById("agree-fine").textContent = n === 3 ? (AGREEMENT_API ? "After payment, we'll email you a copy of your signed agreement." : "You'll download a signed PDF copy, then pay securely with Stripe.") : "";
+    setAgreeStatus("");
+    if (n === 3) { renderReview(); requestAnimationFrame(() => { resetPad(); if (af.signer.value.trim()) document.getElementById("sig-typed").dataset.ready = "1"; }); }
+    const first = agreeForm.querySelector('.step[data-step="' + n + '"] select, .step[data-step="' + n + '"] input');
+    if (first && n !== 3) first.focus();
+    dlg.scrollTop = 0;
+  };
+  const validateStep = async n => {
+    if (n === 1) {
+      const rows = [...roomList.querySelectorAll(".room-row")];
+      const missing = rows.find(r => !r.querySelector("select").value);
+      if (missing) { setAgreeStatus("Choose a room type for every room in your package.", "error"); missing.querySelector("select").focus(); return false; }
+      const otherEmpty = rows.find(r => r.querySelector("select").value === "Other" && !r.querySelector("input").value.trim());
+      if (otherEmpty) { setAgreeStatus("Describe the room you chose as Other.", "error"); otherEmpty.querySelector("input").focus(); return false; }
+      return true;
+    }
+    if (n === 2) {
+      if (!af.signer.value.trim()) { setAgreeStatus("Enter your full legal name.", "error"); af.signer.focus(); return false; }
+      if (!af.email.value.trim() || !af.email.checkValidity()) { setAgreeStatus("Check your email address. It should look like name@example.com.", "error"); af.email.focus(); return false; }
+      if (phoneDigits(af.phone.value).length !== 10) { setAgreeStatus("Enter a 10-digit phone number so we can reach you about your home visit.", "error"); af.phone.focus(); return false; }
+      if (!af.address_line1.value.trim() || !af.city.value.trim() || !/^\d{5}(-\d{4})?$/.test(af.zip.value.trim())) { setAgreeStatus("Complete the project address: street, city, state, and a 5-digit ZIP code.", "error"); (af.address_line1.value.trim() ? (af.city.value.trim() ? af.zip : af.city) : af.address_line1).focus(); return false; }
+      if (addrState === "unchecked" || addrState === "checking") { setAgreeStatus("Checking the address…"); await verifyAddress(); setAgreeStatus(""); }
+      if (addrState === "notfound" && !addrConfirm.checked) { setAgreeStatus("We couldn't verify the project address. Fix it, or check “This address is correct as entered.”", "error"); return false; }
+      return true;
+    }
+    return true;
+  };
+  btnNext.addEventListener("click", async () => { btnNext.disabled = true; const ok = await validateStep(step); btnNext.disabled = false; if (ok) goTo(step + 1); });
+  btnBack.addEventListener("click", () => goTo(step - 1));
+
+  // Open the booking window from any package button
+  document.querySelectorAll("[data-pay]").forEach(a => a.addEventListener("click", event => {
+    event.preventDefault();
+    const p = packageFor(a.dataset.pay);
+    if (!p) { roomsSelect.focus(); return; }
+    if (!p.link || typeof dlg.showModal !== "function") { if (p.link) window.location.href = p.link; return; }
+    if (chosen !== a.dataset.pay || !pkg || pkg.rooms !== p.rooms) buildRooms(p.rooms);
+    chosen = a.dataset.pay; pkg = p;
+    document.getElementById("agree-pkg").textContent = p.name + " · " + payShort(p);
+    document.getElementById("s1-total").textContent = p.rooms + (p.rooms === 1 ? " room" : " rooms") + " · " + payShort(p);
+    dlg.showModal();
+    goTo(1);
+    loadTerms();
+  }));
+  dlg.querySelector("[data-close]").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", event => { if (event.target === dlg) dlg.close(); });
+
+  const makePdf = async rec => {
+    const JsPDF = await loadPdf();
+    const doc = new JsPDF({ unit: "pt", format: "letter" });
+    const M = 54, W = 612 - M * 2, H = 792;
+    let y = M;
+    const need = h => { if (y + h > H - M) { doc.addPage(); y = M; } };
+    const write = (text, size, style, gap) => {
+      doc.setFont("helvetica", style || "normal"); doc.setFontSize(size);
+      doc.splitTextToSize(text, W).forEach(line => { need(size * 1.35); doc.text(line, M, y + size); y += size * 1.35; });
+      y += gap || 0;
+    };
+    write("BP Design Group LLC", 10, "bold");
+    write("Design Services Agreement", 20, "bold", 8);
+    [["Client", rec.signed_name], ["Email", rec.email], ["Phone", rec.phone], ["Project address", rec.project_address], ["Package", rec.package], ["Rooms", rec.room_list.join(", ")], ["Payment", rec.payment], ["Reference", rec.reference], ["Signed", rec.signed_at_local]]
+      .forEach(([k, v]) => write(k + ": " + v, 10));
+    y += 10;
+    write(rec.signed_name + ' ("Client") agrees to the Design Services Terms and Conditions below (last updated September 27, 2026, published at https://bpdesignchi.com/terms.html).', 10, "normal", 10);
+    if (termsBlocks) termsBlocks.forEach(b => {
+      if (b.type === "h2") { y += 6; write(b.text, 11, "bold", 2); }
+      else if (b.type === "h3") write(b.text, 9.5, "bold", 1);
+      else if (b.type === "ul") b.items.forEach(i => write("-  " + i, 9));
+      else write(b.text, 9, "normal", 4);
+    });
+    need(190); y += 18;
+    write("Electronic Signature", 12, "bold", 4);
+    write("By checking the acceptance box, the Client confirmed:", 9, "normal", 2);
+    write("I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.", 9.5, "bold", 8);
+    doc.addImage(signatureImage(480, 160, "image/png"), "PNG", M, y, 210, 70); y += 78;
+    doc.setDrawColor(150); doc.line(M, y, M + 260, y); y += 14;
+    write(rec.signed_name + "  ·  " + rec.email, 10);
+    write("Signed " + rec.signed_at_local + "  ·  Reference " + rec.reference + "  ·  Signature method: " + rec.signature_method, 8.5);
+    const pages = doc.getNumberOfPages();
+    for (let i = 1; i <= pages; i++) {
+      doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(120);
+      doc.text("BP Design Group LLC · Design Services Agreement · " + rec.reference + " · Page " + i + " of " + pages, M, H - 28);
+      doc.setTextColor(0);
+    }
+    doc.save("BP-Design-Group-Agreement-" + rec.reference + ".pdf");
+  };
+
+  // ---- Sign & pay ----
   agreeForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (af.botcheck.checked || !chosen) return;
-    const signer = af.signer.value.trim(), email = af.email.value.trim(), phone = af.phone.value.trim();
-    if (!signer || !email) { setAgreeStatus("Type your full legal name and email.", "error"); return; }
-    if (!af.email.checkValidity()) { setAgreeStatus("Check your email address. It should look like name@example.com.", "error"); af.email.focus(); return; }
-    if (phoneDigits(phone).length !== 10) { setAgreeStatus("Enter a 10-digit phone number so we can reach you about your home visit.", "error"); af.phone.focus(); return; }
-    if (!af.address_line1.value.trim() || !af.city.value.trim() || !/^\d{5}(-\d{4})?$/.test(af.zip.value.trim())) { setAgreeStatus("Complete the project address: street, city, state, and a 5-digit ZIP code.", "error"); (af.address_line1.value.trim() ? (af.city.value.trim() ? af.zip : af.city) : af.address_line1).focus(); return; }
-    if (addrState === "unchecked" || addrState === "checking") { setAgreeStatus("Checking the address…"); await verifyAddress(); setAgreeStatus(""); }
-    if (addrState === "notfound" && !addrConfirm.checked) { setAgreeStatus("We couldn't verify the project address. Fix it, or check “This address is correct as entered.”", "error"); return; }
-    const address = composeAddress();
+    if (af.botcheck.checked || !pkg) return;
+    if (step !== 3) { btnNext.click(); return; }
     if (!inked) { setAgreeStatus("Sign in the box, or choose “Use my typed name”.", "error"); return; }
     if (!af.agree.checked) { setAgreeStatus("Check the box to agree to the terms before continuing.", "error"); return; }
 
-    const p = packageFor(chosen), signedAt = new Date();
+    const p = pkg, signedAt = new Date(), rooms = chosenRooms();
+    const signer = af.signer.value.trim(), email = af.email.value.trim();
     const rec = {
       reference: newReference(p.rooms),
       package_name: p.name,
       package: p.name + " (" + p.rooms + (p.rooms === 1 ? " room" : " rooms") + ", " + p.revisions + " free revision" + (p.revisions === 1 ? "" : "s") + ")",
+      room_list: rooms,
       payment: paymentLine(p),
       rooms: p.rooms, total: p.total, pay_now: p.payNow,
-      signed_name: signer, email, phone, project_address: address,
+      signed_name: signer, email, phone: af.phone.value.trim(), project_address: composeAddress(),
       address_line1: af.address_line1.value.trim(), address_line2: af.address_line2.value.trim(), city: af.city.value.trim(), state: af.state.value, zip: af.zip.value.trim(),
       address_verified: addrState === "verified",
       agreement: TERMS_VERSION,
@@ -627,7 +740,7 @@
       signed_at_local: signedAt.toLocaleString("en-US", { dateStyle: "long", timeStyle: "short" }),
       browser: navigator.userAgent,
     };
-    agreeButton.disabled = true; agreeButton.textContent = "Signing…"; setAgreeStatus("");
+    btnSubmit.disabled = true; btnBack.disabled = true; btnSubmit.textContent = "Signing…"; setAgreeStatus("");
     const goToPayment = message => {
       setAgreeStatus(message, "success");
       const url = new URL(p.link);
@@ -635,6 +748,7 @@
       url.searchParams.set("client_reference_id", rec.reference);
       setTimeout(() => { window.location.href = url.toString(); }, 1400);
     };
+    const failed = msg => { setAgreeStatus(msg, "error"); btnSubmit.disabled = false; btnBack.disabled = false; btnSubmit.textContent = "Sign & continue to payment"; };
 
     // 1. Preferred: the signing automation stores the agreement and emails it to the client after payment.
     if (AGREEMENT_API) {
@@ -659,20 +773,15 @@
           subject: "Signed agreement: " + p.name + " – " + signer + " – " + rec.reference,
           from_name: "BP Design Group website",
           replyto: email,
-        }, rec, { signature_image: signatureImage(300, 100, "image/jpeg", 0.6) })),
+        }, rec, { room_list: rooms.join(", "), signature_image: signatureImage(300, 100, "image/jpeg", 0.6) })),
       });
       const result = await response.json();
       if (!result.success) throw new Error(result.message);
-    } catch (err) {
-      setAgreeStatus("We couldn't record your signature. Try again, or email " + FALLBACK_EMAIL + " to book.", "error");
-      agreeButton.disabled = false; agreeButton.textContent = "Sign & continue to payment";
-      return;
-    }
+    } catch (err) { return failed("We couldn't record your signature. Try again, or email " + FALLBACK_EMAIL + " to book."); }
     let pdfOk = true;
     try { await makePdf(rec); } catch (e) { pdfOk = false; }
     goToPayment(pdfOk ? "Signed. Your PDF copy is downloading. Taking you to secure payment…" : "Signed. We'll email you a copy of your agreement. Taking you to secure payment…");
   });
-  if (!AGREEMENT_API) document.getElementById("agree-fine").textContent = "You'll download a signed PDF copy, then pay securely with Stripe.";
 </script>
 <script src="site.js" defer></script>
 </body></html>
