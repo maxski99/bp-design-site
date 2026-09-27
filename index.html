@@ -43,18 +43,18 @@
   nav a:hover { color:var(--text); }
   .hero { padding:40px 0 90px; text-align:center; }
   .eyebrow { font-size:13px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--acc); margin:0 0 18px; }
-  h1 { font:400 clamp(40px,6vw,76px)/1.02 "Bodoni Moda", serif; margin:0 auto; max-width:16ch; }
+  h1 { font:400 clamp(40px,6vw,92px)/1.02 "Bodoni Moda", serif; margin:0 auto; max-width:16ch; }
   h1 em { font-style:italic; }
-  .lede { color:var(--soft); max-width:46ch; margin:22px auto 34px; }
+  .lede { color:var(--soft); max-width:52ch; margin:22px auto 34px; }
   .btn { display:inline-block; padding:15px 28px; background:var(--text); color:var(--bg); text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--text); transition:background .2s,color .2s; }
   .btn:hover { background:transparent; color:var(--text); }
   .btn.ghost { background:transparent; color:var(--text); } .btn.ghost:hover { background:var(--text); color:var(--bg); }
   /* signature: drag from drawing to rendering */
-  section { padding:90px 0; border-top:1px solid var(--rule); }
+  section { padding:clamp(64px, 8vw, 120px) 0; border-top:1px solid var(--rule); }
   h2 { font:400 clamp(30px,3.6vw,46px)/1.1 "Bodoni Moda", serif; margin:0 0 12px; }
   h2 em { font-style:italic; color:var(--acc); }
   .intro { color:var(--soft); max-width:52ch; margin:0 0 48px; text-wrap:balance; }
-  .pkgs { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .pkgs { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px, 2vw, 28px); }
   .pkg { background:var(--raised); border:1px solid var(--rule); padding:34px 30px; display:flex; flex-direction:column; }
   .pkg h3 { margin:0; font-size:14px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
   .price { font:400 58px/1 "Bodoni Moda", serif; margin:20px 0 6px; }
@@ -66,14 +66,15 @@
   .rooms { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:20px 0 0; font-size:13px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
   .rooms select { width:auto; min-width:128px; font-size:16px; letter-spacing:0; text-transform:none; padding:6px 26px 6px 0; }
   .total { margin:10px 0 0; font-size:14px; color:var(--acc); min-height:2.6em; }
-  .note { font-size:14px; color:var(--soft); margin-top:18px; }
+  .notes { margin-top:22px; display:grid; gap:4px; }
+  .note { font-size:14px; color:var(--soft); margin:0; }
   .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; list-style:none; margin:0; padding:0; counter-reset:s; }
   .steps li { counter-increment:s; border-top:1px solid var(--text); padding-top:20px; }
   .steps li::before { content:counter(s); font:italic 400 36px/1 "Bodoni Moda", serif; color:var(--acc); display:block; margin-bottom:14px; }
   .steps h3 { margin:0 0 8px; font-size:18px; font-weight:600; }
   .steps p { margin:0; color:var(--soft); font-size:15.5px; }
   .contact-bg { background:var(--raised); }
-  .contact { max-width:760px; }
+  .contact { max-width:860px; }
   .contact .head { text-align:center; margin-bottom:52px; }
   .contact .intro { margin:0 auto; }
   form { display:grid; gap:30px; }
@@ -101,7 +102,9 @@
   /* after-first project photos; the before is one tap away */
   .hero-ctas { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:40px; }
   .hero .hero-ctas .btn { margin-top:0; }
-  .hero .reveal { margin:56px auto 0; max-width:980px; }
+  .hero .reveal { margin:56px auto 0; max-width:1240px; }
+  @media (min-width:900px) { .hero .reveal .frame { aspect-ratio:3/2; } .hero .reveal .after { height:100%; object-fit:cover; } }
+  @media (max-width:520px) { .hero-ctas { flex-direction:column; align-items:stretch; max-width:340px; margin-left:auto; margin-right:auto; } .reveal-btn { right:10px; bottom:10px; padding:10px 12px; font-size:12px; } }
   .reveal { margin:0; }
   .reveal .frame { position:relative; border:1px solid var(--rule); background:var(--raised); overflow:hidden; }
   .reveal img { display:block; width:100%; height:auto; }
@@ -146,12 +149,14 @@
   @media (max-width:880px) {
     .pkgs, .steps { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
   }
-</style></head>
+</style>
+<link rel="stylesheet" href="site.css"></head>
 <body>
 <div class="wrap">
   <header class="top">
     <a class="brand" href="#" aria-label="BP Design Group, home"><img class="brand-mark" src="logo-mark.svg" width="38" height="40" alt=""><img class="brand-word" src="logo-wordmark.svg" width="190" height="12" alt="BP Design Group"></a>
-    <nav><a href="#packages">Packages</a><a href="#process">Process</a><a href="work.html">Work</a><a href="about.html">About</a><a href="#contact">Contact</a></nav>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Menu</button>
+    <nav id="site-nav" aria-label="Main"><a href="#packages">Packages</a><a href="#process">Process</a><a href="work.html">Work</a><a href="about.html">About</a><a href="#contact">Contact</a></nav>
   </header>
 
   <div class="hero">
@@ -177,10 +182,10 @@
   <p class="intro">Pay your retainer online to book. Every package starts with a home visit and consultation.</p>
   <div class="pkgs">
     <div class="pkg"><h3>One room</h3><div class="price">$250</div><div class="per">retainer</div>
-      <ul><li>Home visit and consultation</li><li>Design plan for one room</li><li>1 free revision</li></ul>
+      <ul><li>Home visit and consultation</li><li>Design plan and rendering for one room</li><li>1 free revision</li></ul>
       <a class="btn" href="#contact" data-pay="oneRoom">Pay $250 retainer</a></div>
     <div class="pkg"><h3>Two rooms</h3><div class="price">$500</div><div class="per">retainer</div>
-      <ul><li>Home visit and consultation</li><li>Design plans for two rooms</li><li>2 free revisions</li></ul>
+      <ul><li>Home visit and consultation</li><li>Design plans and renderings for two rooms</li><li>2 free revisions</li></ul>
       <a class="btn" href="#contact" data-pay="twoRooms">Pay $500 retainer</a></div>
     <div class="pkg"><h3>Three or more rooms</h3><div class="price">$250</div><div class="per">per room</div>
       <label class="rooms"><span>Rooms</span>
@@ -190,10 +195,14 @@
         </select>
       </label>
       <p class="total" id="rooms-total" aria-live="polite"></p>
-      <ul><li>Home visit and consultation</li><li>Design plans for every room</li><li>2 free revisions</li></ul>
+      <ul><li>Home visit and consultation</li><li>Design plans and renderings for every room</li><li>2 free revisions</li></ul>
       <a class="btn" href="#contact" data-pay="multi" id="rooms-pay">Pay $750</a></div>
   </div>
-  <p class="note">Secure checkout by Stripe. Card or bank transfer. More than 10 rooms? <a href="#contact">Get in touch</a>. Additional revisions are $200 each. Design consultations are $300 per hour.</p>
+  <div class="notes">
+    <p class="note">Secure checkout through Stripe. Pay by card or bank transfer.</p>
+    <p class="note">Additional revisions are $200 each. For larger projects or extra design support, hourly consultations are available starting at $300 per hour.</p>
+    <p class="note">Planning more than 10 rooms? <a href="#contact">Get in touch</a> for a custom quote.</p>
+  </div>
 </div></section>
 
 <section id="process"><div class="wrap">
@@ -202,7 +211,7 @@
   <ol class="steps">
     <li><h3>Home visit</h3><p>We walk the space, take measurements and talk through how you use the room.</p></li>
     <li><h3>Design your space</h3><p>We plan the layout, cabinetry, finishes, and lighting, and show you renderings of the finished room.</p></li>
-    <li><h3>Build with confidence</h3><p>Take the plan to your contractor knowing exactly how it will look.</p></li>
+    <li><h3>Build with confidence</h3><p>Take the plan to your contractor with a clear picture of the finished space.</p></li>
   </ol>
 </div></section>
 
@@ -445,7 +454,7 @@
     document.getElementById("agree-pkg").textContent = p.name + " · " + (p.payNow === p.total ? fmt(p.total) + " paid at booking" : fmt(p.payNow) + " deposit of " + fmt(p.total));
     const keys = [
       "BP Design Group is a design firm, not a contractor. You hire your own contractors and trades.",
-      "Includes one home visit and consultation, design plans for " + (p.rooms === 1 ? "one room" : p.rooms + " rooms") + ", and " + p.revisions + " free revision" + (p.revisions === 1 ? "" : "s") + ".",
+      "Includes one home visit and consultation, design plans and renderings for " + (p.rooms === 1 ? "one room" : p.rooms + " rooms") + ", and " + p.revisions + " free revision" + (p.revisions === 1 ? "" : "s") + ".",
       paymentLine(p),
       "Cancel <strong>48 hours or more before your home visit</strong> for a full refund. Cancellations made <strong>less than 48 hours before your visit</strong>, missed appointments, and cancellations made <strong>after the home visit</strong> are non-refundable.",
       "Additional revisions are available at <strong>$200 per revision</strong>. Additional design consultations are offered at <strong>$300 per hour and require a $600 deposit to begin services.</strong>",
@@ -558,4 +567,5 @@
     setTimeout(() => { window.location.href = url.toString(); }, 1800);
   });
 </script>
+<script src="site.js" defer></script>
 </body></html>

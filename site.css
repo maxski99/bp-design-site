@@ -1,0 +1,24 @@
+/* Shared across all pages: loaded after each page's own styles. */
+
+/* Wider layout on large screens, comfortable gutters on small ones. */
+.wrap { max-width:1360px; padding:0 clamp(20px, 4vw, 56px); }
+@media (min-width:1440px) { body { font-size:18px; } }
+
+/* Header and mobile menu */
+header.top { position:relative; gap:20px; }
+.menu-btn { display:none; align-items:center; gap:10px; background:none; border:1px solid var(--rule); color:var(--text); font:600 13px/1 "Hanken Grotesk", sans-serif; letter-spacing:.14em; text-transform:uppercase; padding:11px 14px; cursor:pointer; }
+.menu-btn .bars { display:grid; gap:4px; width:16px; }
+.menu-btn .bars i { display:block; height:1.5px; background:currentColor; transition:transform .2s, opacity .2s; }
+.menu-btn[aria-expanded="true"] .bars i:nth-child(1) { transform:translateY(5.5px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .bars i:nth-child(2) { opacity:0; }
+.menu-btn[aria-expanded="true"] .bars i:nth-child(3) { transform:translateY(-5.5px) rotate(-45deg); }
+.menu-btn:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+
+@media (max-width:880px) {
+  .menu-btn { display:inline-flex; }
+  header.top nav { display:none; position:absolute; top:calc(100% - 10px); left:0; right:0; z-index:30; flex-direction:column; background:var(--raised); border:1px solid var(--rule); box-shadow:0 18px 40px rgba(0,0,0,.45); }
+  header.top nav.open { display:flex; }
+  header.top nav a { margin:0; padding:15px 20px; font-size:16px; letter-spacing:.06em; color:var(--text); border-top:1px solid var(--rule); }
+  header.top nav a:first-child { border-top:0; }
+}
+@media (prefers-reduced-motion: reduce) { .menu-btn .bars i { transition:none; } }

@@ -36,13 +36,16 @@
   ul { padding-left:20px; } li { margin:6px 0; }
   footer { margin-top:64px; padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; }
   a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+  .wrap > :not(header):not(footer) { max-width:760px; margin-left:auto; margin-right:auto; }
 </style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <a class="brand" href="/" aria-label="BP Design Group, home"><img class="brand-mark" src="logo-mark.svg" width="38" height="40" alt=""><img class="brand-word" src="logo-wordmark.svg" width="190" height="12" alt="BP Design Group"></a>
-    <nav><a href="/#packages">Packages</a><a href="work.html">Work</a><a href="about.html">About</a></nav>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Menu</button>
+    <nav id="site-nav" aria-label="Main"><a href="/#packages">Packages</a><a href="work.html">Work</a><a href="about.html">About</a></nav>
   </header>
 
   <h1>Design services <em>terms</em></h1>
@@ -63,21 +66,21 @@
   <p>The One-Room Package includes:</p>
   <ul>
   <li>One in-home visit and design consultation;</li>
-  <li>A design plan for one room; and</li>
+  <li>A design plan for one room, including a rendering of the designed space; and</li>
   <li><strong>One round of reasonable revisions</strong> to the initial design plan.</li>
   </ul>
   <h3>Two-Room Package — $500</h3>
   <p>The Two-Room Package includes:</p>
   <ul>
   <li>One in-home visit and design consultation;</li>
-  <li>Design plans for two rooms; and</li>
+  <li>Design plans for two rooms, including renderings of the designed spaces; and</li>
   <li><strong>Two rounds of reasonable revisions</strong> to the initial design plans.</li>
   </ul>
   <h3>Multi-Room Package — $250 per room (three or more rooms)</h3>
   <p>The Multi-Room Package includes:</p>
   <ul>
   <li>One in-home visit and design consultation;</li>
-  <li>Design plans for each room selected at booking; and</li>
+  <li>Design plans for each room selected at booking, including renderings of the designed spaces; and</li>
   <li><strong>Two rounds of reasonable revisions</strong> to the initial design plans.</li>
   </ul>
   <p>A three-room package ($750) is paid in full when booked. Packages of four or more rooms require a <strong>$1,000 deposit</strong> when booked. The deposit is credited to the package total, and the remaining balance is invoiced when the design plans are delivered and is due under Section 4. Projects of more than ten rooms are quoted individually.</p>
@@ -87,7 +90,7 @@
   <p>We generally aim to deliver the initial design plan within <strong>three business days</strong> after the home visit. This is an estimated turnaround time and not a guaranteed completion date.</p>
   <p>Delivery dates may be extended if we are waiting for Client information, selections, approvals, measurements, access, supplier information, or other matters outside our reasonable control.</p>
   <h2 id="s3">3. Payment and Booking</h2>
-  <p>Package fees are paid in full when booked, except for Multi-Room Packages of four or more rooms, which require the deposit described in Section 2, unless we agree otherwise in writing.</p>
+  <p>Package fees (referred to on our website as a retainer) are paid in full when booked, except for Multi-Room Packages of four or more rooms, which require the deposit described in Section 2, unless we agree otherwise in writing.</p>
   <p>Payments may be processed through Stripe or another payment processor made available through our website. BP Design Group does not directly store full payment card numbers.</p>
   <p>After payment is received, we will generally contact you within one business day to coordinate the home visit.</p>
   <p>Payments made by ACH or bank transfer may require several business days to clear. We may delay scheduling, delivery, purchasing activity, or other work until funds have cleared.</p>
@@ -241,5 +244,6 @@
   <footer><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><a href="/">bpdesignchi.com</a></footer>
 </div>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="site.js" defer></script>
 </body>
 </html>
