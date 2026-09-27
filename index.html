@@ -23,7 +23,7 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Hanken+Grotesk:wght@400;500;600&family=Allura&display=swap" rel="stylesheet">
 <style>
   :root { --bg:#15171A; --raised:#1C1F23; --text:#ECE9E3; --soft:#9D9A93; --rule:#2D3035; --acc:#86A396; --g:24px; }
   * { box-sizing:border-box; } html { scroll-behavior:smooth; }
@@ -101,6 +101,25 @@
   @media (max-width:600px) { .row { grid-template-columns:1fr; } .form-actions .btn { width:100%; } }
   footer { padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; }
   a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+  /* retainer agreement: signed before checkout */
+  dialog.agree { width:min(620px, calc(100vw - 32px)); max-height:calc(100vh - 32px); padding:0; border:1px solid var(--rule); background:var(--raised); color:var(--text); }
+  dialog.agree::backdrop { background:rgba(8,9,10,.72); }
+  .agree form { padding:34px 34px 30px; gap:22px; }
+  .agree .close { position:absolute; top:14px; right:16px; background:none; border:0; color:var(--soft); font-size:26px; line-height:1; cursor:pointer; padding:6px; }
+  .agree .close:hover { color:var(--text); }
+  .agree h2 { margin:0; font-size:32px; }
+  .agree .pkgline { margin:6px 0 0; color:var(--soft); }
+  .agree .keyterms { margin:0; padding:16px 20px; list-style:none; border:1px solid var(--rule); font-size:15px; }
+  .agree .keyterms li { padding:5px 0; }
+  .agree .keyterms li::before { content:"—"; color:var(--acc); margin-right:10px; }
+  .agree .full { font-size:14px; color:var(--soft); margin:-8px 0 0; }
+  .agree .full a { color:var(--text); }
+  .agree .sig-preview { min-height:44px; font:400 34px/1.2 "Allura", cursive; color:var(--text); border-bottom:1px solid #4A4E54; padding:2px 0 4px; }
+  .agree .sig-preview:empty::before { content:"Your signature appears here"; font:italic 400 15px "Bodoni Moda", serif; color:#6E6C67; }
+  .agree .check { display:flex; gap:12px; align-items:flex-start; font-size:15px; color:#D9D6D0; cursor:pointer; }
+  .agree .check input { width:18px; height:18px; margin:3px 0 0; accent-color:var(--acc); flex:none; }
+  .agree .fine { font-size:13px; color:var(--soft); margin:0; }
+  @media (max-width:600px) { .agree form { padding:28px 20px 22px; } .agree h2 { font-size:26px; } }
   @media (max-width:880px) {
     .pkgs, .steps, .gallery { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
     .gallery .ph { aspect-ratio:16/10; }
@@ -220,10 +239,44 @@
   </form>
 </div></section>
 
-<div class="wrap"><footer><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span>Kitchen &amp; bath design · Renderings · Renovation planning</span></footer></div>
+<dialog class="agree" id="agree" aria-labelledby="agree-title">
+  <form id="agree-form" novalidate>
+    <button type="button" class="close" aria-label="Close" data-close>&times;</button>
+    <div>
+      <h2 id="agree-title">Retainer <em>agreement</em></h2>
+      <p class="pkgline" id="agree-pkg"></p>
+    </div>
+    <ul class="keyterms">
+      <li>BP Design Group is a design firm, not a contractor. You hire your own contractors and trades.</li>
+      <li>Your package includes one home visit and consultation, the design plan, and up to two rounds of revisions.</li>
+      <li>Full refund if you cancel at least 48 hours before the home visit. Non-refundable within 48 hours, for a missed visit, or after the visit.</li>
+      <li>Additional design services are $300 per hour with a three-hour minimum, and only with your approval.</li>
+    </ul>
+    <p class="full">Read the full <a href="terms.html" target="_blank" rel="noopener">Design Services Terms and Conditions</a> (last updated September 26, 2026).</p>
+    <div class="row">
+      <div class="field"><label for="sig-name">Full legal name</label><input id="sig-name" name="signer" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="sig-email">Email</label><input id="sig-email" name="email" type="email" autocomplete="email" required></div>
+    </div>
+    <div class="field">
+      <label>Signature</label>
+      <div class="sig-preview" id="sig-preview" aria-hidden="true"></div>
+    </div>
+    <label class="check"><input type="checkbox" name="agree" required> <span>I have read and agree to the Design Services Terms and Conditions. Typing my name above is my electronic signature.</span></label>
+    <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="form-actions">
+      <p class="fine">Next: secure payment by Stripe.</p>
+      <button class="btn" type="submit">Sign &amp; continue to payment</button>
+    </div>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+<div class="wrap"><footer><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span><a href="terms.html">Terms &amp; conditions</a> · Kitchen &amp; bath design · Renderings</span></footer></div>
 <script>
   // Stripe Payment Links for the retainer buttons. Until a link is set, the button scrolls to the inquiry form.
   const STRIPE_LINKS = { oneRoom: "https://buy.stripe.com/7sYbJ2gzKbffdax8pha3u00", twoRooms: "https://buy.stripe.com/8x24gA6Za3MN6M90WPa3u01" };
+  const PACKAGES = { oneRoom: { name: "One-Room Design Package", amount: "$250" }, twoRooms: { name: "Two-Room Design Package", amount: "$500" } };
+  const TERMS_VERSION = "Design Services Terms and Conditions, last updated September 26, 2026";
   document.querySelectorAll("[data-pay]").forEach(a => { const url = STRIPE_LINKS[a.dataset.pay]; if (url) a.href = url; });
   document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -271,6 +324,77 @@
       setStatus("Your message didn't send. Try again or email " + FALLBACK_EMAIL + ".", "error");
     } finally {
       button.disabled = false; button.textContent = "Send message";
+    }
+  });
+
+  // Retainer agreement: the client signs here, a signed record is emailed to info@, then Stripe checkout opens.
+  const dlg = document.getElementById("agree");
+  const agreeForm = document.getElementById("agree-form");
+  const af = agreeForm.elements;
+  const agreeStatus = agreeForm.querySelector(".form-status");
+  const agreeButton = agreeForm.querySelector("button[type=submit]");
+  const sigPreview = document.getElementById("sig-preview");
+  let chosen = null;
+  const setAgreeStatus = (text, kind) => { agreeStatus.textContent = text; agreeStatus.className = "form-status" + (kind ? " is-" + kind : ""); };
+  const newReference = () => {
+    const d = new Date(), pad = n => String(n).padStart(2, "0");
+    return "BPDG-" + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + Math.random().toString(36).slice(2, 7).toUpperCase();
+  };
+
+  document.querySelectorAll("[data-pay]").forEach(a => a.addEventListener("click", event => {
+    if (!STRIPE_LINKS[a.dataset.pay] || typeof dlg.showModal !== "function") return;
+    event.preventDefault();
+    chosen = a.dataset.pay;
+    const p = PACKAGES[chosen];
+    document.getElementById("agree-pkg").textContent = p.name + " · " + p.amount + " retainer";
+    setAgreeStatus("");
+    dlg.showModal();
+    af.signer.focus();
+  }));
+  dlg.querySelector("[data-close]").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", event => { if (event.target === dlg) dlg.close(); });
+  af.signer.addEventListener("input", () => { sigPreview.textContent = af.signer.value.trim(); });
+
+  agreeForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (af.botcheck.checked || !chosen) return;
+    const signer = af.signer.value.trim(), email = af.email.value.trim();
+    if (!signer || !email) { setAgreeStatus("Type your full legal name and email to sign.", "error"); return; }
+    if (!af.email.checkValidity()) { setAgreeStatus("Check your email address. It should look like name@example.com.", "error"); af.email.focus(); return; }
+    if (!af.agree.checked) { setAgreeStatus("Check the box to agree to the terms before continuing.", "error"); return; }
+
+    const p = PACKAGES[chosen], reference = newReference(), signedAt = new Date();
+    agreeButton.disabled = true; agreeButton.textContent = "Signing…"; setAgreeStatus("");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "Signed retainer agreement: " + p.name + " (" + p.amount + ") – " + signer,
+          from_name: "BP Design Group website",
+          replyto: email,
+          reference,
+          package: p.name + ", " + p.amount + " retainer",
+          signed_name: signer,
+          email,
+          agreement: TERMS_VERSION,
+          terms_url: "https://bpdesignchi.com/terms.html",
+          consent: "Checked: I have read and agree to the Design Services Terms and Conditions. Typing my name above is my electronic signature.",
+          signed_at_utc: signedAt.toISOString(),
+          signed_at_local: signedAt.toString(),
+          browser: navigator.userAgent,
+        }),
+      });
+      const result = await response.json();
+      if (!result.success) throw new Error(result.message);
+      const url = new URL(STRIPE_LINKS[chosen]);
+      url.searchParams.set("prefilled_email", email);
+      url.searchParams.set("client_reference_id", reference);
+      window.location.href = url.toString();
+    } catch (err) {
+      setAgreeStatus("We couldn't record your signature. Try again, or email " + FALLBACK_EMAIL + " to book.", "error");
+      agreeButton.disabled = false; agreeButton.textContent = "Sign & continue to payment";
     }
   });
 </script>
