@@ -190,7 +190,7 @@
       <ul><li>Home visit and consultation</li><li>Design plans for every room</li><li>2 free revisions</li></ul>
       <a class="btn" href="#contact" data-pay="multi" id="rooms-pay">Pay $750</a></div>
   </div>
-  <p class="note">Secure checkout by Stripe. Card or bank transfer. More than 10 rooms? <a href="#contact">Get in touch</a>. Extra revisions and design support are $300 per hour.</p>
+  <p class="note">Secure checkout by Stripe. Card or bank transfer. More than 10 rooms? <a href="#contact">Get in touch</a>. Additional revisions are $200 each. Design consultations are $300 per hour.</p>
 </div></section>
 
 <section id="process"><div class="wrap">
@@ -447,10 +447,10 @@
       "BP Design Group is a design firm, not a contractor. You hire your own contractors and trades.",
       "Includes one home visit and consultation, design plans for " + (p.rooms === 1 ? "one room" : p.rooms + " rooms") + ", and " + p.revisions + " free revision" + (p.revisions === 1 ? "" : "s") + ".",
       paymentLine(p),
-      "Full refund if you cancel at least 48 hours before the home visit. Non-refundable within 48 hours, for a missed visit, or after the visit.",
-      "Extra revisions and design support are $300 per hour with a three-hour minimum, and only with your approval.",
+      "Cancel <strong>48 hours or more before your home visit</strong> for a full refund. Cancellations made <strong>less than 48 hours before your visit</strong>, missed appointments, and cancellations made <strong>after the home visit</strong> are non-refundable.",
+      "Additional revisions are available at <strong>$200 per revision</strong>. Additional design consultations are offered at <strong>$300 per hour and require a $600 deposit to begin services.</strong>",
     ];
-    document.getElementById("agree-keys").replaceChildren(...keys.map(t => Object.assign(document.createElement("li"), { textContent: t })));
+    document.getElementById("agree-keys").replaceChildren(...keys.map(t => Object.assign(document.createElement("li"), { innerHTML: t })));
     setAgreeStatus("");
     dlg.showModal();
     resetPad();
