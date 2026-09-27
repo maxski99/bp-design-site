@@ -144,6 +144,16 @@
   .agree .linkbtn { background:none; border:0; padding:0; color:var(--soft); font:inherit; font-size:13px; text-decoration:underline; cursor:pointer; }
   .agree .linkbtn:hover { color:var(--text); }
   .agree .sig-pad { display:block; width:100%; height:120px; margin-top:8px; background:#F4F2EE; border-radius:2px; touch-action:none; cursor:crosshair; }
+  .agree .initials { border:1px solid var(--rule); padding:6px 20px 8px; margin:0; min-width:0; }
+  .agree .initials legend { padding:0 8px; margin-left:-8px; font-size:13px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
+  .agree .initial-row { display:grid; grid-template-columns:minmax(0, 1fr) 92px; gap:8px 20px; align-items:end; padding:14px 0; border-top:1px solid var(--rule); }
+  .agree .initial-row:first-of-type { border-top:0; }
+  .agree .initial-row h4 { margin:0 0 4px; font-size:15px; font-weight:600; color:var(--text); }
+  .agree .initial-row h4 span { font-weight:400; color:var(--soft); font-size:13px; margin-left:6px; }
+  .agree .initial-row p { margin:0; font-size:14px; line-height:1.55; color:#CFCBC4; }
+  .agree .initial-row label { display:grid; gap:4px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--soft); }
+  .agree .initial-row input { text-align:center; text-transform:uppercase; letter-spacing:.12em; font-size:18px; font-weight:600; padding-left:4px; padding-right:4px; }
+  @media (max-width:600px) { .agree .initial-row { grid-template-columns:1fr; } .agree .initial-row label { max-width:120px; } }
   .agree .check { display:flex; gap:12px; align-items:flex-start; font-size:15px; color:#D9D6D0; cursor:pointer; }
   .agree .check input { width:18px; height:18px; margin:3px 0 0; accent-color:var(--acc); flex:none; }
   .agree .fine { font-size:13px; color:var(--soft); margin:0; max-width:34ch; }
@@ -180,7 +190,7 @@
   @media (max-width:600px) {
     .agree .room-row { grid-template-columns:1fr; } .agree .room-row .room-other { grid-column:1; }
     .agree .summary div { grid-template-columns:1fr; gap:2px; }
-    .agree .step-nav { flex-wrap:wrap; } .agree .step-nav .btn { flex:1; }
+    .agree .step-nav { flex-wrap:wrap; } .agree .step-nav .btn { flex:1; } .agree .step-nav .fine { flex-basis:100%; order:-1; max-width:none; }
   }
   @media (max-width:600px) { .agree form { padding:28px 20px 22px; } .agree h2 { font-size:26px; } }
   @media (max-width:880px) {
@@ -339,6 +349,9 @@
         </div>
         <p class="full">Design Services Terms and Conditions, last updated September 27, 2026 · <a href="terms.html" target="_blank" rel="noopener">Open in a new tab</a></p>
       </div>
+      <fieldset class="initials" id="initials">
+        <legend>Initial to confirm</legend>
+      </fieldset>
       <div class="field">
         <div class="sig-head">
           <label for="sig-pad">Sign here</label>
@@ -432,6 +445,17 @@
   // ---- Packages ----
   const fmt = n => "$" + n.toLocaleString("en-US");
   const roomsSelect = document.getElementById("rooms");
+  // What the client initials. Keep in step with INITIAL_ACKS in bp-agreements/src/pdf.js.
+  const INITIALS = {
+    cancellation: {
+      title: "Cancellation and refund policy", section: "Section 4",
+      text: "I understand that I must cancel at least 48 hours before my home visit for a full refund. Cancellations made less than 48 hours before the visit, missed appointments, and cancellations after the home visit are non-refundable.",
+    },
+    contractors: {
+      title: "Contractors and construction", section: "Sections 1, 5 and 6",
+      text: "I understand that BP Design Group is a design firm, not a contractor. I hire my own contractors, and BP Design Group is not responsible for the work, mistakes, or performance of contractors, installers, suppliers, or other third parties, who must verify all measurements and site conditions.",
+    },
+  };
   const ROOM_TYPES = ["Kitchen", "Primary bathroom", "Guest bathroom", "Powder room", "Laundry room", "Mudroom", "Primary bedroom", "Bedroom", "Living room", "Family room", "Dining room", "Home office", "Basement", "Entryway", "Other"];
   const packageFor = key => {
     if (key === "oneRoom") return { name: "One-Room Design Package", rooms: 1, revisions: 1, total: 250, payNow: 250, link: STRIPE_LINKS.oneRoom };
@@ -476,11 +500,11 @@
     try {
       const html = await (await fetch("terms.html", { cache: "no-cache" })).text();
       const doc = new DOMParser().parseFromString(html, "text/html");
-      const nodes = [...doc.querySelectorAll(".wrap > h2, .wrap > h3, .wrap > p:not(.meta):not(.actions), .wrap > ul")];
+      const nodes = [...doc.querySelectorAll(".wrap > h2, .wrap > h3, .wrap > p:not(.meta):not(.actions):not(.initial-note), .wrap > ul")];
       if (!nodes.length) throw new Error("no terms");
       termsBlocks = nodes.map(n => n.tagName === "UL"
         ? { type: "ul", items: [...n.querySelectorAll("li")].map(li => li.textContent.trim()) }
-        : { type: n.tagName.toLowerCase(), text: n.textContent.replace(/\s+/g, " ").trim() });
+        : { type: n.tagName.toLowerCase(), text: [...n.childNodes].map(c => c.nodeName === "BR" ? "\n" : c.textContent).join("").replace(/[ \t\r]+/g, " ").replace(/ *\n */g, "\n").trim(), initial: n.dataset.initial });
       contractBox.replaceChildren(...nodes.map(n => document.importNode(n, true)));
     } catch (e) { termsBlocks = null; }
   };
@@ -609,14 +633,23 @@
     document.getElementById("summary").innerHTML = rows.map(([k, v, s]) =>
       "<div><dt>" + k + "</dt><dd>" + esc(v) + (s ? ' <button type="button" class="linkbtn" data-goto="' + s + '">Edit</button>' : "") + "</dd></div>").join("");
     const keys = [
-      "BP Design Group is a design firm, not a contractor. You hire your own contractors and trades.",
       "Includes one home visit and consultation, design plans and renderings for " + (pkg.rooms === 1 ? "one room" : pkg.rooms + " rooms") + ", and " + pkg.revisions + " free revision" + (pkg.revisions === 1 ? "" : "s") + ".",
       paymentLine(pkg),
-      "Cancel <strong>48 hours or more before your home visit</strong> for a full refund. Cancellations made <strong>less than 48 hours before your visit</strong>, missed appointments, and cancellations made <strong>after the home visit</strong> are non-refundable.",
+      "Reschedule once at no charge with <strong>24 hours' notice</strong>. Less notice may result in a <strong>$50 rescheduling fee</strong>.",
       "Additional revisions are available at <strong>$200 per revision</strong>. Additional design consultations are offered at <strong>$300 per hour and require a $600 deposit to begin services.</strong>",
     ];
     document.getElementById("agree-keys").replaceChildren(...keys.map(t => Object.assign(document.createElement("li"), { innerHTML: t })));
+    const box = document.getElementById("initials");
+    if (!box.querySelector(".initial-row")) Object.entries(INITIALS).forEach(([key, a]) => {
+      const row = document.createElement("div"); row.className = "initial-row";
+      row.innerHTML = '<div><h4>' + a.title + '<span>' + a.section + '</span></h4><p>' + a.text + '</p></div>' +
+        '<label>Initials<input type="text" name="init_' + key + '" data-initial="' + key + '" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Your initials: ' + a.title + '"></label>';
+      const inp = row.querySelector("input");
+      inp.addEventListener("input", () => { inp.value = inp.value.replace(/[^A-Za-z]/g, "").toUpperCase(); setAgreeStatus(""); });
+      box.appendChild(row);
+    });
   };
+  const initialsGiven = () => Object.fromEntries(Object.keys(INITIALS).map(k => [k, af["init_" + k].value.trim().toUpperCase()]));
   document.getElementById("summary").addEventListener("click", e => { const b = e.target.closest("[data-goto]"); if (b) goTo(Number(b.dataset.goto)); });
 
   // ---- Step navigation ----
@@ -675,13 +708,33 @@
   const makePdf = async rec => {
     const JsPDF = await loadPdf();
     const doc = new JsPDF({ unit: "pt", format: "letter" });
-    const M = 54, W = 612 - M * 2, H = 792;
+    const M = 54, W = 612 - M * 2, H = 792, BOTTOM = H - M - 20;
     let y = M;
-    const need = h => { if (y + h > H - M) { doc.addPage(); y = M; } };
-    const write = (text, size, style, gap) => {
+    // Start a new page unless h points fit, so paragraphs, boxes and signatures never split.
+    const need = h => { if (y + h > BOTTOM && h < BOTTOM - M) { doc.addPage(); y = M; } };
+    const lines = (text, size, style, width) => { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size); return String(text).split("\n").flatMap(t => doc.splitTextToSize(t, width || W)); };
+    const write = (text, size, style, gap, keep) => {
+      const ls = lines(text, size, style);
+      need(ls.length * size * 1.35 + (keep || 0));
       doc.setFont("helvetica", style || "normal"); doc.setFontSize(size);
-      doc.splitTextToSize(text, W).forEach(line => { need(size * 1.35); doc.text(line, M, y + size); y += size * 1.35; });
+      ls.forEach(line => { doc.text(line, M, y + size); y += size * 1.35; });
       y += gap || 0;
+    };
+    const initialsBox = key => {
+      const a = INITIALS[key], tw = W - 130;
+      const tl = lines(a.title + " (" + a.section + ")", 9.5, "bold", tw), bl = lines(a.text, 9, "normal", tw);
+      const h = 24 + tl.length * 13 + bl.length * 12.5;
+      y += 2; need(h + 10);
+      doc.setDrawColor(135, 163, 150); doc.setFillColor(242, 246, 244); doc.rect(M, y, W, h, "FD");
+      doc.setTextColor(41, 69, 59); doc.setFont("helvetica", "bold"); doc.setFontSize(9.5);
+      let ty = y + 12; tl.forEach(l => { doc.text(l, M + 12, ty + 9.5); ty += 13; });
+      doc.setTextColor(0); doc.setFont("helvetica", "normal"); doc.setFontSize(9);
+      bl.forEach(l => { doc.text(l, M + 12, ty + 9); ty += 12.5; });
+      const cx = M + W - 104, mid = y + h / 2;
+      doc.setFontSize(7); doc.setTextColor(110); doc.text("CLIENT INITIALS", cx, mid - 10); doc.setTextColor(0);
+      doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.text(rec.initials[key] || "", cx + 4, mid + 10);
+      doc.setDrawColor(30); doc.line(cx, mid + 14, cx + 92, mid + 14);
+      y += h + 12;
     };
     write("BP Design Group LLC", 10, "bold");
     write("Design Services Agreement", 20, "bold", 8);
@@ -689,19 +742,23 @@
       .forEach(([k, v]) => write(k + ": " + v, 10));
     y += 10;
     write(rec.signed_name + ' ("Client") agrees to the Design Services Terms and Conditions below (last updated September 27, 2026, published at https://bpdesignchi.com/terms.html).', 10, "normal", 10);
-    if (termsBlocks) termsBlocks.forEach(b => {
-      if (b.type === "h2") { y += 6; write(b.text, 11, "bold", 2); }
-      else if (b.type === "h3") write(b.text, 9.5, "bold", 1);
-      else if (b.type === "ul") b.items.forEach(i => write("-  " + i, 9));
+    let pending = null;
+    const firstH = b => !b ? 0 : b.type === "ul" ? 14 : b.type === "p" ? lines(b.text, 9).length * 9 * 1.35 : 20;
+    if (termsBlocks) termsBlocks.forEach((b, i) => {
+      if (b.type === "h2") { if (pending) { initialsBox(pending); pending = null; } y += 6; write(b.text, 11, "bold", 2, 2 + firstH(termsBlocks[i + 1])); if (b.initial) pending = b.initial; }
+      else if (b.type === "h3") write(b.text, 9.5, "bold", 1, 1 + firstH(termsBlocks[i + 1]));
+      else if (b.type === "ul") b.items.forEach(it => write("-  " + it, 9));
       else write(b.text, 9, "normal", 4);
     });
-    need(190); y += 18;
+    if (pending) initialsBox(pending);
+    y += 18; need(230);
     write("Electronic Signature", 12, "bold", 4);
     write("By checking the acceptance box, the Client confirmed:", 9, "normal", 2);
     write("I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.", 9.5, "bold", 8);
     doc.addImage(signatureImage(480, 160, "image/png"), "PNG", M, y, 210, 70); y += 78;
     doc.setDrawColor(150); doc.line(M, y, M + 260, y); y += 14;
     write(rec.signed_name + "  ·  " + rec.email, 10);
+    write("Initialed: " + Object.keys(INITIALS).map(k => INITIALS[k].title + " (" + rec.initials[k] + ")").join("; "), 8.5);
     write("Signed " + rec.signed_at_local + "  ·  Reference " + rec.reference + "  ·  Signature method: " + rec.signature_method, 8.5);
     const pages = doc.getNumberOfPages();
     for (let i = 1; i <= pages; i++) {
@@ -717,6 +774,9 @@
     event.preventDefault();
     if (af.botcheck.checked || !pkg) return;
     if (step !== 3) { btnNext.click(); return; }
+    const initials = initialsGiven();
+    const missingInit = Object.keys(INITIALS).find(k => !/^[A-Z]{2,4}$/.test(initials[k]));
+    if (missingInit) { setAgreeStatus("Type your initials (2–4 letters) next to “" + INITIALS[missingInit].title + ".”", "error"); af["init_" + missingInit].focus(); return; }
     if (!inked) { setAgreeStatus("Sign in the box, or choose “Use my typed name”.", "error"); return; }
     if (!af.agree.checked) { setAgreeStatus("Check the box to agree to the terms before continuing.", "error"); return; }
 
@@ -727,6 +787,7 @@
       package_name: p.name,
       package: p.name + " (" + p.rooms + (p.rooms === 1 ? " room" : " rooms") + ", " + p.revisions + " free revision" + (p.revisions === 1 ? "" : "s") + ")",
       room_list: rooms,
+      initials,
       payment: paymentLine(p),
       rooms: p.rooms, total: p.total, pay_now: p.payNow,
       signed_name: signer, email, phone: af.phone.value.trim(), project_address: composeAddress(),
@@ -773,7 +834,7 @@
           subject: "Signed agreement: " + p.name + " – " + signer + " – " + rec.reference,
           from_name: "BP Design Group website",
           replyto: email,
-        }, rec, { room_list: rooms.join(", "), signature_image: signatureImage(300, 100, "image/jpeg", 0.6) })),
+        }, rec, { room_list: rooms.join(", "), initials: Object.entries(initials).map(([k, v]) => INITIALS[k].title + ": " + v).join("; "), signature_image: signatureImage(300, 100, "image/jpeg", 0.6) })),
       });
       const result = await response.json();
       if (!result.success) throw new Error(result.message);

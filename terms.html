@@ -34,6 +34,8 @@
   h2 { font:400 26px/1.2 "Bodoni Moda", serif; margin:44px 0 10px; padding-top:24px; border-top:1px solid var(--rule); }
   p, li { color:#D9D6D0; }
   ul { padding-left:20px; } li { margin:6px 0; }
+  .initial-note { margin:-4px 0 14px; font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--acc); }
+  @media print { .initial-note { display:none; } }
   footer { margin-top:64px; padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; }
   a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
   .wrap > :not(header):not(footer) { max-width:760px; margin-left:auto; margin-right:auto; }
@@ -52,203 +54,70 @@
   <p class="meta">BP Design Group LLC · Last updated September 27, 2026</p>
   <p class="actions"><button type="button" class="print" onclick="window.print()">Print or save a copy</button></p>
 
-  <p>These Design Services Terms and Conditions ("Terms") apply when you book a design package, approve a proposal or invoice, or otherwise retain BP Design Group LLC ("BP Design Group," "we," "us," or "our") to provide design services.</p>
-  <p>By checking the box accepting these Terms, paying a package fee or deposit, approving a proposal or invoice, or otherwise authorizing us to begin services, you ("Client," "you," or "your") agree to these Terms.</p>
+  <p>These Terms apply when you book, pay for, approve, or authorize design services from BP Design Group LLC ("BP Design Group," "we," "us," or "our"). By checking the acceptance box, paying a fee or deposit, approving a proposal or invoice, or otherwise authorizing us to begin, you ("Client," "you," or "your") agree to these Terms.</p>
   <h2 id="s1">1. Our Services</h2>
-  <p>BP Design Group provides residential interior design and space-planning services, including consultations, design concepts and plans, finish and fixture selections, product recommendations, renderings, sourcing assistance, and related design support.</p>
-  <p>BP Design Group is a design firm and is not a general contractor, construction contractor, architect, engineer, plumber, electrician, structural professional, or building-code official unless expressly stated otherwise in a separate written agreement.</p>
-  <p>We do not perform, direct, control, or supervise construction, demolition, installation, plumbing, electrical, structural, mechanical, or other trade work. We do not obtain permits or inspect construction work.</p>
-  <p>You are responsible for selecting, hiring, supervising, and paying your contractors, installers, suppliers, and other professionals.</p>
-  <p>Your contractor and other applicable licensed professionals are responsible for determining construction methods, field conditions, structural requirements, permitting requirements, code compliance, safety requirements, and the proper installation of all materials and products.</p>
-  <p>Our design plans and renderings communicate <strong>design intent</strong> and are not construction documents, engineering drawings, permit drawings, shop drawings, or fabrication drawings unless we expressly agree otherwise in writing.</p>
+  <p>BP Design Group provides residential interior design and space-planning services, including consultations, design plans, product and finish selections, renderings, sourcing, and related design support.</p>
+  <p>We are a <strong>design firm&mdash;not a contractor, architect, engineer, plumber, electrician, structural professional, or building-code official</strong>. We do not perform or supervise construction, demolition, installation, trade work, inspections, or permitting.</p>
+  <p>You hire and pay your own contractors and other professionals. They are responsible for construction methods, field conditions, structural requirements, permits, code compliance, safety, installation, workmanship, and final verification of the project.</p>
+  <p>Our plans and renderings communicate <strong>design intent only</strong>. They are not construction, engineering, permit, shop, or fabrication drawings.</p>
   <h2 id="s2">2. Design Packages</h2>
-  <h3>One-Room Package — $250</h3>
-  <p>The One-Room Package includes:</p>
-  <ul>
-  <li>One in-home visit and design consultation;</li>
-  <li>A design plan for one room, including a rendering of the designed space; and</li>
-  <li>One round of reasonable revisions to the initial design plan.</li>
-  </ul>
-  <h3>Two-Room Package — $500</h3>
-  <p>The Two-Room Package includes:</p>
-  <ul>
-  <li>One in-home visit and design consultation;</li>
-  <li>Design plans for two rooms, including renderings of the designed spaces; and</li>
-  <li>Two rounds of reasonable revisions to the initial design plans.</li>
-  </ul>
-  <h3>Multi-Room Package — $250 Per Room</h3>
-  <p>For projects involving three or more rooms, the Multi-Room Package includes:</p>
-  <ul>
-  <li>One in-home visit and design consultation;</li>
-  <li>Design plans for each room selected at booking, including renderings of the designed spaces; and</li>
-  <li>Two rounds of reasonable revisions to the initial design plans.</li>
-  </ul>
-  <p>A three-room package ($750) is paid in full when booked.</p>
-  <p>Packages of four or more rooms require a <strong>$1,000 deposit</strong> when booked. The deposit is credited toward the total package price, and the remaining balance is invoiced when the design plans are delivered.</p>
-  <p>Projects involving more than ten rooms are quoted individually.</p>
-  <p>Unless otherwise stated in writing, revisions are limited to the rounds listed for each package above.</p>
-  <p>A "revision round" means one consolidated set of requested changes submitted by the Client after reviewing a design version.</p>
-  <p>Revision rounds do not include an entirely new design concept, a material change in the agreed project direction, additional rooms, substantial changes to the project scope, or work caused by previously undisclosed conditions. Such work may be billed as additional services under Section 4.</p>
-  <p>We generally aim to deliver the initial design plan within <strong>three business days</strong> after the home visit. This is an estimated turnaround time and is not a guaranteed completion date.</p>
-  <p>Delivery dates may be extended if we are waiting for Client information, selections, approvals, measurements, access, supplier information, or other matters outside our reasonable control.</p>
-  <h2 id="s3">3. Payment and Booking</h2>
-  <p>Package fees are paid in full when booked, except for Multi-Room Packages of four or more rooms, which require the deposit described in Section 2, unless we agree otherwise in writing.</p>
-  <p>Payments may be processed through Stripe or another payment processor made available through our website. BP Design Group does not directly store full payment card numbers.</p>
-  <p>After payment is received, we will generally contact you within one business day to coordinate the home visit.</p>
-  <p>Payments made by ACH or bank transfer may require several business days to clear. We may delay scheduling, delivery, purchasing activity, or other work until funds have cleared.</p>
-  <p>You authorize us and our payment processor to process amounts you approve in connection with your booking, proposal, invoice, or other authorized services.</p>
-  <h2 id="s4">4. Hourly and Additional Design Services</h2>
-  <p>Services outside the scope of an included design package may include:</p>
-  <ul>
-  <li>Additional revisions;</li>
-  <li>Additional renderings;</li>
-  <li>Additional rooms or spaces;</li>
-  <li>Product and material sourcing;</li>
-  <li>Vendor coordination;</li>
-  <li>Additional meetings or site visits;</li>
-  <li>Design modifications requested after approval;</li>
-  <li>Renovation-phase design assistance; and</li>
-  <li>Other requested design services.</li>
-  </ul>
-  <p>Unless otherwise agreed in writing, additional revisions beyond those included in your package are billed at <strong>$200 per revision</strong>.</p>
-  <p>Additional design consultations and other additional services are billed at <strong>$300 per hour</strong>.</p>
-  <p>We will always notify you before beginning additional billable work and obtain your approval before proceeding.</p>
-  <p>For larger requests, we may provide an estimated number of hours or estimated cost. Unless expressly identified as a fixed fee in writing, an estimate is not a guaranteed maximum price.</p>
-  <p>Hourly services require a <strong>$600 advance deposit</strong> before work begins.</p>
-  <p>The $600 deposit is an advance payment toward authorized hourly services. It is not a separate fee and does not, by itself, create a minimum number of billable hours.</p>
-  <p>The deposit will be credited against amounts owed for hourly services and other authorized charges.</p>
-  <p>Any unused portion of the deposit will be refunded after the applicable services are completed or terminated and all amounts owed to BP Design Group have been satisfied.</p>
-  <p>If fees exceed the deposit, we will issue an invoice for the remaining balance.</p>
-  <p>Invoices are due within <strong>24 hours after delivery</strong>, unless the invoice states otherwise.</p>
-  <p>We may pause or decline further work while an account is overdue.</p>
-  <h2 id="s5">5. Cancellations, Rescheduling, and Refunds</h2>
-  <h3>Cancellation Before the Home Visit</h3>
-  <p>If you cancel at least <strong>48 hours before</strong> the scheduled home visit, the applicable package fee will be refunded in full.</p>
-  <h3>Cancellation Within 48 Hours</h3>
-  <p>If you cancel less than 48 hours before the scheduled home visit, or fail to attend or provide access for the scheduled appointment, the package fee is non-refundable.</p>
-  <h3>Cancellation After the Home Visit</h3>
-  <p>Once the home visit has occurred, design services are considered to have begun and the package fee is non-refundable.</p>
-  <h3>Rescheduling</h3>
-  <p>You may reschedule a home visit one time.</p>
-  <p>If you provide at least <strong>24 hours' notice</strong>, no rescheduling fee will apply.</p>
-  <p>If you request to reschedule less than 24 hours before the appointment, a <strong>$50 rescheduling fee</strong> may apply.</p>
-  <p>Further rescheduling may require an additional fee or a new booking.</p>
-  <h3>Hourly Services</h3>
-  <p>If hourly services are cancelled after work begins, you are responsible for time already performed and any non-cancellable costs or commitments incurred with your authorization.</p>
-  <p>Any remaining unused portion of an advance deposit will be refunded.</p>
-  <p>Approved refunds will generally be returned to the original payment method.</p>
-  <p>Nothing in this section limits any cancellation or refund right that cannot lawfully be waived.</p>
-  <h2 id="s6">6. Measurements, Existing Conditions, and Contractor Verification</h2>
-  <p>We may take measurements during a site visit for purposes of developing the design.</p>
-  <p>Our measurements are intended for design planning and visualization and must not be relied upon as final fabrication, installation, construction, or ordering dimensions.</p>
-  <p>Before construction, fabrication, installation, or ordering materials, appliances, cabinetry, fixtures, or other products, your contractor, installer, supplier, or fabricator must independently verify all measurements, dimensions, clearances, field conditions, utility locations, structural conditions, and applicable code requirements.</p>
-  <p>BP Design Group is not responsible for costs resulting from a contractor, supplier, installer, or other third party failing to independently verify dimensions or existing conditions before ordering, fabrication, or installation.</p>
-  <p>You must promptly inform us of any known site condition, restriction, building rule, condominium or homeowners' association requirement, or other condition that may affect the design.</p>
-  <h2 id="s7">7. Renderings and Design Representations</h2>
-  <p>Renderings, mood boards, samples, plans, drawings, and digital images are intended to communicate the overall design concept.</p>
-  <p>Computer screens, lighting conditions, photography, manufacturing variations, dye lots, natural materials, installation conditions, and other factors may cause actual colors, textures, proportions, materials, finishes, and appearance to differ from a rendering or sample.</p>
-  <p>Renderings are not guarantees that the completed space will appear exactly as depicted.</p>
-  <h2 id="s8">8. Products, Materials, Vendors, and Pricing</h2>
-  <p>Product recommendations are based on information reasonably available when the recommendation is made.</p>
-  <p>Manufacturers, retailers, suppliers, and other third parties control their own:</p>
-  <ul>
-  <li>Pricing;</li>
-  <li>Inventory;</li>
-  <li>Product specifications;</li>
-  <li>Availability;</li>
-  <li>Shipping;</li>
-  <li>Lead times;</li>
-  <li>Warranties;</li>
-  <li>Return policies; and</li>
-  <li>Discontinuations.</li>
-  </ul>
-  <p>Those matters may change without notice.</p>
-  <p>Unless BP Design Group expressly agrees in writing to purchase or resell an item, purchases are made directly between you and the applicable seller or supplier.</p>
-  <p>You should confirm current pricing, specifications, dimensions, compatibility, availability, delivery dates, and return policies before purchasing any product.</p>
-  <p>BP Design Group is not responsible for manufacturer defects, shipping damage, supplier errors, discontinued products, price changes, delivery delays, or the acts or omissions of third-party vendors.</p>
-  <h2 id="s9">9. Client Responsibilities</h2>
-  <p>You agree to:</p>
-  <ul>
-  <li>Provide safe and reasonable access to the project space;</li>
-  <li>Provide accurate and complete information regarding the project;</li>
-  <li>Tell us about your desired budget, priorities, and known limitations;</li>
-  <li>Review designs and provide decisions and feedback within a reasonable time;</li>
-  <li>Review product information before approving purchases;</li>
-  <li>Obtain any approvals required by a condominium association, homeowners' association, landlord, municipality, or other authority;</li>
-  <li>Hire properly qualified contractors and tradespeople; and</li>
-  <li>Require your contractors, suppliers, installers, and fabricators to verify all project conditions and measurements before beginning work or ordering products.</li>
-  </ul>
-  <p>You remain responsible for decisions you approve regarding the project.</p>
-  <h2 id="s10">10. Contractors and Construction</h2>
-  <p>BP Design Group may communicate or coordinate with your contractor or other project participants as part of our design services.</p>
-  <p>Such communication does not make the contractor, supplier, installer, or other third party our employee, agent, subcontractor, partner, or representative.</p>
-  <p>BP Design Group does not control and is not responsible for construction means or methods, sequencing, scheduling, job-site safety, workmanship, supervision, labor, code compliance, contractor licensing, or contractor performance.</p>
-  <p>If a contractor modifies our design, encounters an unexpected condition, or determines that a design element cannot safely or lawfully be installed as shown, the contractor must stop the affected work and obtain appropriate professional guidance before proceeding.</p>
-  <h2 id="s11">11. Changes in Scope</h2>
-  <p>A change to the number of rooms, approved concept, layout, product selections, project requirements, or other material aspect of the project may constitute additional work.</p>
-  <p>We will notify you when a requested change falls outside the original scope and may require additional payment before performing that work.</p>
-  <p>Any additional work requiring additional fees will only proceed after you approve the additional services.</p>
-  <h2 id="s12">12. Project Delays and Inactivity</h2>
-  <p>We are not responsible for delays caused by matters outside our reasonable control, including Client delays, contractor schedules, product shortages, supplier delays, shipping problems, illness, severe weather, utility interruptions, government actions, building access restrictions, or similar circumstances.</p>
-  <p>If we request information, approval, or feedback and do not receive a response for <strong>30 days</strong>, we may consider the project inactive and close it administratively.</p>
-  <p>Reactivation is subject to our availability and may result in additional fees if design work must be updated because of changed pricing, product availability, site conditions, or project requirements.</p>
-  <h2 id="s13">13. Intellectual Property and Permitted Use</h2>
-  <p>All original design plans, renderings, drawings, concepts, layouts, presentations, and other creative materials prepared by BP Design Group remain the intellectual property of BP Design Group unless expressly transferred in a separate written agreement.</p>
-  <p>After all applicable fees have been paid, you receive a limited, non-exclusive, non-transferable license to use the final design materials solely for completing the project at the property for which they were prepared.</p>
-  <p>You may provide copies to your contractor, fabricator, supplier, or other project professional as reasonably necessary to complete that project.</p>
-  <p>You may not sell, license, publish, commercially distribute, or reuse the design for another property without our written permission.</p>
-  <h2 id="s14">14. Project Photography and Portfolio Use</h2>
-  <p>We may ask for permission to photograph or otherwise document the completed project for our portfolio, website, social media, advertising, awards submissions, and other legitimate business purposes.</p>
-  <p>We will not identify your street address or publish your name without your permission.</p>
-  <p>Photography or entry into your property will be coordinated with you and will not occur without your permission.</p>
-  <p>If you previously authorized use of photographs and later request that we discontinue future use where reasonably practicable, you may contact us at <strong><a href="mailto:info@bpdesignchi.com">info@bpdesignchi.com</a></strong>.</p>
-  <p>This will not necessarily require us to recall or destroy materials already printed, published, distributed, or submitted before your request.</p>
-  <h2 id="s15">15. No Guarantee of Construction Cost</h2>
-  <p>Budgets, pricing information, estimates, and cost discussions provided by BP Design Group are for planning purposes only unless we expressly agree otherwise in writing.</p>
-  <p>Actual project costs are controlled by contractors, suppliers, product selections, site conditions, labor costs, market conditions, taxes, shipping, permit requirements, and other factors.</p>
-  <p>We do not guarantee that a project can be constructed or completed for a particular budget.</p>
-  <h2 id="s16">16. Disclaimer of Third-Party Responsibility</h2>
-  <p>BP Design Group is not responsible for the acts, omissions, workmanship, negligence, delays, representations, warranties, or contractual obligations of contractors, installers, suppliers, manufacturers, delivery companies, or other third parties.</p>
-  <p>Any dispute regarding a product purchased directly from a third-party seller or work performed by an independent contractor is between you and that third party, subject to any rights you may have under applicable law.</p>
-  <h2 id="s17">17. Limitation of Liability</h2>
-  <p>To the fullest extent permitted by law, BP Design Group will not be liable for indirect, incidental, special, exemplary, or consequential damages arising from or relating to our services.</p>
-  <p>To the fullest extent permitted by law, BP Design Group's total aggregate liability arising from or relating to a particular design project will not exceed the amount of design fees actually paid to BP Design Group for that project.</p>
-  <p>These limitations do not apply to liability resulting from BP Design Group's fraud, willful misconduct, gross negligence, or any other liability that cannot lawfully be excluded or limited.</p>
-  <h2 id="s18">18. Suspension or Termination of Services</h2>
-  <p>We may suspend or terminate services if:</p>
-  <ul>
-  <li>Required payments are overdue;</li>
-  <li>You materially change the agreed scope without approving additional fees;</li>
-  <li>The project site is unsafe;</li>
-  <li>We are asked to perform services outside our qualifications or lawful scope;</li>
-  <li>Continued performance is prevented by circumstances outside our reasonable control; or</li>
-  <li>The working relationship becomes materially impracticable.</li>
-  </ul>
-  <p>If we terminate services for reasons other than your breach of this Agreement, we will refund any prepaid fees attributable to services that have not been performed, subject to any authorized non-refundable costs.</p>
-  <p>You remain responsible for services already performed and authorized expenses incurred before termination.</p>
-  <h2 id="s19">19. Electronic Communications and Acceptance</h2>
-  <p>You agree that contracts, proposals, approvals, invoices, notices, and other project communications may be provided electronically.</p>
-  <p>Your electronic acceptance, including checking an acceptance box, electronically approving a proposal or invoice, or otherwise electronically authorizing services, is intended to evidence your agreement to these Terms.</p>
-  <p>You should save or print a copy of this Agreement for your records.</p>
-  <h2 id="s20">20. Separate Project Agreements</h2>
-  <p>Certain custom, larger, or more complex projects may require a separate written proposal or project agreement.</p>
-  <p>If a signed or electronically accepted project agreement expressly conflicts with these Terms, the separate project agreement will control to the extent of that conflict.</p>
-  <h2 id="s21">21. Governing Law</h2>
-  <p>These Terms and the services provided by BP Design Group are governed by the laws of the State of Illinois, without regard to conflict-of-law principles, except where applicable law requires otherwise.</p>
-  <h2 id="s22">22. Entire Agreement and Changes</h2>
-  <p>These Terms, together with the applicable proposal, invoice, booking confirmation, and any other document expressly incorporated into the parties' agreement, constitute the entire agreement concerning the applicable services.</p>
-  <p>Any modification to the project scope, pricing, or other material term must be agreed to <strong>in writing or electronically approved by both BP Design Group and the Client</strong>.</p>
-  <h2 id="s23">23. Severability</h2>
-  <p>If any provision of these Terms is found unenforceable, the remaining provisions will remain in effect to the fullest extent permitted by law.</p>
-  <h2 id="s24">24. No Waiver</h2>
-  <p>A failure by either party to enforce a provision of these Terms on one occasion does not waive the right to enforce that provision later.</p>
-  <h2 id="s25">25. Updates to These Terms</h2>
-  <p>We may revise these Terms from time to time.</p>
-  <p>Unless you agree otherwise, the version in effect when you book or approve the applicable services will govern that project.</p>
-  <p>Changes published after your booking will not retroactively change the terms of an existing project.</p>
-  <h2 id="s26">26. Contact</h2>
-  <p>Questions regarding these Terms may be directed to:</p>
-  <p><strong>BP Design Group LLC</strong><br><strong>Email:</strong> <a href="mailto:info@bpdesignchi.com">info@bpdesignchi.com</a></p>
+  <p><strong>One Room — $250</strong><br>Includes one in-home consultation, one design plan and rendering, and <strong>one revision round</strong>.</p>
+  <p><strong>Two Rooms — $500</strong><br>Includes one in-home consultation, design plans and renderings for two rooms, and <strong>two revision rounds</strong>.</p>
+  <p><strong>Three or More Rooms — $250 per room</strong><br>Includes one in-home consultation, a design plan and rendering for each selected room, and <strong>two revision rounds</strong>.</p>
+  <p>Three-room packages ($750) are paid in full when booked. Projects of four or more rooms require a <strong>$1,000 deposit</strong>, applied toward the package total, with the balance due when the designs are delivered. Projects of more than ten rooms are quoted individually.</p>
+  <p>A "revision round" means one consolidated set of requested changes. A new design direction, additional room, substantial scope change, or work resulting from previously undisclosed conditions is additional work.</p>
+  <p>We generally aim to deliver the initial design within <strong>three business days after the home visit</strong>. This is an estimate, not a guaranteed completion date, and may be extended while we are waiting for information, decisions, approvals, access, or circumstances outside our reasonable control.</p>
+  <h2 id="s3">3. Additional Services &amp; Payment</h2>
+  <p>Additional revisions are <strong>$200 each</strong>. Additional consultations and other design services are <strong>$300 per hour</strong>.</p>
+  <p>We will tell you about additional charges and obtain your approval before beginning additional billable work. Any estimate of hours or cost is an estimate unless expressly identified as a fixed price.</p>
+  <p>Hourly services require a <strong>$600 advance deposit</strong>. The deposit is applied toward authorized services and is not a separate fee or minimum charge. Any unused amount will be refunded after services end and all outstanding charges are satisfied.</p>
+  <p>If charges exceed the deposit, we will invoice the balance. Invoices are due within <strong>24 hours of delivery</strong> unless otherwise stated. We may pause work on overdue accounts.</p>
+  <p>Payments made by ACH or bank transfer may take several business days to clear, and we may wait for cleared payment before beginning or continuing services.</p>
+  <h2 id="s4" data-initial="cancellation">4. Cancellations &amp; Rescheduling</h2>
+  <p class="initial-note">You'll initial this section when you book.</p>
+  <p>Cancel at least <strong>48 hours before your home visit</strong> for a full refund.</p>
+  <p>Cancellations made less than 48 hours before the visit, missed appointments, and cancellations after the home visit are non-refundable.</p>
+  <p>You may reschedule once. There is no fee with at least <strong>24 hours' notice</strong>. Less than 24 hours' notice may result in a <strong>$50 rescheduling fee</strong>. Further rescheduling may require an additional fee or new booking.</p>
+  <p>If hourly services are cancelled after work begins, you are responsible for services already performed and authorized non-cancellable costs. Any unused deposit will be refunded.</p>
+  <p>Nothing in these Terms limits a refund or cancellation right that cannot legally be waived.</p>
+  <h2 id="s5" data-initial="contractors">5. Measurements &amp; Construction</h2>
+  <p class="initial-note">You'll initial this section when you book.</p>
+  <p>Measurements we take are for design and visualization purposes and are <strong>not final construction, fabrication, installation, or ordering dimensions</strong>.</p>
+  <p>Before ordering products or beginning work, your contractor, installer, supplier, or fabricator must independently verify all dimensions, clearances, existing conditions, utilities, structural requirements, and applicable codes.</p>
+  <p>You must tell us about known site conditions, building restrictions, association requirements, or other conditions that may affect the design.</p>
+  <p>BP Design Group is not responsible for construction methods, job-site safety, scheduling, workmanship, contractor performance, code compliance, or costs resulting from a third party's failure to verify measurements or project conditions.</p>
+  <p>If any part of a design cannot safely or lawfully be installed as shown, the appropriate qualified professional must resolve the issue before work proceeds.</p>
+  <h2 id="s6">6. Renderings, Products &amp; Third Parties</h2>
+  <p>Renderings, drawings, samples, and digital images communicate the design concept. Actual colors, materials, textures, proportions, finishes, and lighting may differ.</p>
+  <p>Product pricing, availability, specifications, shipping, lead times, warranties, returns, and discontinuations are controlled by third parties and may change without notice.</p>
+  <p>Unless we expressly agree otherwise in writing, products are purchased directly from the applicable seller. You or your contractor must verify product dimensions, specifications, compatibility, pricing, and availability before purchasing.</p>
+  <p>BP Design Group is not responsible for defects, supplier errors, shipping damage, delays, discontinued products, price changes, or the acts or omissions of contractors, installers, manufacturers, suppliers, delivery companies, or other independent third parties.</p>
+  <p>Budgets and cost discussions are for planning purposes only. <strong>We do not guarantee a final construction cost or budget.</strong></p>
+  <h2 id="s7">7. Client Responsibilities, Changes &amp; Delays</h2>
+  <p>You agree to provide safe access to the project, accurate information about the property and your goals, timely decisions and feedback, and any approvals required by a landlord, association, municipality, or other authority.</p>
+  <p>You are responsible for hiring qualified contractors and tradespeople and for project decisions you approve.</p>
+  <p>Changes to the rooms, layout, design direction, selections, or other material requirements may constitute additional work. We will obtain your approval before performing additional work that requires an additional fee.</p>
+  <p>We are not responsible for delays outside our reasonable control, including Client, contractor, supplier, shipping, product, weather, utility, government, or building-access delays.</p>
+  <p>If we are waiting for information, approval, or feedback for <strong>30 days</strong>, we may close the project as inactive. Reactivation is subject to availability and may involve additional fees if the design must be updated.</p>
+  <h2 id="s8">8. Design Ownership &amp; Photography</h2>
+  <p>BP Design Group retains ownership of its original plans, renderings, drawings, concepts, layouts, presentations, and other design materials.</p>
+  <p>After all applicable fees are paid, you receive a limited, non-exclusive, non-transferable license to use the final materials <strong>only for the property for which they were created</strong>. You may share them with professionals working on that project, but may not sell, commercially distribute, license, or reuse them for another property without our written permission.</p>
+  <p>We may ask permission to photograph a completed project for our portfolio, website, social media, advertising, or other business purposes. We will not enter your property to photograph it or publish your name or street address without permission.</p>
+  <p>Previously authorized photo use may be withdrawn for future use where reasonably practicable, but materials already published, printed, distributed, or submitted do not have to be recalled.</p>
+  <h2 id="s9">9. Liability &amp; Termination</h2>
+  <p>To the fullest extent permitted by law, BP Design Group will not be liable for <strong>indirect, incidental, special, exemplary, or consequential damages</strong> arising from our services.</p>
+  <p>To the fullest extent permitted by law, BP Design Group's total aggregate liability relating to a project will not exceed the <strong>design fees actually paid to BP Design Group for that project</strong>.</p>
+  <p>These limitations do not apply to BP Design Group's fraud, willful misconduct, gross negligence, or liability that cannot legally be excluded or limited.</p>
+  <p>We may suspend or terminate services for overdue payments, unsafe conditions, material scope changes without approval of additional fees, requests outside our qualifications or lawful scope, or circumstances outside our reasonable control.</p>
+  <p>If we terminate for reasons other than your breach, we will refund prepaid amounts for services not performed, less authorized non-refundable costs. You remain responsible for services already performed and authorized expenses.</p>
+  <h2 id="s10">10. General Terms</h2>
+  <p>Contracts, approvals, invoices, notices, and project communications may be electronic. Checking an acceptance box, electronically approving a proposal or invoice, paying an applicable fee or deposit, or otherwise electronically authorizing services evidences your agreement to these Terms.</p>
+  <p>These Terms are governed by <strong>Illinois law</strong>, except where applicable law requires otherwise.</p>
+  <p>A larger or custom project may have a separate agreement. If it expressly conflicts with these Terms, the separate agreement controls for that project.</p>
+  <p>These Terms, together with the applicable booking, proposal, invoice, and documents expressly incorporated into them, constitute the agreement for the applicable services. Material changes to scope or pricing must be agreed to in writing or electronically approved by both BP Design Group and the Client.</p>
+  <p>If any provision is unenforceable, the remaining provisions remain in effect. Failure to enforce a provision once does not waive it.</p>
+  <p>We may update these Terms for future projects. The version in effect when you book or approve your project continues to govern that project unless both parties agree otherwise.</p>
+  <p class="sign-off"><strong>BP Design Group LLC</strong><br><a href="mailto:info@bpdesignchi.com">info@bpdesignchi.com</a></p>
 
   <footer><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><a href="/">bpdesignchi.com</a></footer>
 </div>
