@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BP Design Group | Kitchen &amp; Bath Design in Chicago</title>
+<meta name="description" content="BP Design Group designs kitchen and bathroom renovations for homes in Chicago and the northwest suburbs, with renderings of the finished room before work begins.">
+<meta property="og:title" content="BP Design Group">
+<meta property="og:description" content="Kitchen and bath design for Chicago and the northwest suburbs. See your new room before you build it.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bpdesignchi.com/">
+<meta name="theme-color" content="#15171A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://bpdesignchi.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "BP Design Group LLC",
+  "description": "Kitchen and bathroom renovation design with renderings.",
+  "url": "https://bpdesignchi.com/",
+  "email": "info@bpdesignchi.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Chicago", "addressRegion": "IL", "addressCountry": "US" },
+  "areaServed": ["Chicago, IL", "Northwest suburbs of Chicago"],
+  "priceRange": "$$"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#15171A; --raised:#1C1F23; --text:#ECE9E3; --soft:#9D9A93; --rule:#2D3035; --acc:#86A396; --g:24px; }
+  * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--text); font:400 17px/1.65 "Hanken Grotesk", system-ui, sans-serif; }
+  a { color:inherit; }
+  .wrap { max-width:1140px; margin:0 auto; padding:0 var(--g); }
+  header.top { display:flex; justify-content:space-between; align-items:center; padding:26px 0; }
+  .mark { text-decoration:none; font:400 24px/1 "Bodoni Moda", serif; letter-spacing:.02em; }
+  .mark em { color:var(--acc); }
+  nav a { margin-left:28px; text-decoration:none; font-size:14px; font-weight:500; letter-spacing:.08em; color:var(--soft); }
+  nav a:hover { color:var(--text); }
+  .hero { padding:40px 0 90px; text-align:center; }
+  .eyebrow { font-size:13px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--acc); margin:0 0 18px; }
+  h1 { font:400 clamp(40px,6vw,76px)/1.02 "Bodoni Moda", serif; margin:0 auto; max-width:16ch; }
+  h1 em { font-style:italic; }
+  .lede { color:var(--soft); max-width:46ch; margin:22px auto 34px; }
+  .btn { display:inline-block; padding:15px 28px; background:var(--text); color:var(--bg); text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--text); transition:background .2s,color .2s; }
+  .btn:hover { background:transparent; color:var(--text); }
+  .btn.ghost { background:transparent; color:var(--text); } .btn.ghost:hover { background:var(--text); color:var(--bg); }
+  /* signature: drag from drawing to rendering */
+  .compare { position:relative; margin:56px auto 0; max-width:980px; border:1px solid var(--rule); background:var(--raised); --pos:50%; user-select:none; }
+  .compare svg { display:block; width:100%; height:auto; }
+  .compare .top { position:absolute; inset:0; background:var(--raised); color:var(--text); clip-path:inset(0 calc(100% - var(--pos)) 0 0); }
+  .compare .top .t { opacity:.4; }
+  .compare .handle { position:absolute; top:0; bottom:0; left:var(--pos); width:1px; background:var(--text); pointer-events:none; }
+  .compare .handle::after { content:"‹ ›"; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%; background:var(--text); color:var(--bg); display:grid; place-items:center; font-size:18px; letter-spacing:4px; }
+  .compare input { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:ew-resize; margin:0; }
+  .compare input:focus-visible + .handle::after { outline:2px solid var(--acc); outline-offset:3px; }
+  .tag { position:absolute; bottom:14px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px; background:rgba(21,23,26,.8); pointer-events:none; }
+  .tag.l { left:14px; } .tag.r { right:14px; }
+  .hint { font-size:13px; color:var(--soft); margin-top:12px; }
+  section { padding:90px 0; border-top:1px solid var(--rule); }
+  h2 { font:400 clamp(30px,3.6vw,46px)/1.1 "Bodoni Moda", serif; margin:0 0 12px; }
+  h2 em { font-style:italic; color:var(--acc); }
+  .intro { color:var(--soft); max-width:52ch; margin:0 0 48px; text-wrap:balance; }
+  .pkgs { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .pkg { background:var(--raised); border:1px solid var(--rule); padding:34px 30px; display:flex; flex-direction:column; }
+  .pkg h3 { margin:0; font-size:14px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
+  .price { font:400 58px/1 "Bodoni Moda", serif; margin:20px 0 6px; }
+  .price.word { font-style:italic; font-size:48px; }
+  .per { font-size:14px; color:var(--soft); }
+  .pkg ul { list-style:none; padding:0; margin:24px 0 30px; flex:1; }
+  .pkg li { padding:10px 0; border-top:1px solid var(--rule); font-size:15.5px; }
+  .pkg .btn { text-align:center; }
+  .note { font-size:14px; color:var(--soft); margin-top:18px; }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; list-style:none; margin:0; padding:0; counter-reset:s; }
+  .steps li { counter-increment:s; border-top:1px solid var(--text); padding-top:20px; }
+  .steps li::before { content:counter(s); font:italic 400 36px/1 "Bodoni Moda", serif; color:var(--acc); display:block; margin-bottom:14px; }
+  .steps h3 { margin:0 0 8px; font-size:18px; font-weight:600; }
+  .steps p { margin:0; color:var(--soft); font-size:15.5px; }
+  .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .ph { aspect-ratio:4/5; background:var(--raised); border:1px solid var(--rule); display:grid; place-items:center; color:var(--soft); font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
+  .contact-bg { background:var(--raised); }
+  .contact { max-width:760px; }
+  .contact .head { text-align:center; margin-bottom:52px; }
+  .contact .intro { margin:0 auto; }
+  form { display:grid; gap:30px; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+  .field { display:grid; gap:4px; }
+  .field label { font-size:13px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
+  .field label small { font:italic 400 15px "Bodoni Moda", serif; letter-spacing:0; text-transform:none; color:var(--soft); margin-left:4px; }
+  input, select, textarea { width:100%; font:400 18px/1.4 "Hanken Grotesk", sans-serif; color:var(--text); background:transparent; border:0; border-bottom:1px solid #4A4E54; border-radius:0; padding:10px 0; }
+  select { appearance:none; background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ECE9E3' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat right 4px center; padding-right:24px; }
+  select option { background:var(--raised); color:var(--text); }
+  textarea { min-height:130px; resize:vertical; }
+  input:focus, select:focus, textarea:focus { outline:none; border-bottom-color:var(--acc); box-shadow:0 1px 0 var(--acc); }
+  .botcheck { position:absolute; left:-9999px; }
+  .form-actions { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; }
+  .form-actions .alt { color:var(--soft); font:italic 400 17px "Bodoni Moda", serif; }
+  form .btn { cursor:pointer; font-family:inherit; }
+  form .btn[disabled] { opacity:.6; cursor:progress; }
+  .form-status { min-height:1.6em; margin:0; }
+  .form-status.is-error { color:#E39A8A; }
+  .form-status.is-success { color:var(--acc); font-style:italic; }
+  @media (max-width:600px) { .row { grid-template-columns:1fr; } .form-actions .btn { width:100%; } }
+  footer { padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; }
+  a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+  @media (max-width:880px) {
+    .pkgs, .steps, .gallery { grid-template-columns:1fr; } nav { display:none; } section { padding:64px 0; }
+    .gallery .ph { aspect-ratio:16/10; }
+  }
+</style></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#">BP Design <em>Group</em></a>
+    <nav><a href="#packages">Packages</a><a href="#process">Process</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <div class="hero">
+    <p class="eyebrow">Kitchen &amp; bath design · Chicago &amp; NW suburbs</p>
+    <h1>See your new kitchen <em>before</em> you build it.</h1>
+    <p class="lede">We design kitchen and bathroom renovations and render the finished room, so every decision is made on paper, not in the middle of demolition.</p>
+    <a class="btn" href="#packages">Book a home visit</a>
+
+    <div class="compare" id="compare">
+      <svg viewBox="0 0 600 380" aria-hidden="true" stroke-linejoin="round">
+        <rect width="600" height="340" fill="#E6E0D6"/>
+        <rect x="40" y="170" width="520" height="66" fill="#F3F0EA"/>
+        <path d="M40 184h520M40 198h520M40 212h520M40 226h520" stroke="#D6CFC3" stroke-width="1"/>
+        <path d="M80 170v14M120 170v14M160 170v14M200 170v14M240 170v14M360 170v14M400 170v14M440 170v14M480 170v14M520 170v14M60 184v14M100 184v14M140 184v14M180 184v14M220 184v14M380 184v14M420 184v14M460 184v14M500 184v14M540 184v14" stroke="#D6CFC3" stroke-width="1"/>
+        <g fill="#687A68" stroke="#4F5E50" stroke-width="1.2"><path d="M40 60h190v110H40z"/><path d="M370 60h190v110H370z"/><path d="M40 244h520v96H40z"/></g>
+        <path d="M135 60v110M465 60v110M140 244v96M240 244v96M360 244v96M460 244v96M190 244v96M410 244v96M40 276h100M40 308h100M460 276h100M460 308h100" stroke="#4F5E50" stroke-width="1.2"/>
+        <path d="M129 150v12M141 150v12M459 150v12M471 150v12M184 256v14M196 256v14M404 256v14M416 256v14" stroke="#C4A469" stroke-width="3" stroke-linecap="round"/>
+        <path d="M250 60h100v50l22 40H228l22-40z" fill="#EFEBE4" stroke="#CFC8BC" stroke-width="1.2"/>
+        <path d="M228 150h144" stroke="#BFB7AA" stroke-width="3"/>
+        <rect x="240" y="244" width="120" height="96" fill="#C9C6C0"/>
+        <rect x="252" y="262" width="96" height="58" fill="#2B2C2D"/><path d="M262 268h76" stroke="#8D8A85" stroke-width="3" stroke-linecap="round"/>
+        <g fill="#2B2C2D"><circle cx="262" cy="252" r="3.5"/><circle cx="284" cy="252" r="3.5"/><circle cx="316" cy="252" r="3.5"/><circle cx="338" cy="252" r="3.5"/></g>
+        <rect x="30" y="236" width="540" height="8" fill="#FAF8F4" stroke="#DDD7CC"/>
+        <path d="M404 236v-22q0-10 10-10t10 10" fill="none" stroke="#C4A469" stroke-width="3" stroke-linecap="round"/>
+        <rect y="340" width="600" height="40" fill="#A98460"/><path d="M0 340H600" stroke="#8C6B4B" stroke-width="2"/>
+        <path d="M90 340l-20 40M210 340l-10 40M330 340v40M450 340l10 40M560 340l20 40" stroke="#977452" stroke-width="1"/>
+      </svg>
+      <div class="top">
+        <svg viewBox="0 0 600 380" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 340H600"/><path d="M40 60h190v110H40zM135 60v110M129 150v12M141 150v12"/><path d="M370 60h190v110H370zM465 60v110M459 150v12M471 150v12"/>
+          <path d="M250 60h100v50l22 40H228l22-40z"/><path class="t" d="M40 184h520M40 198h520M40 212h520M40 226h520"/><path d="M30 236h540v8H30z"/>
+          <path d="M40 244h520v96H40zM140 244v96M240 244v96M360 244v96M460 244v96M190 244v96M410 244v96"/>
+          <path d="M40 276h100M40 308h100M460 276h100M460 308h100M184 256v14M196 256v14M404 256v14M416 256v14"/><path d="M252 262h96v58h-96zM262 268h76"/>
+          <circle cx="262" cy="252" r="3"/><circle cx="284" cy="252" r="3"/><circle cx="316" cy="252" r="3"/><circle cx="338" cy="252" r="3"/><path d="M404 236v-22q0-10 10-10t10 10"/>
+        </svg>
+      </div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare the design drawing with the rendering">
+      <div class="handle"></div>
+      <span class="tag l">Drawing</span><span class="tag r">Rendering</span>
+    </div>
+    <p class="hint">Drag to compare the plan with the finished room.</p>
+  </div>
+</div>
+
+<section id="packages"><div class="wrap">
+  <h2>Design <em>packages</em></h2>
+  <p class="intro">Pay your retainer online to book. Every package starts with a home visit and consultation.</p>
+  <div class="pkgs">
+    <div class="pkg"><h3>One room</h3><div class="price">$250</div><div class="per">retainer</div>
+      <ul><li>Home visit and consultation</li><li>Design plan for one room</li><li>Finish and fixture direction</li></ul>
+      <a class="btn" href="#contact" data-pay="oneRoom">Pay $250 retainer</a></div>
+    <div class="pkg"><h3>Two rooms</h3><div class="price">$500</div><div class="per">retainer</div>
+      <ul><li>Home visit and consultation</li><li>Design plans for two rooms</li><li>A consistent look across both</li></ul>
+      <a class="btn" href="#contact" data-pay="twoRooms">Pay $500 retainer</a></div>
+    <div class="pkg"><h3>Ongoing design</h3><div class="price word">Hourly</div><div class="per">after your consultation</div>
+      <ul><li>Renderings and revisions</li><li>Selections and sourcing</li><li>Help while the work is underway</li></ul>
+      <a class="btn ghost" href="#contact">Ask about hourly</a></div>
+  </div>
+  <p class="note">Secure checkout by Stripe. Card or bank transfer.</p>
+</div></section>
+
+<section id="process"><div class="wrap">
+  <h2>How it <em>works</em></h2>
+  <p class="intro">Three steps from first visit to a plan you can build.</p>
+  <ol class="steps">
+    <li><h3>Home visit</h3><p>We walk the space, take measurements and talk through how you use the room.</p></li>
+    <li><h3>Design and renderings</h3><p>You get a design plan and renderings that show the finished room.</p></li>
+    <li><h3>Build with confidence</h3><p>Take the plan to your contractor knowing exactly how it will look.</p></li>
+  </ol>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <h2>Renderings and <em>finished rooms</em></h2>
+  <p class="intro">Your project photos and renderings go here.</p>
+  <div class="gallery"><div class="ph">Rendering</div><div class="ph">Kitchen</div><div class="ph">Bath</div></div>
+</div></section>
+
+<section id="contact" class="contact-bg"><div class="wrap contact">
+  <div class="head">
+    <h2>Tell us about your <em>project</em></h2>
+    <p class="intro">Send a few details and we'll reply by email to set up your home visit.</p>
+  </div>
+  <form id="contact-form" novalidate>
+    <div class="row">
+      <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="phone">Phone <small>(optional)</small></label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="project">Project</label>
+        <select id="project" name="project">
+          <option>Kitchen</option>
+          <option>Bathroom</option>
+          <option>Kitchen and bathroom</option>
+          <option>Another room</option>
+          <option>Something else</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+    <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="form-actions">
+      <span class="alt">Or write to <a href="mailto:info@bpdesignchi.com">info@bpdesignchi.com</a></span>
+      <button class="btn" type="submit">Send message</button>
+    </div>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</div></section>
+
+<div class="wrap"><footer><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span>Kitchen &amp; bath design · Renderings · Renovation planning</span></footer></div>
+<script>
+  // Stripe Payment Links for the retainer buttons. Until a link is set, the button scrolls to the inquiry form.
+  const STRIPE_LINKS = { oneRoom: "", twoRooms: "" };
+  document.querySelectorAll("[data-pay]").forEach(a => { const url = STRIPE_LINKS[a.dataset.pay]; if (url) a.href = url; });
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const c = document.getElementById('compare'), r = c.querySelector('input');
+  const set = v => c.style.setProperty('--pos', v + '%');
+  r.addEventListener('input', () => set(r.value)); set(r.value);
+
+  // Web3Forms access key: submissions are emailed to the address it was created with.
+  // Create one at web3forms.com with the BP Design email once Zoho is set up.
+  const WEB3FORMS_KEY = "";
+  const FALLBACK_EMAIL = "info@bpdesignchi.com";
+
+  const form = document.getElementById("contact-form");
+  const fields = form.elements;
+  const status = form.querySelector(".form-status");
+  const button = form.querySelector("button[type=submit]");
+  const setStatus = (text, kind) => { status.textContent = text; status.className = "form-status" + (kind ? " is-" + kind : ""); };
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (fields.botcheck.checked) return;
+    const name = fields.name.value.trim(), email = fields.email.value.trim(), message = fields.message.value.trim();
+    if (!name || !email || !message) { setStatus("Add your name, email, and a message, then send again.", "error"); return; }
+    if (!fields.email.checkValidity()) { setStatus("Check your email address. It should look like name@example.com.", "error"); fields.email.focus(); return; }
+    if (!WEB3FORMS_KEY) { setStatus("The form isn't connected yet. Email " + FALLBACK_EMAIL + " instead.", "error"); return; }
+
+    button.disabled = true; button.textContent = "Sending…"; setStatus("");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "New inquiry from bpdesignchi.com: " + fields.project.value,
+          from_name: "BP Design Group website",
+          replyto: email, name, email,
+          phone: fields.phone.value.trim() || "Not provided",
+          project: fields.project.value, message,
+        }),
+      });
+      const result = await response.json();
+      if (!result.success) throw new Error(result.message);
+      form.reset();
+      setStatus("Message sent. We'll reply to " + email + ".", "success");
+    } catch (err) {
+      setStatus("Your message didn't send. Try again or email " + FALLBACK_EMAIL + ".", "error");
+    } finally {
+      button.disabled = false; button.textContent = "Send message";
+    }
+  });
+</script>
+</body></html>
