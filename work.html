@@ -38,23 +38,34 @@
   /* after-first project photos; the before is one tap away */
   .reveal { margin:0; }
   .reveal .frame { position:relative; border:1px solid var(--rule); background:var(--raised); overflow:hidden; }
+  .reveal .frame { aspect-ratio:4/3; }
   .reveal img { display:block; width:100%; height:auto; }
-  .reveal .before { position:absolute; inset:0; height:100%; object-fit:cover; opacity:0; transition:opacity .45s ease; }
+  /* whole photo shown, never cropped: taller photos sit inside the frame with space at the sides */
+  .reveal .after, .reveal .before { height:100%; object-fit:contain; }
+  .reveal .before { position:absolute; inset:0; height:100%; object-fit:contain; opacity:0; transition:opacity .45s ease; }
   .reveal.showing-before .before { opacity:1; }
   .reveal .state { position:absolute; top:14px; left:14px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px; background:rgba(21,23,26,.8); pointer-events:none; }
   .reveal-btn { position:absolute; right:14px; bottom:14px; font:600 13px/1 "Hanken Grotesk", sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--bg); background:var(--text); border:0; padding:12px 16px; cursor:pointer; transition:background .2s; }
   .reveal-btn:hover { background:#fff; }
   .reveal-btn:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
-  .reveal figcaption { margin-top:12px; font-size:14px; color:var(--soft); }
+  .group-title { font:400 clamp(30px,3.6vw,44px)/1.1 "Bodoni Moda", serif; margin:0 0 28px; padding-top:48px; border-top:1px solid var(--rule); }
+  .group-title em { font-style:italic; color:var(--acc); }
+  .home { padding-bottom:64px; }
+  .gallery { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:14px; }
+  .gallery img { display:block; width:100%; height:auto; border:1px solid var(--rule); background:var(--raised); }
+  .gallery li { position:relative; }
+  .gallery .tag { position:absolute; top:12px; left:12px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px; background:rgba(21,23,26,.8); pointer-events:none; }
+  .more-btn { margin-top:22px; cursor:pointer; font-family:inherit; }
   .cta { border-top:1px solid var(--rule); padding:64px 0 80px; text-align:center; }
   .cta h2 { font:400 clamp(30px,3.6vw,44px)/1.1 "Bodoni Moda", serif; margin:0 0 26px; }
   .cta h2 em { font-style:italic; color:var(--acc); }
   .btn { display:inline-block; padding:15px 28px; background:var(--text); color:var(--bg); text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--text); transition:background .2s,color .2s; }
   .btn:hover { background:transparent; color:var(--text); }
+  .btn.ghost { background:transparent; color:var(--text); } .btn.ghost:hover { background:var(--text); color:var(--bg); }
   footer { padding:30px 0 46px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between; align-items:center; }
   .foot-mark { display:block; width:26px; height:auto; opacity:.8; }
   a:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
-  @media (max-width:880px) { nav { display:none; } .projects { grid-template-columns:1fr; } .intro-block { padding-top:24px; } }
+  @media (max-width:880px) { nav { display:none; } .projects { grid-template-columns:1fr; } .intro-block { padding-top:24px; } .gallery { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; } .gallery .tag { top:6px; left:6px; font-size:10px; letter-spacing:.12em; padding:4px 6px; } }
   @media (max-width:420px) { .brand-word { width:150px; } .brand-mark { width:32px; } }
   @media (prefers-reduced-motion: reduce) { .reveal .before { transition:none; } }
 </style>
@@ -72,21 +83,91 @@
     <div class="intro-block">
       <p class="eyebrow">Portfolio</p>
       <h1>Our <em>work</em></h1>
-      <p class="lede">Kitchens and bathrooms designed by BP Design Group. Tap &ldquo;See the before&rdquo; to see where each project started.</p>
+      <p class="lede">Kitchens and bathrooms designed by BP Design Group. See how a design comes together, from the existing room to the plan and renderings. On a remodel, tap &ldquo;See the before&rdquo; to see where it started.</p>
     </div>
 
+    <h2 class="group-title">From plan to <em>rendering</em></h2>
+    <!-- A design project from start to finish: the existing room, the plan, and the renderings. -->
+    <article class="home">
+      <ul class="gallery">
+        <li><img src="img/work/project1-existing.jpg" data-full="img/work/project1-existing-full.jpg" width="939" height="626" loading="lazy" alt="The kitchen before the redesign: cherry cabinets, a beige tile floor, and a breakfast table by the window."><span class="tag">Existing kitchen</span></li>
+        <li><img src="img/work/project1-floor-plan.png" data-full="img/work/project1-floor-plan-full.png" width="1200" height="800" loading="lazy" alt="The floor plan for the new kitchen, with cabinet sizes and measurements."><span class="tag">Floor plan</span></li>
+        <li><img src="img/work/project1-layout.png" data-full="img/work/project1-layout-full.png" width="1200" height="800" loading="lazy" alt="A 3D line drawing of the new layout: the wall between the kitchen and dining room removed, a new island, and a relocated door."><span class="tag">New layout</span></li>
+        <li><img src="img/work/project1-rendering-1.jpg" data-full="img/work/project1-rendering-1-full.jpg" width="1672" height="1115" loading="lazy" alt="Rendering from above: white cabinetry, a long stone island with a dark wood base, glass pendants, and a built-in buffet by the dining table."><span class="tag">Rendering</span></li>
+        <li><img src="img/work/project1-rendering-2.jpg" data-full="img/work/project1-rendering-2-full.jpg" width="1062" height="708" loading="lazy" alt="Rendering of the island and sink wall, with the patio door on the left."><span class="tag">Rendering</span></li>
+        <li><img src="img/work/project1-rendering-3.jpg" data-full="img/work/project1-rendering-3-full.jpg" width="1022" height="681" loading="lazy" alt="Rendering from the dining side: the island with counter stools, the range hood, and built-in ovens."><span class="tag">Rendering</span></li>
+      </ul>
+    </article>
+
+    <h2 class="group-title">Before <em>&amp;</em> after</h2>
     <!-- Each project is one <figure class="reveal">. For a project without a before photo, leave out the .before image and the button. -->
     <div class="projects">
       <figure class="reveal">
         <div class="frame">
-          <img class="after" src="img/kitchen-after.jpg" width="1320" height="990" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
+          <img class="after" src="img/kitchen-after.jpg" width="1140" height="855" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
           <img class="before" src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The same kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors.">
           <span class="state">After</span>
           <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
         </div>
-        <figcaption>A kitchen designed by BP Design Group.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <div class="frame">
+          <img class="after" src="img/work/bath-double-after.jpg" width="828" height="621" loading="lazy" alt="The finished bathroom: a light oak double vanity with brass hardware, two brass-framed mirrors, floral wallpaper, and a marble floor.">
+          <img class="before" src="img/work/bath-double-before.jpg" width="828" height="621" loading="lazy" alt="The same bathroom before: a distressed white double vanity, a mirrored medicine cabinet, and a cluttered countertop.">
+          <span class="state">After</span>
+          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+        </div>
+      </figure>
+      <figure class="reveal">
+        <div class="frame">
+          <img class="after" src="img/work/bath-vanity-after-wide.jpg" data-full="img/work/bath-vanity-after.jpg" width="1253" height="940" loading="lazy" alt="The finished bathroom: a freestanding tub, a wood vanity table with a cane chair, floral wallpaper, brass sconces, and a marble floor.">
+          <img class="before" src="img/work/bath-vanity-before-wide.jpg" data-full="img/work/bath-vanity-before.jpg" width="1253" height="940" loading="lazy" alt="The same bathroom before: a built-in corner jetted tub, mirrored walls, and white tile floors.">
+          <span class="state">After</span>
+          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+        </div>
+      </figure>
+      <figure class="reveal">
+        <div class="frame">
+          <img class="after" src="img/work/bath-shower-after-wide.jpg" data-full="img/work/bath-shower-after.jpg" width="1253" height="940" loading="lazy" alt="The finished bathroom: a walk-in glass shower with brass fixtures and marble-look tile, a heated towel rack, and a marble floor.">
+          <img class="before" src="img/work/bath-shower-before-wide.jpg" data-full="img/work/bath-shower-before.jpg" width="1253" height="940" loading="lazy" alt="The same bathroom before: a tub with a shower curtain, white wall tile, and black and white tile floors.">
+          <span class="state">After</span>
+          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+        </div>
       </figure>
     </div>
+
+    <!-- Each home is one <article class="home">. The first six photos show; the rest open with "Show all". -->
+    <article class="home">
+      <ul class="gallery">
+        <li><img src="img/work/home1-01.jpg" width="665" height="441" loading="lazy" alt="A kitchen with a white stone island on a wood base, black glass-front cabinets, and globe pendants, open to the patio."></li>
+        <li><img src="img/work/home1-02.jpg" width="665" height="441" loading="lazy" alt="The same kitchen from the other side: the island and pendants, looking into the living room."></li>
+        <li><img src="img/work/home1-03.jpg" width="640" height="426" loading="lazy" alt="A primary bathroom with a freestanding tub, a glass-walled shower, and white marble-look tile."></li>
+        <li><img src="img/work/home1-04.jpg" width="665" height="441" loading="lazy" alt="A vanity with a lighted mirror beside a marble-tiled shower."></li>
+        <li><img src="img/work/home1-06.jpg" width="640" height="426" loading="lazy" alt="A bathroom with a double vanity and a glass shower in gray subway tile."></li>
+        <li><img src="img/work/home1-08.jpg" width="665" height="441" loading="lazy" alt="A bathroom with herringbone wall tile, a lighted mirror, and a white vanity."></li>
+        <li class="more" hidden><img src="img/work/home1-05.jpg" width="665" height="441" loading="lazy" alt="A walk-in shower in gray marble tile next to a vanity with a lighted mirror."></li>
+        <li class="more" hidden><img src="img/work/home1-07.jpg" width="665" height="441" loading="lazy" alt="The same bathroom from another angle, showing the shower niche."></li>
+        <li class="more" hidden><img src="img/work/home1-09.jpg" width="640" height="426" loading="lazy" alt="A walk-in glass shower lined in herringbone tile."></li>
+        <li class="more" hidden><img src="img/work/home1-10.jpg" width="665" height="441" loading="lazy" alt="A bathroom with a patterned tile band, a lighted mirror, and a white vanity."></li>
+      </ul>
+      <button type="button" class="btn ghost more-btn" aria-expanded="false">Show all 10 photos</button>
+    </article>
+    <article class="home">
+      <ul class="gallery">
+        <li><img src="img/work/home2-02.jpg" width="1080" height="771" loading="lazy" alt="A kitchen island with woven counter stools and rattan pendants, looking out to the water."></li>
+        <li><img src="img/work/home2-03.jpg" width="1080" height="771" loading="lazy" alt="The kitchen cooking wall: built-in refrigerator, wine fridge, and a six-burner range."></li>
+        <li><img src="img/work/home2-05.jpg" width="1080" height="771" loading="lazy" alt="The kitchen island open to the living room and fireplace."></li>
+        <li><img src="img/work/home2-06.jpg" width="1080" height="771" loading="lazy" alt="A primary bathroom with a freestanding tub, a round black mirror, and a light oak vanity."></li>
+        <li><img src="img/work/home2-10.jpg" width="1080" height="771" loading="lazy" alt="A laundry and mudroom with blue cabinetry, open shelving, and built-in lockers."></li>
+        <li><img src="img/work/home2-11.jpg" width="1080" height="771" loading="lazy" alt="A bathroom with a light oak vanity and a navy herringbone tile shower."></li>
+        <li class="more" hidden><img src="img/work/home2-01.jpg" width="1080" height="771" loading="lazy" alt="A kitchen range wall with a professional range, a wood hood, and black glass-front cabinets."></li>
+        <li class="more" hidden><img src="img/work/home2-04.jpg" width="1080" height="771" loading="lazy" alt="Island seating in front of tall white cabinetry and built-in ovens."></li>
+        <li class="more" hidden><img src="img/work/home2-07.jpg" width="1080" height="771" loading="lazy" alt="The same bathroom: a walk-in shower, freestanding tub, and a sculptural chandelier."></li>
+        <li class="more" hidden><img src="img/work/home2-08.jpg" width="1080" height="771" loading="lazy" alt="A bathroom with a navy vanity, a rope-framed mirror, and a marble walk-in shower."></li>
+        <li class="more" hidden><img src="img/work/home2-09.jpg" width="1080" height="771" loading="lazy" alt="A bathroom with a gray tile shower, a wood vanity, and a rope-framed mirror."></li>
+      </ul>
+      <button type="button" class="btn ghost more-btn" aria-expanded="false">Show all 11 photos</button>
+    </article>
   </main>
 
   <section class="cta">
@@ -94,7 +175,7 @@
     <a class="btn" href="/#packages">Book a home visit</a>
   </section>
 
-  <footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span><a href="terms.html">Terms &amp; conditions</a> · Kitchen &amp; bath design · Renderings</span></footer>
+  <footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois · <a href="tel:+17732453529">(773) 245-3529</a></span><span><a href="terms.html">Terms &amp; conditions</a></span></footer>
 </div>
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -106,6 +187,17 @@
       btn.textContent = before ? "See the after" : "See the before";
       btn.setAttribute("aria-pressed", before);
       state.textContent = before ? "Before" : "After";
+    });
+  });
+  document.querySelectorAll(".home").forEach(home => {
+    const btn = home.querySelector(".more-btn");
+    if (!btn) return;
+    const label = btn.textContent;
+    btn.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") !== "true";
+      home.querySelectorAll(".gallery .more").forEach(li => li.hidden = !open);
+      btn.setAttribute("aria-expanded", open);
+      btn.textContent = open ? "Show fewer photos" : label;
     });
   });
 </script>

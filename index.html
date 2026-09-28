@@ -20,6 +20,7 @@
   "image": "https://bpdesignchi.com/img/kitchen-after.jpg",
   "url": "https://bpdesignchi.com/",
   "email": "info@bpdesignchi.com",
+  "telephone": "+1-773-245-3529",
   "address": { "@type": "PostalAddress", "addressLocality": "Chicago", "addressRegion": "IL", "addressCountry": "US" },
   "areaServed": ["Chicagoland Area", "Chicago, IL"],
   "priceRange": "$$"
@@ -68,7 +69,25 @@
   .multi-price .choose { display:block; font:italic 400 34px/1.1 "Bodoni Moda", serif; color:var(--soft); padding:12px 0 6px; }
   .btn.is-disabled { opacity:.45; cursor:not-allowed; }
   [hidden] { display:none !important; }
-  .notes { margin-top:22px; display:grid; gap:4px; }
+  .ask { margin:28px 0 0; font:italic 400 20px/1.4 "Bodoni Moda", serif; color:var(--text); }
+  .ask a { color:var(--acc); text-underline-offset:4px; }
+  .notes { margin-top:18px; display:grid; gap:4px; }
+  .card-note { margin:16px 0 0; font-size:14px; color:var(--soft); text-align:center; }
+  .card-note a { color:var(--text); text-underline-offset:3px; }
+  .addons { margin-top:clamp(16px, 2vw, 28px); border:1px solid var(--rule); padding:22px 30px; display:grid; grid-template-columns:auto minmax(0, 1fr); gap:10px 40px; align-items:center; }
+  .addons h3 { margin:0; font-size:14px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
+  .addons dl { margin:0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px 40px; }
+  .addons dt { font-weight:600; }
+  .addons dd { margin:0; color:var(--soft); font-size:15.5px; }
+  .addons dd strong { color:var(--text); font-weight:600; }
+  @media (max-width:880px) { .addons { grid-template-columns:1fr; padding:22px 24px; } .addons dl { grid-template-columns:1fr; gap:14px; } }
+  .designer { display:flex; align-items:center; gap:24px; margin-top:56px; padding-top:32px; border-top:1px solid var(--rule); }
+  .designer img { display:block; width:120px; height:auto; border:1px solid var(--rule); flex:none; }
+  .designer .eyebrow { margin:0 0 6px; }
+  .designer-name { margin:0; font:400 30px/1.1 "Bodoni Moda", serif; }
+  .designer-role { margin:6px 0 10px; color:var(--soft); font-size:15.5px; }
+  .designer-link { font-size:14px; font-weight:600; letter-spacing:.08em; color:var(--text); text-underline-offset:4px; }
+  @media (max-width:520px) { .designer { gap:18px; } .designer img { width:88px; } .designer-name { font-size:26px; } }
   .note { font-size:14px; color:var(--soft); margin:0; }
   .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; list-style:none; margin:0; padding:0; counter-reset:s; }
   .steps li { counter-increment:s; border-top:1px solid var(--text); padding-top:20px; }
@@ -104,20 +123,22 @@
   /* after-first project photos; the before is one tap away */
   .hero-ctas { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:40px; }
   .hero .hero-ctas .btn { margin-top:0; }
-  .hero .reveal { margin:56px auto 0; max-width:1240px; }
-  @media (min-width:900px) { .hero .reveal .frame { aspect-ratio:3/2; } .hero .reveal .after { height:100%; object-fit:cover; } }
+  .projects { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:28px; }
+  .hero-work { margin:56px auto 0; max-width:1240px; text-align:left; }
+  @media (max-width:880px) { .projects { grid-template-columns:1fr; gap:20px; } }
   @media (max-width:520px) { .hero-ctas { flex-direction:column; align-items:stretch; max-width:340px; margin-left:auto; margin-right:auto; } .reveal-btn { right:10px; bottom:10px; padding:10px 12px; font-size:12px; } }
   .reveal { margin:0; }
   .reveal .frame { position:relative; border:1px solid var(--rule); background:var(--raised); overflow:hidden; }
+  .reveal .frame { aspect-ratio:4/3; }
   .reveal img { display:block; width:100%; height:auto; }
-  .reveal .before { position:absolute; inset:0; height:100%; object-fit:cover; opacity:0; transition:opacity .45s ease; }
+  /* whole photo shown, never cropped: taller photos sit inside the frame with space at the sides */
+  .reveal .after, .reveal .before { height:100%; object-fit:contain; }
+  .reveal .before { position:absolute; inset:0; height:100%; object-fit:contain; opacity:0; transition:opacity .45s ease; }
   .reveal.showing-before .before { opacity:1; }
   .reveal .state { position:absolute; top:14px; left:14px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px; background:rgba(21,23,26,.8); pointer-events:none; }
   .reveal-btn { position:absolute; right:14px; bottom:14px; font:600 13px/1 "Hanken Grotesk", sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--bg); background:var(--text); border:0; padding:12px 16px; cursor:pointer; transition:background .2s; }
   .reveal-btn:hover { background:#fff; }
   .reveal-btn:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
-  .reveal figcaption { margin-top:12px; font-size:14px; color:var(--soft); }
-  .hero .reveal figcaption { text-align:center; }
   @media (prefers-reduced-motion: reduce) { .reveal .before { transition:none; } }
   /* retainer agreement: signed before checkout */
   dialog.agree { width:min(660px, calc(100vw - 32px)); max-height:calc(100vh - 32px); overflow:auto; padding:0; border:1px solid var(--rule); background:var(--raised); color:var(--text); }
@@ -216,17 +237,42 @@
     <p class="eyebrow">Kitchen &amp; bath design · Chicagoland Area</p>
     <h1>Kitchens and baths, <em>designed</em> around you.</h1>
     <p class="lede">We design your kitchen or bathroom before construction begins and provide a realistic rendering of the finished space, so every decision is made on paper&mdash;not in the middle of demolition.</p>
-    <div class="hero-ctas"><a class="btn ghost" href="about.html">About us</a><a class="btn" href="#packages">Book a home visit</a><a class="btn ghost" href="work.html">See our work</a></div>
+    <div class="hero-ctas"><a class="btn" href="#packages">Book a home visit</a><a class="btn ghost" href="work.html">See our work</a></div>
 
-    <figure class="reveal">
-      <div class="frame">
-        <img class="after" src="img/kitchen-after.jpg" width="1320" height="990" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
-        <img class="before" src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The same kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors.">
-        <span class="state">After</span>
-        <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
-      </div>
-      <figcaption>A kitchen designed by BP Design Group.</figcaption>
-    </figure>
+    <div class="projects hero-work">
+      <figure class="reveal">
+        <div class="frame">
+          <img class="after" src="img/kitchen-after.jpg" width="1140" height="855" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
+          <img class="before" src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The same kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors.">
+          <span class="state">After</span>
+          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+        </div>
+      </figure>
+      <figure class="reveal">
+        <div class="frame">
+          <img class="after" src="img/work/bath-double-after.jpg" width="828" height="621" loading="lazy" alt="The finished bathroom: a light oak double vanity with brass hardware, two brass-framed mirrors, floral wallpaper, and a marble floor.">
+          <img class="before" src="img/work/bath-double-before.jpg" width="828" height="621" loading="lazy" alt="The same bathroom before: a distressed white double vanity, a mirrored medicine cabinet, and a cluttered countertop.">
+          <span class="state">After</span>
+          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+        </div>
+      </figure>
+      <figure class="reveal">
+        <div class="frame">
+          <img class="after" src="img/work/bath-vanity-after-wide.jpg" data-full="img/work/bath-vanity-after.jpg" width="1253" height="940" loading="lazy" alt="The finished bathroom: a freestanding tub, a wood vanity table with a cane chair, floral wallpaper, brass sconces, and a marble floor.">
+          <img class="before" src="img/work/bath-vanity-before-wide.jpg" data-full="img/work/bath-vanity-before.jpg" width="1253" height="940" loading="lazy" alt="The same bathroom before: a built-in corner jetted tub, mirrored walls, and white tile floors.">
+          <span class="state">After</span>
+          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+        </div>
+      </figure>
+      <figure class="reveal">
+        <div class="frame">
+          <img class="after" src="img/work/bath-shower-after-wide.jpg" data-full="img/work/bath-shower-after.jpg" width="1253" height="940" loading="lazy" alt="The finished bathroom: a walk-in glass shower with brass fixtures and marble-look tile, a heated towel rack, and a marble floor.">
+          <img class="before" src="img/work/bath-shower-before-wide.jpg" data-full="img/work/bath-shower-before.jpg" width="1253" height="940" loading="lazy" alt="The same bathroom before: a tub with a shower curtain, white wall tile, and black and white tile floors.">
+          <span class="state">After</span>
+          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
+        </div>
+      </figure>
+    </div>
   </div>
 </div>
 
@@ -250,12 +296,19 @@
         </select>
       </label>
       <ul><li>Home visit and consultation</li><li>Phone consultation after the visit</li><li>Design plans and renderings for every room</li><li>2 free revisions</li></ul>
-      <a class="btn is-disabled" href="#packages" data-pay="multi" id="rooms-pay" aria-disabled="true">Select rooms to continue</a></div>
+      <a class="btn is-disabled" href="#packages" data-pay="multi" id="rooms-pay" aria-disabled="true">Select rooms to continue</a>
+      <p class="card-note">Planning more than 10 rooms? <a href="#contact">Get in touch</a> for a custom quote.</p></div>
   </div>
+  <div class="addons">
+    <h3>Add-ons</h3>
+    <dl>
+      <div><dt>Additional revisions</dt><dd><strong>$200</strong> each</dd></div>
+      <div><dt>Hourly design support</dt><dd>From <strong>$300</strong> per hour, for larger projects or extra design help</dd></div>
+    </dl>
+  </div>
+  <p class="ask">Questions before you book? Call <a href="tel:+17732453529">(773) 245-3529</a> or <a href="#contact">send us a message</a>.</p>
   <div class="notes">
     <p class="note">Secure checkout through Stripe. Pay by card or bank transfer.</p>
-    <p class="note">Additional revisions are $200 each. For larger projects or extra design support, hourly consultations are available starting at $300 per hour.</p>
-    <p class="note">Planning more than 10 rooms? <a href="#contact">Get in touch</a> for a custom quote.</p>
   </div>
 </div></section>
 
@@ -267,6 +320,15 @@
     <li><h3>Design your space</h3><p>We plan the layout, cabinetry, finishes, and lighting, and show you renderings of the finished room.</p></li>
     <li><h3>Build with confidence</h3><p>Take the plan to your contractor with a clear picture of the finished space.</p></li>
   </ol>
+  <div class="designer">
+    <img src="img/beata-thumb.jpg" width="120" height="150" loading="lazy" alt="Beata Piskorska">
+    <div>
+      <p class="eyebrow">Led by</p>
+      <p class="designer-name">Beata Piskorska</p>
+      <p class="designer-role">CEO &amp; Lead Designer · 15 years designing kitchens, bathrooms, and homes.</p>
+      <a class="designer-link" href="about.html">Meet Beata &rarr;</a>
+    </div>
+  </div>
 </div></section>
 
 <section id="contact" class="contact-bg"><div class="wrap contact">
@@ -294,7 +356,7 @@
     <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
     <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="form-actions">
-      <span class="alt">Or write to <a href="mailto:info@bpdesignchi.com">info@bpdesignchi.com</a></span>
+      <span class="alt">Or call <a href="tel:+17732453529">(773) 245-3529</a> or write to <a href="mailto:info@bpdesignchi.com">info@bpdesignchi.com</a></span>
       <button class="btn" type="submit">Send message</button>
     </div>
     <p class="form-status" role="status" aria-live="polite"></p>
@@ -387,7 +449,7 @@
   </form>
 </dialog>
 
-<div class="wrap"><footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois</span><span><a href="terms.html">Terms &amp; conditions</a> · Kitchen &amp; bath design · Renderings</span></footer></div>
+<div class="wrap"><footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois · <a href="tel:+17732453529">(773) 245-3529</a></span><span><a href="terms.html">Terms &amp; conditions</a></span></footer></div>
 <script>
   // Stripe Payment Links for the retainer buttons. Until a link is set, the button scrolls to the inquiry form.
   const STRIPE_LINKS = {
@@ -494,7 +556,7 @@
       ] },
     ];
   };
-  const ROOM_TYPES = ["Kitchen", "Primary bathroom", "Guest bathroom", "Powder room", "Laundry room", "Mudroom", "Primary bedroom", "Bedroom", "Living room", "Family room", "Dining room", "Home office", "Basement", "Entryway", "Other"];
+  const ROOM_TYPES = ["Kitchen", "Primary bathroom", "Guest bathroom", "Powder room", "Laundry room", "Mudroom", "Other"];
   const packageFor = key => {
     if (key === "oneRoom") return { name: "One-Room Design Package", rooms: 1, revisions: 1, total: 250, payNow: 250, link: STRIPE_LINKS.oneRoom };
     if (key === "twoRooms") return { name: "Two-Room Design Package", rooms: 2, revisions: 2, total: 500, payNow: 500, link: STRIPE_LINKS.twoRooms };
