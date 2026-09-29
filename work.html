@@ -32,6 +32,7 @@
   h1 { font:400 clamp(40px,5vw,64px)/1.05 "Bodoni Moda", serif; margin:0; }
   h1 em { font-style:italic; }
   .lede { color:var(--soft); margin:18px 0 0; }
+  .lede a { color:var(--text); text-underline-offset:3px; }
   /* portfolio grid: a lone project spans the full width */
   .projects { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:40px 28px; padding-bottom:80px; }
   .projects > .reveal:only-child { grid-column:1 / -1; }
@@ -84,59 +85,10 @@
     <div class="intro-block">
       <p class="eyebrow">Portfolio</p>
       <h1>Our <em>work</em></h1>
-      <p class="lede">Kitchens and bathrooms designed by BP Design Group. See how a design comes together, from the existing room to the plan and renderings. On a remodel, tap &ldquo;See the before&rdquo; to see where it started.</p>
+      <p class="lede">Kitchens and bathrooms designed by BP Design Group. To see how a design comes together, from the existing room to the floor plan and renderings, visit <a href="/#process">How it works</a> on our home page.</p>
     </div>
 
-    <h2 class="group-title">From plan to <em>rendering</em></h2>
-    <!-- A design project from start to finish: the existing room, the plan, and the renderings. -->
-    <article class="home">
-      <ul class="gallery">
-        <li><img src="img/work/project1-existing.jpg" data-full="img/work/project1-existing-full.jpg" width="939" height="626" loading="lazy" alt="The kitchen before the redesign: cherry cabinets, a beige tile floor, and a breakfast table by the window."><span class="tag">Existing kitchen</span></li>
-        <li><img src="img/work/project1-floor-plan.png" data-full="img/work/project1-floor-plan-full.png" width="1200" height="800" loading="lazy" alt="The floor plan for the new kitchen, with cabinet sizes and measurements."><span class="tag">Floor plan</span></li>
-        <li><img src="img/work/project1-layout.png" data-full="img/work/project1-layout-full.png" width="1200" height="800" loading="lazy" alt="A 3D line drawing of the new layout: the wall between the kitchen and dining room removed, a new island, and a relocated door."><span class="tag">New layout</span></li>
-        <li><img src="img/work/project1-rendering-1.jpg" data-full="img/work/project1-rendering-1-full.jpg" width="1000" height="667" loading="lazy" alt="Rendering from above: white cabinetry, a long stone island with a dark wood base, glass pendants, and a built-in buffet by the dining table."><span class="tag">Rendering</span></li>
-        <li><img src="img/work/project1-rendering-2.jpg" data-full="img/work/project1-rendering-2-full.jpg" width="1062" height="682" loading="lazy" alt="Rendering of the island and sink wall, with the patio door on the left."><span class="tag">Rendering</span></li>
-        <li><img src="img/work/project1-rendering-3.jpg" data-full="img/work/project1-rendering-3-full.jpg" width="1022" height="681" loading="lazy" alt="Rendering from the dining side: the island with counter stools, the range hood, and built-in ovens."><span class="tag">Rendering</span></li>
-      </ul>
-    </article>
-
-    <h2 class="group-title">Before <em>&amp;</em> after</h2>
-    <!-- Each project is one <figure class="reveal">. For a project without a before photo, leave out the .before image and the button. -->
-    <div class="projects">
-      <figure class="reveal">
-        <div class="frame">
-          <img class="after" src="img/kitchen-after.jpg" width="1140" height="855" alt="The finished kitchen: sage green shaker cabinets, a white stone island with seating, a marble hexagon backsplash, pendant lights, and light wood floors.">
-          <img class="before" src="img/kitchen-before.jpg" width="1320" height="990" loading="lazy" alt="The same kitchen before: oak cabinets, white laminate counters, and black and white vinyl tile floors.">
-          <span class="state">After</span>
-          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
-        </div>
-      </figure>
-      <figure class="reveal">
-        <div class="frame">
-          <img class="after" src="img/work/bath-double-after.jpg" width="828" height="621" loading="lazy" alt="The finished bathroom: a light oak double vanity with brass hardware, two brass-framed mirrors, floral wallpaper, and a marble floor.">
-          <img class="before" src="img/work/bath-double-before.jpg" width="828" height="621" loading="lazy" alt="The same bathroom before: a distressed white double vanity, a mirrored medicine cabinet, and a cluttered countertop.">
-          <span class="state">After</span>
-          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
-        </div>
-      </figure>
-      <figure class="reveal">
-        <div class="frame">
-          <img class="after" src="img/work/bath-vanity-after-wide.jpg" data-full="img/work/bath-vanity-after.jpg" width="1253" height="940" loading="lazy" alt="The finished bathroom: a freestanding tub, a wood vanity table with a cane chair, floral wallpaper, brass sconces, and a marble floor.">
-          <img class="before" src="img/work/bath-vanity-before-wide.jpg" data-full="img/work/bath-vanity-before.jpg" width="1253" height="940" loading="lazy" alt="The same bathroom before: a built-in corner jetted tub, mirrored walls, and white tile floors.">
-          <span class="state">After</span>
-          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
-        </div>
-      </figure>
-      <figure class="reveal">
-        <div class="frame">
-          <img class="after" src="img/work/bath-shower-after-wide.jpg" data-full="img/work/bath-shower-after.jpg" width="1253" height="940" loading="lazy" alt="The finished bathroom: a walk-in glass shower with brass fixtures and marble-look tile, a heated towel rack, and a marble floor.">
-          <img class="before" src="img/work/bath-shower-before-wide.jpg" data-full="img/work/bath-shower-before.jpg" width="1253" height="940" loading="lazy" alt="The same bathroom before: a tub with a shower curtain, white wall tile, and black and white tile floors.">
-          <span class="state">After</span>
-          <button type="button" class="reveal-btn" aria-pressed="false">See the before</button>
-        </div>
-      </figure>
-    </div>
-
+    <h2 class="group-title">Recent <em>homes</em></h2>
     <!-- Each home is one <article class="home">. The first six photos show; the rest open with "Show all". -->
     <article class="home">
       <ul class="gallery">
