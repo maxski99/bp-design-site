@@ -108,7 +108,7 @@
   nav a:hover { color:var(--text); }
   .hero { padding:40px 0 72px; text-align:center; }
   .eyebrow { font-size:13px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--acc); margin:0 0 18px; }
-  h1 { font:400 clamp(38px,5.2vw,76px)/1.05 "Bodoni Moda", serif; margin:0 auto; max-width:19ch; text-wrap:balance; }
+  h1 { font:400 clamp(36px,4.4vw,64px)/1.08 "Bodoni Moda", serif; margin:0 auto; max-width:28ch; text-wrap:balance; }
   h1 em { font-style:italic; }
   .lede { color:var(--soft); max-width:52ch; margin:22px auto 34px; }
   .btn { display:inline-block; padding:15px 28px; background:var(--text); color:var(--bg); text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--text); transition:background .2s,color .2s; }
@@ -223,15 +223,27 @@
   .faq-more { margin:22px 0 0; color:var(--soft); }
   .faq-more a { color:var(--text); text-underline-offset:3px; }
   @media (prefers-reduced-motion: reduce) { .faq summary::after { transition:none; } }
-  .contact { display:grid; grid-template-columns:minmax(0, 4fr) minmax(0, 7fr); gap:clamp(32px, 5vw, 72px); align-items:start; }
-  .contact .head { position:sticky; top:32px; }
-  .contact .head h2 { margin-bottom:14px; }
-  .contact .intro { margin:0; }
-  #contact-form { gap:22px; }
-  #contact-form .row { gap:24px; }
-  #contact-form textarea { min-height:96px; }
-  #contact-form .form-actions { justify-content:flex-end; }
-  @media (max-width:880px) { .contact { grid-template-columns:1fr; gap:28px; } .contact .head { position:static; } }
+  /* booking box and contact form side by side */
+  .pack-grid { display:grid; grid-template-columns:minmax(0, 1.55fr) minmax(0, 1fr); gap:clamp(16px, 2vw, 28px); align-items:stretch; }
+  .contact-side { background:var(--raised); border:1px solid var(--rule); padding:32px 30px 26px; }
+  .contact-side .head h3 { font:400 clamp(26px,2.4vw,32px)/1.12 "Bodoni Moda", serif; margin:0 0 10px; text-wrap:balance; }
+  .contact-side .head h3 em { font-style:italic; color:var(--acc); }
+  .contact-side .intro { margin:0 0 22px; font-size:15.5px; }
+  #contact-form { gap:18px; }
+  #contact-form .row { gap:18px; align-items:end; }
+  .pack-grid .room-add button { padding:14px 10px; font-size:12px; letter-spacing:.07em; white-space:nowrap; }
+  .pack-grid .room-add button::before { margin-right:7px; }
+  #contact-form .field label { font-size:11.5px; letter-spacing:.16em; }
+  #contact-form input, #contact-form select, #contact-form textarea { font-size:16px; padding:8px 0; }
+  #contact-form textarea { min-height:84px; }
+  #contact-form .form-actions { justify-content:stretch; }
+  #contact-form .form-actions .btn { width:100%; text-align:center; }
+  /* the package card stacks its two halves while it shares the row with the form */
+  .pack-grid .package { grid-template-columns:1fr; }
+  .pack-grid .package-pick { border-left:0; border-top:1px solid var(--rule); }
+  @media (min-width:1280px) { .pack-grid .package { grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); } .pack-grid .package-pick { border-left:1px solid var(--rule); border-top:0; } .pack-grid .package-info, .pack-grid .package-pick { padding:30px 26px 26px; } }
+  @media (max-width:980px) { .pack-grid { grid-template-columns:1fr; } }
+  @media (max-width:600px) { .contact-side { padding:26px 20px 22px; } }
   form { display:grid; gap:30px; }
   .row { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
   .field { display:grid; gap:4px; }
@@ -258,9 +270,9 @@
   .hero .hero-ctas .btn { margin-top:0; }
   .hero-facts { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:10px 28px; margin:36px 0 0; padding:0; font-size:12.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--soft); }
   .hero-facts li { display:flex; align-items:center; gap:10px; }
-  .hero .hero-strip { grid-template-columns:repeat(4, minmax(0, 1fr)); gap:14px; max-width:1180px; margin:48px auto 0; text-align:left; }
-  .hero-strip .reveal .state { top:8px; left:8px; font-size:10px; letter-spacing:.14em; padding:4px 7px; }
-  .hero-strip .reveal-btn { right:8px; bottom:8px; padding:8px 10px; font-size:10.5px; letter-spacing:.1em; }
+  .hero .hero-strip { grid-template-columns:repeat(4, minmax(0, 1fr)); gap:16px; max-width:none; margin:52px 0 0; text-align:left; }
+  .hero-strip .reveal .state { top:10px; left:10px; font-size:10.5px; letter-spacing:.14em; padding:5px 8px; }
+  .hero-strip .reveal-btn { right:10px; bottom:10px; padding:9px 12px; font-size:11px; letter-spacing:.1em; }
   @media (max-width:880px) { .hero .hero-strip { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; margin-top:36px; } }
   .hero-facts li::before { content:""; width:5px; height:5px; background:var(--acc); transform:rotate(45deg); flex:none; }
   @media (max-width:520px) { .hero-facts { flex-direction:column; align-items:center; gap:10px; } }
@@ -451,93 +463,94 @@
 <section id="packages" class="space-tight"><div class="wrap">
   <h2>Design <em>packages</em></h2>
   <p class="intro">Secure your home visit and consultation by booking today!</p>
-  <div class="package" id="package-card">
-    <div class="package-info">
-      <h3>Kitchen and Bathroom Design Packages</h3>
-      <div class="package-price"><span class="price">$300</span><span class="per">first room</span></div>
-      <p class="package-extra">+ <strong>$250</strong> each additional room</p>
-      <ul>
-        <li>Home visit, measurements for floor plan, and consultation by our Lead Designer</li>
-        <li>Design plans and renderings for each room</li>
-        <li>Phone consultation to review your designs, plans, and renderings once they're delivered</li>
-        <li>One (1) free revision per room</li>
-        <li>Additional revisions: <strong>$150</strong> each</li>
-      </ul>
-    </div>
-    <div class="package-pick">
-      <p class="pick-title" id="pick-title">Choose your rooms</p>
-      <div class="room-add" role="group" aria-labelledby="pick-title">
-        <button type="button" data-add="Kitchen">Kitchen</button><button type="button" data-add="Bathroom">Bathroom</button><button type="button" data-add="Powder room">Powder room</button><button type="button" data-add="Other">Other</button>
+  <div class="pack-grid">
+    <div class="package" id="package-card">
+      <div class="package-info">
+        <h3>Kitchen and Bathroom Design Packages</h3>
+        <div class="package-price"><span class="price">$300</span><span class="per">first room</span></div>
+        <p class="package-extra">+ <strong>$250</strong> each additional room</p>
+        <ul>
+          <li>Home visit, measurements for floor plan, and consultation by our Lead Designer</li>
+          <li>Design plans and renderings for each room</li>
+          <li>Phone consultation to review your designs, plans, and renderings once they're delivered</li>
+          <li>One (1) free revision per room</li>
+          <li>Additional revisions: <strong>$150</strong> each</li>
+        </ul>
       </div>
-      <p class="pick-empty" id="pick-empty">Add each room you'd like designed.</p>
-      <ol class="picked" id="picked" aria-label="Rooms in your package"></ol>
-      <p class="pick-max" id="pick-max" hidden>That's 10 rooms, the most we can book online. Planning more? <a href="#contact">Get in touch</a> for a custom quote.</p>
-      <div class="pick-sum" id="pick-sum" aria-live="polite" hidden>
-        <div class="pick-line"><span id="pick-count"></span><strong id="pick-total"></strong></div>
-        <p id="pick-break"></p>
+      <div class="package-pick">
+        <p class="pick-title" id="pick-title">Choose your rooms</p>
+        <div class="room-add" role="group" aria-labelledby="pick-title">
+          <button type="button" data-add="Kitchen">Kitchen</button><button type="button" data-add="Bathroom">Bathroom</button><button type="button" data-add="Powder room">Powder room</button><button type="button" data-add="Other">Other</button>
+        </div>
+        <p class="pick-empty" id="pick-empty">Add each room you'd like designed.</p>
+        <ol class="picked" id="picked" aria-label="Rooms in your package"></ol>
+        <p class="pick-max" id="pick-max" hidden>That's 10 rooms, the most we can book online. Planning more? <a href="#contact">Get in touch</a> for a custom quote.</p>
+        <div class="pick-sum" id="pick-sum" aria-live="polite" hidden>
+          <div class="pick-line"><span id="pick-count"></span><strong id="pick-total"></strong></div>
+          <p id="pick-break"></p>
+        </div>
+        <a class="btn is-disabled" href="#packages" id="pkg-pay" aria-disabled="true">Add a room to continue</a>
+        <p class="pick-error" id="pick-error" role="alert"></p>
+        <p class="card-note">Up to 10 rooms online. Planning more? <a href="#contact">Get in touch</a> for a custom quote.</p>
       </div>
-      <a class="btn is-disabled" href="#packages" id="pkg-pay" aria-disabled="true">Add a room to continue</a>
-      <p class="pick-error" id="pick-error" role="alert"></p>
-      <p class="card-note">Up to 10 rooms online. Planning more? <a href="#contact">Get in touch</a> for a custom quote.</p>
     </div>
+    <aside class="contact-side" id="contact" aria-labelledby="contact-title">
+      <div class="head">
+        <h3 id="contact-title">Have questions before you <em>book</em>?</h3>
+        <p class="intro">Tell us about your project! Send a few details and we'll be happy to discuss.</p>
+      </div>
+      <form id="contact-form" novalidate>
+        <div class="row">
+          <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="project">Project</label>
+            <select id="project" name="project">
+              <option>Kitchen</option>
+              <option>Bathroom</option>
+              <option>Kitchen and bathroom</option>
+              <option>Another room</option>
+              <option>Something else</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">Choose one</option>
+              <option>Ready to start</option>
+              <option>Within 3 months</option>
+              <option>3 to 6 months</option>
+              <option>6 months or more</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+          <div class="field"><label for="source">How did you hear about us?</label>
+            <select id="source" name="source">
+              <option value="">Choose one</option>
+              <option>Google</option>
+              <option>Instagram</option>
+              <option>Facebook</option>
+              <option>A friend or family member</option>
+              <option>A contractor or builder</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+        <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-actions">
+          <button class="btn" type="submit">Send message</button>
+        </div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </aside>
   </div>
   <p class="note checkout-note">Secure checkout through Stripe. Pay by card or bank transfer.</p>
 </div></section>
 
-
-<section id="contact" class="contact-bg space-tight"><div class="wrap contact">
-  <div class="head">
-    <h2>Have questions before you <em>book</em>?</h2>
-    <p class="intro">Tell us about your project! Send a few details and we'll be happy to discuss.</p>
-  </div>
-  <form id="contact-form" novalidate>
-    <div class="row">
-      <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
-      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-    </div>
-    <div class="row">
-      <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
-      <div class="field"><label for="project">Project</label>
-        <select id="project" name="project">
-          <option>Kitchen</option>
-          <option>Bathroom</option>
-          <option>Kitchen and bathroom</option>
-          <option>Another room</option>
-          <option>Something else</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="field"><label for="timeline">Timeline</label>
-        <select id="timeline" name="timeline">
-          <option value="">Choose one</option>
-          <option>Ready to start</option>
-          <option>Within 3 months</option>
-          <option>3 to 6 months</option>
-          <option>6 months or more</option>
-          <option>Just exploring</option>
-        </select>
-      </div>
-      <div class="field"><label for="source">How did you hear about us?</label>
-        <select id="source" name="source">
-          <option value="">Choose one</option>
-          <option>Google</option>
-          <option>Instagram</option>
-          <option>Facebook</option>
-          <option>A friend or family member</option>
-          <option>A contractor or builder</option>
-          <option>Other</option>
-        </select>
-      </div>
-    </div>
-    <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
-    <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <div class="form-actions">
-      <button class="btn" type="submit">Send message</button>
-    </div>
-    <p class="form-status" role="status" aria-live="polite"></p>
-  </form>
-</div></section>
 
 
 <section id="faq" class="space-tight"><div class="wrap faq">
