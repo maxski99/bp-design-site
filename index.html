@@ -389,32 +389,39 @@
   .ret-foot p { margin:0; font-size:13px; color:var(--soft); }
   .ret-foot .btn { cursor:pointer; font-family:inherit; }
   .paper-wrap { overflow:auto; padding:22px; }
-  .paper { background:#fff; color:#1A1C1F; max-width:680px; margin:0 auto; padding:44px 50px 52px; box-shadow:0 10px 30px rgba(0,0,0,.35); font:400 14.5px/1.6 "Hanken Grotesk", Arial, sans-serif; }
-  .paper .p-head { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:12px; color:#6B6B70; }
-  .paper h2 { font:400 34px/1.1 "Bodoni Moda", serif; margin:20px 0 18px; color:#1A1C1F; }
-  .paper h4 { margin:0 0 6px; font-size:12px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#2B4A3E; }
-  .paper p { margin:0 0 8px; color:#1A1C1F; }
-  .paper .p-sec { padding:16px 0; border-top:1px solid #E4E2DD; }
-  .paper .p-sec.has-init { display:grid; grid-template-columns:minmax(0, 1fr) 108px; gap:18px; }
-  .paper .fill { font-weight:600; background:#F0F5F2; border-bottom:1px solid #9FB5AB; padding:0 3px; }
-  .paper .p-fees { width:100%; border-collapse:collapse; margin:8px 0 0; font-size:14px; }
-  .paper .p-fees td { padding:5px 0; vertical-align:top; }
-  .paper .p-fees td:last-child { text-align:right; white-space:nowrap; padding-left:12px; }
-  .paper .p-fees .total td { font-weight:700; border-top:1.5px solid #1A1C1F; padding-top:7px; }
-  .paper .slot-wrap { display:grid; gap:4px; align-content:start; }
-  .paper .slot-wrap small { font-size:11px; color:#6B6B70; }
-  .paper .init-slot, .paper .sig-slot { display:flex; align-items:center; justify-content:center; background:#FBFAF7; border:1.5px dashed #86A396; color:#2B4A3E; font:600 12px/1 "Hanken Grotesk", sans-serif; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; padding:0; }
-  .paper .init-slot { width:108px; height:58px; }
-  .paper .init-slot:hover, .paper .sig-slot:hover { background:#EEF4F1; }
-  .paper .init-slot.on, .paper .sig-slot.on { border-style:solid; background:#fff; }
-  .paper .init-slot img { max-width:94px; max-height:48px; }
-  .paper .p-sigs { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:8px; }
-  .paper .p-who { font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#6B6B70; margin-bottom:8px; }
-  .paper .sig-slot { width:100%; height:86px; margin-bottom:10px; }
-  .paper .sig-slot img { max-width:92%; max-height:74px; }
-  .paper .p-sigline { height:86px; margin-bottom:10px; display:flex; align-items:flex-end; border-bottom:1px solid #1A1C1F; font-size:12.5px; color:#6B6B70; padding-bottom:6px; font-style:italic; }
-  .paper button:focus-visible { outline:2px solid #2B4A3E; outline-offset:2px; }
-  @media (max-width:640px) { .paper { padding:26px 18px 32px; } .paper h2 { font-size:28px; } .paper .p-sec.has-init { grid-template-columns:1fr; gap:10px; } .paper .p-sigs { grid-template-columns:1fr; } .paper-wrap { padding:10px; } .ret-foot p { display:none; } }
+  .paper { max-width:720px; margin:0 auto; display:grid; gap:22px; }
+  .sheet { background:#fff; color:#111; padding:54px 60px 58px; box-shadow:0 10px 30px rgba(0,0,0,.35); font:400 15.5px/1.5 "Times New Roman", Times, serif; }
+  .sheet h2 { font:700 27px/1.2 "Times New Roman", Times, serif; text-align:center; text-transform:uppercase; margin:0; color:#111; }
+  .sheet .p-sub { text-align:center; margin:4px 0 24px; font-size:15.5px; }
+  .sheet h4 { font:700 15.5px/1.3 "Times New Roman", Times, serif; text-transform:uppercase; margin:20px 0 6px; color:#111; letter-spacing:0; }
+  .sheet p { margin:0 0 8px; color:#111; }
+  .sheet .fill { text-decoration:underline; text-underline-offset:3px; }
+  .sheet .p-fees { width:100%; border-collapse:collapse; margin:4px 0 6px; font-size:15.5px; }
+  .sheet .p-fees td { padding:2px 0; vertical-align:top; }
+  .sheet .p-fees td:last-child { text-align:right; white-space:nowrap; padding-left:12px; }
+  .sheet .p-fees .total td { font-weight:700; border-top:1px solid #111; padding-top:4px; }
+  .sheet .p-sigs { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:16px; }
+  .sheet .p-who { font-weight:700; text-transform:uppercase; margin:0 0 12px; }
+  .sheet .p-line { display:flex; align-items:flex-end; gap:8px; margin:0 0 14px; }
+  .sheet .p-line > b { font-weight:400; white-space:nowrap; }
+  .sheet .p-line > span { flex:1; border-bottom:1px solid #111; padding:0 2px 1px; min-height:1.5em; }
+  .sheet .p-line .muted { color:#666; font-style:italic; font-size:13.5px; }
+  .sheet .sig-slot { flex:1; height:58px; border:0; border-bottom:1px solid #111; background:#FFF8D6; cursor:pointer; font:italic 14.5px "Times New Roman", Times, serif; color:#5A4A00; display:flex; align-items:center; justify-content:center; padding:0; }
+  .sheet .sig-slot:hover { background:#FFF1B0; }
+  .sheet .sig-slot.on { background:#fff; }
+  .sheet .sig-slot img { max-height:54px; max-width:96%; }
+  .sheet .i-intro { margin:0 0 16px; }
+  .sheet .i-row { display:grid; grid-template-columns:minmax(0, 1fr) 124px; gap:20px; align-items:center; padding:12px 0; border-top:1px solid #999; }
+  .sheet .i-row:last-of-type { border-bottom:1px solid #999; }
+  .sheet .i-row h5 { font:700 14.5px/1.3 "Times New Roman", Times, serif; text-transform:uppercase; margin:0 0 3px; }
+  .sheet .i-row p { margin:0; }
+  .sheet .init-slot { width:124px; height:56px; border:1px solid #111; background:#FFF8D6; cursor:pointer; font:italic 14px "Times New Roman", Times, serif; color:#5A4A00; display:flex; align-items:center; justify-content:center; padding:0; }
+  .sheet .init-slot:hover { background:#FFF1B0; }
+  .sheet .init-slot.on { background:#fff; }
+  .sheet .init-slot img { max-width:110px; max-height:46px; }
+  .sheet .p-note { font-size:13px; color:#555; margin:14px 0 0; }
+  .sheet button:focus-visible { outline:2px solid #1D4ED8; outline-offset:2px; }
+  @media (max-width:640px) { .sheet { padding:28px 18px 32px; font-size:15px; } .sheet .p-sigs { grid-template-columns:1fr; gap:6px; } .sheet .i-row { grid-template-columns:1fr; gap:8px; } }
   /* The white pop-up for drawing initials or a signature */
   dialog.padbox { width:min(460px, calc(100vw - 24px)); padding:22px 22px 18px; border:0; background:#fff; color:#1A1C1F; box-shadow:0 24px 60px rgba(0,0,0,.45); }
   dialog.padbox.is-sig { width:min(640px, calc(100vw - 24px)); }
@@ -694,7 +701,7 @@
 <dialog class="retainer" id="retainer" aria-labelledby="ret-title">
   <div class="ret-bar"><span class="ret-progress" id="ret-progress"></span><button type="button" class="ret-close" data-ret-close aria-label="Close the agreement">&times;</button></div>
   <div class="paper-wrap"><article class="paper" id="paper"></article></div>
-  <div class="ret-foot"><p>Tap <strong>Initial</strong> on each section, then <strong>Click to sign</strong>.</p><button type="button" class="btn" id="ret-done">Done</button></div>
+  <div class="ret-foot"><p><strong>Sign</strong> page 1, then <strong>initial</strong> each item on page 2.</p><button type="button" class="btn" id="ret-done">Done</button></div>
 </dialog>
 
 <dialog class="padbox" id="padbox" aria-labelledby="pad-title">
@@ -786,7 +793,7 @@
   const fmt = n => "$" + n.toLocaleString("en-US");
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const priceFor = n => n ? FIRST_ROOM + EXTRA_ROOM * (n - 1) : 0;
-  // The Retainer Agreement, filled in from the booking. Each section with initial: true is initialed; the client signs at the end.
+  // The Retainer Agreement, filled in from the booking. The client signs page 1 and initials each section's `ack` line on the Client Initials page.
   // Keep identical in bp-design-site/index.html and bp-agreements/src/pdf.js. **text** is bold.
   const retainerDoc = r => {
     const usd = v => "$" + Number(v).toLocaleString("en-US");
@@ -799,25 +806,25 @@
         { label: "Total due at signing", amount: usd(Number(r.total)), total: true },
       ],
       sections: [
-        { id: "services", title: "Services & Fees", initial: true, fees: true, paras: [
+        { id: "services", title: "Services & Fees", initial: true, fees: true, ack: "I understand my package: the **$300 Design Retainer** covers the home visit and the first room, each additional room is **$250**, each room includes one free revision, and each additional revision is **$150**.", paras: [
           "The **$300 Design Retainer** includes one in-home consultation with measurements, a design plan and rendering for one room, and one free revision.",
           "Each additional room is **$250** and includes a design plan, a rendering, and one free revision.",
           "Once the designs are delivered, the Designer will review them with the Client in a phone consultation.",
           "Each revision beyond the free one is **$150**. A revision is one set of changes to one room’s design; a new design direction, an added room, or a major change in scope is additional work, not a revision.",
         ] },
-        { id: "design_only", title: "Design Services Only", initial: true, paras: [
+        { id: "design_only", title: "Design Services Only", initial: true, ack: "I understand BP Design Group provides **design services only and is not a contractor**, and is **not responsible for the work, mistakes, delays, workmanship, or performance** of any contractor or installer I hire.", paras: [
           "BP Design Group provides **design services only and is not a contractor**. The Client is responsible for hiring their own contractors and installers. BP Design Group is **not responsible for the work, mistakes, delays, workmanship, or performance of any contractor or installer the Client hires**.",
         ] },
-        { id: "payment", title: "Payment & No Refunds", initial: true, paras: [
+        { id: "payment", title: "Payment & No Refunds", initial: true, ack: "I understand the full amount is due at signing and that **all fees are non-refundable**.", paras: [
           "The full amount is due at signing, and the home visit is scheduled once payment clears. **All fees are non-refundable.** If the Designer cancels or reschedules the appointment, the Client will not owe a rescheduling fee and may request a full refund.",
         ] },
-        { id: "rescheduling", title: "Rescheduling", initial: true, paras: [
+        { id: "rescheduling", title: "Rescheduling", initial: true, ack: "I understand I may reschedule the home visit **once** with at least **48 hours’ notice**; with less notice, or if the appointment is missed, a **new $300 retainer** is required.", paras: [
           "The Client may reschedule the home visit **once** by notifying the Designer at least **48 hours** before the appointment. With less notice, or if the appointment is missed, a **new $300 retainer** is required to rebook; additional room fees already paid carry over.",
         ] },
-        { id: "delivery", title: "Delivery", initial: true, paras: [
+        { id: "delivery", title: "Delivery", initial: true, ack: "I understand the delivery time of **three (3) to five (5) business days** after the home visit (for one or two rooms) is an estimate, not a guarantee.", paras: [
           "The Designer aims to deliver designs for one or two rooms within **three (3) to five (5) business days** after the home visit and will estimate larger projects at booking. Delivery dates are estimates, not guarantees.",
         ] },
-        { id: "terms", title: "Terms & Conditions", initial: true, paras: [
+        { id: "terms", title: "Terms & Conditions", initial: true, ack: "I have received and agree to the BP Design Group LLC **Terms & Conditions**.", paras: [
           "This Agreement includes the BP Design Group LLC Terms & Conditions, which the Client acknowledges receiving. If they conflict, this Agreement controls.",
         ] },
       ],
@@ -977,21 +984,27 @@
     const d = retainerDoc(currentRecord()), key = JSON.stringify(d);
     if (key !== docKey) { stamped = {}; docKey = key; }
     const fill = v => '<span class="fill">' + esc(v) + "</span>";
+    const line = (label, inner) => '<div class="p-line"><b>' + label + "</b><span>" + inner + "</span></div>";
     const slot = s => '<button type="button" class="init-slot' + (stamped[s.id] ? " on" : "") + '" data-init="' + s.id + '" aria-label="' + (stamped[s.id] ? "Initialed: " : "Initial: ") + esc(s.title) + '">' +
-      (stamped[s.id] && initialsPng ? '<img src="' + initialsPng + '" alt="Your initials">' : "Initial") + "</button>";
+      (stamped[s.id] && initialsPng ? '<img src="' + initialsPng + '" alt="Your initials">' : "Initial here") + "</button>";
     paper.innerHTML =
-      '<div class="p-head"><img src="bp-mark-email.png" width="31" height="32" alt="BP Design Group"><span>info@bpdesignchi.com · (773) 245-3529</span></div>' +
-      '<h2 id="ret-title">Retainer Agreement</h2>' +
-      '<div class="p-sec"><h4>Parties</h4><p>This Retainer Agreement (the “Agreement”) is entered into on ' + fill(today()) + " between BP Design Group LLC (the “Designer”) and " + fill(fullName()) +
-        " (the “Client”) for design services at " + fill(composeAddress()) + " (the “Property”).</p></div>" +
-      d.sections.map(s => '<div class="p-sec' + (s.initial ? " has-init" : "") + '"><div><h4>' + esc(s.title) + "</h4>" + s.paras.map(p => "<p>" + bold(p) + "</p>").join("") +
-        (s.fees ? '<table class="p-fees">' + d.fees.map(f => "<tr" + (f.total ? ' class="total"' : "") + "><td>" + esc(f.label) + "</td><td>" + esc(f.amount) + "</td></tr>").join("") + "</table>" : "") +
-        "</div>" + (s.initial ? '<div class="slot-wrap">' + slot(s) + "<small>Client initials</small></div>" : "") + "</div>").join("") +
-      '<div class="p-sec"><h4>Signatures</h4><div class="p-sigs">' +
-        '<div><p class="p-who">BP Design Group LLC</p><div class="p-sigline">Signs when your payment is received</div><p>Name: Beata Piskorska, CEO &amp; Lead Designer</p></div>' +
-        '<div><p class="p-who">Client</p><button type="button" class="sig-slot' + (sigPng ? " on" : "") + '" id="sig-slot" aria-label="' + (sigPng ? "Signed. Click to sign again" : "Click to sign") + '">' +
-          (sigPng ? '<img src="' + sigPng + '" alt="Your signature">' : "Click to sign") + "</button><p>Name: " + fill(fullName()) + "</p><p>Date: " + fill(today()) + "</p></div>" +
-      "</div></div>";
+      // Page 1: the agreement, signed by the Client
+      '<div class="sheet"><h2 id="ret-title">Retainer Agreement</h2><p class="p-sub">BP Design Group LLC · info@bpdesignchi.com</p>' +
+      "<h4>Parties</h4><p>This Retainer Agreement (the “Agreement”) is entered into on " + fill(today()) + " between BP Design Group LLC (the “Designer”) and " + fill(fullName()) +
+        " (the “Client”) for design services at " + fill(composeAddress()) + " (the “Property”).</p>" +
+      d.sections.map(s => "<h4>" + esc(s.title) + "</h4>" + s.paras.map(p => "<p>" + bold(p) + "</p>").join("") +
+        (s.fees ? '<table class="p-fees">' + d.fees.map(fr => "<tr" + (fr.total ? ' class="total"' : "") + "><td>" + esc(fr.label) + "</td><td>" + esc(fr.amount) + "</td></tr>").join("") + "</table>" : "")).join("") +
+      '<h4>Signatures</h4><div class="p-sigs">' +
+        '<div><p class="p-who">BP Design Group LLC</p>' + line("Name:", "Beata Piskorska") + line("Title:", "CEO &amp; Lead Designer") + line("Signature:", '<span class="muted">Signs upon receipt of payment</span>') + line("Date:", "") + "</div>" +
+        '<div><p class="p-who">Client</p>' + line("Name:", esc(fullName())) +
+          '<div class="p-line"><b>Signature:</b><button type="button" class="sig-slot' + (sigPng ? " on" : "") + '" id="sig-slot" aria-label="' + (sigPng ? "Signed. Click to sign again" : "Click to sign") + '">' + (sigPng ? '<img src="' + sigPng + '" alt="Your signature">' : "Click to sign") + "</button></div>" +
+          line("Date:", esc(today())) + "</div>" +
+      "</div></div>" +
+      // Page 2: Client Initials
+      '<div class="sheet"><h2>Client Initials</h2><p class="p-sub">Retainer Agreement · BP Design Group LLC · ' + esc(fullName()) + "</p>" +
+      '<p class="i-intro">Please initial each item below to confirm you have read and agree to the matching section of the Retainer Agreement.</p>' +
+      d.sections.filter(s => s.initial).map(s => '<div class="i-row"><div><h5>' + esc(s.title) + "</h5><p>" + bold(s.ack) + "</p></div>" + slot(s) + "</div>").join("") +
+      '<p class="p-note">Your initials are drawn once and applied to each item you tap.</p></div>';
     updateSignCard();
   };
   const renderReview = () => {
@@ -1130,63 +1143,91 @@
   dlg.querySelector("[data-close]").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", event => { if (event.target === dlg) dlg.close(); });
 
-  // Backup PDF (only if the signing automation can't be reached): the signed Retainer Agreement, then the Terms.
+  // Backup PDF (only if the signing automation can't be reached): the signed Retainer Agreement, the Client Initials page, then the Terms.
   const makePdf = async rec => {
     const JsPDF = await loadPdf();
     const doc = new JsPDF({ unit: "pt", format: "letter" });
-    const M = 54, W = 612 - M * 2, H = 792, BOTTOM = H - M - 20, IN = W - 112;
+    const M = 54, W = 612 - M * 2, H = 792, BOTTOM = H - M - 20;
     let y = M;
-    // Start a new page unless h points fit, so paragraphs, sections, and signatures never split.
+    // Start a new page unless h points fit, so paragraphs, rows, and signatures never split.
     const need = h => { if (y + h > BOTTOM && h < BOTTOM - M) { doc.addPage(); y = M; } };
-    const lines = (text, size, style, width) => { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size); return String(text).split("\n").flatMap(t => doc.splitTextToSize(t, width || W)); };
+    const lines = (text, size, style, width) => { doc.setFont("times", style || "normal"); doc.setFontSize(size); return String(text).split("\n").flatMap(t => doc.splitTextToSize(t, width || W)); };
     const write = (text, size, style, gap, keep, width) => {
       const ls = lines(text, size, style, width);
-      need(ls.length * size * 1.35 + (keep || 0));
-      doc.setFont("helvetica", style || "normal"); doc.setFontSize(size);
-      ls.forEach(line => { doc.text(line, M, y + size); y += size * 1.35; });
+      need(ls.length * size * 1.3 + (keep || 0));
+      doc.setFont("times", style || "normal"); doc.setFontSize(size);
+      ls.forEach(line => { doc.text(line, M, y + size); y += size * 1.3; });
       y += gap || 0;
     };
+    const center = (text, size, style) => { doc.setFont("times", style || "normal"); doc.setFontSize(size); doc.text(text, 306, y + size, { align: "center" }); y += size * 1.35; };
     const image = (src, x, top, maxW, maxH) => { const p = doc.getImageProperties(src), s = Math.min(maxW / p.width, maxH / p.height); doc.addImage(src, "PNG", x, top, p.width * s, p.height * s); };
-    const d = retainerDoc(rec), plainText = t => t.replace(/\*\*/g, "");
-    write("BP Design Group LLC  ·  info@bpdesignchi.com  ·  (773) 245-3529", 9, "normal", 4);
-    write("Retainer Agreement", 20, "bold", 4);
-    write("Reference " + rec.reference + "  ·  Signed " + rec.signed_at_local, 9, "normal", 12);
-    write("PARTIES", 9.5, "bold", 3);
-    write("This Retainer Agreement (the “Agreement”) is entered into on " + String(rec.signed_at_local).split(" at ")[0] + " between BP Design Group LLC (the “Designer”) and " + rec.signed_name + " (the “Client”) for design services at " + rec.project_address + " (the “Property”).", 9.5, "normal", 12);
+    const d = retainerDoc(rec), plainText = t => t.replace(/\*\*/g, ""), date = String(rec.signed_at_local).split(" at ")[0];
+    // Page 1: the agreement
+    center("RETAINER AGREEMENT", 17, "bold");
+    center("BP Design Group LLC  ·  info@bpdesignchi.com", 11);
+    y += 8;
+    write("PARTIES", 10.5, "bold", 2, 26);
+    write("This Retainer Agreement (the “Agreement”) is entered into on " + date + " between BP Design Group LLC (the “Designer”) and " + rec.signed_name + " (the “Client”) for design services at " + rec.project_address + " (the “Property”).", 10, "normal", 8);
     d.sections.forEach(s => {
-      const body = s.paras.map(plainText).concat(s.fees ? d.fees.map(f => f.label + "  —  " + f.amount) : []);
-      need(Math.max(18 + body.reduce((n, p) => n + lines(p, 9.5, "normal", IN).length * 12.8 + 4, 0), s.initial ? 70 : 0));
-      const top = y;
-      write(s.title.toUpperCase(), 9.5, "bold", 3, 0, IN);
-      body.forEach(p => write(p, 9.5, "normal", 4, 0, IN));
-      if (s.initial) {
-        doc.setDrawColor(150); doc.rect(M + W - 92, top, 92, 46);
-        if (rec.initials.items[s.id] && rec.initials.image) image(rec.initials.image, M + W - 86, top + 6, 80, 34);
-        doc.setFont("helvetica", "normal"); doc.setFontSize(6.5); doc.setTextColor(110); doc.text("Client initials", M + W - 92, top + 56); doc.setTextColor(0);
-        y = Math.max(y, top + 62);
-      }
-      y += 8;
+      write(s.title.toUpperCase(), 10.5, "bold", 2, 26);
+      s.paras.forEach(p => write(plainText(p), 10, "normal", 3));
+      if (s.fees) d.fees.forEach(f => {
+        need(14); doc.setFont("times", f.total ? "bold" : "normal"); doc.setFontSize(10);
+        doc.text(f.label, M, y + 10); doc.text(f.amount, M + W, y + 10, { align: "right" }); y += 14;
+      });
+      y += 4;
     });
-    need(150);
-    write("SIGNATURES", 9.5, "bold", 6);
-    image(rec.signature_png, M, y, 220, 60); y += 66;
-    doc.setDrawColor(40); doc.line(M, y, M + 250, y); y += 12;
-    write("Client: " + rec.signed_name + "  ·  " + rec.email + "  ·  " + rec.signed_at_local, 9.5);
-    write("BP Design Group LLC signs when payment is received (Beata Piskorska, CEO & Lead Designer).", 9, "normal", 6);
+    need(130);
+    write("SIGNATURES", 10.5, "bold", 6);
+    const colW = (W - 36) / 2, top = y;
+    const sigCol = (x, who, rows) => {
+      let yy = top;
+      doc.setFont("times", "bold"); doc.setFontSize(10.5); doc.text(who, x, yy + 10); yy += 22;
+      rows.forEach(([label, value, img]) => {
+        doc.setFont("times", "normal"); doc.setFontSize(10);
+        const lineY = img ? yy + 30 : yy + 12, lw = doc.getTextWidth(label + " ");
+        doc.text(label, x, lineY - 2);
+        if (img) image(img, x + lw + 6, lineY - 28, colW - lw - 10, 26); else if (value) doc.text(value, x + lw + 4, lineY - 2);
+        doc.setDrawColor(0); doc.line(x + lw, lineY, x + colW, lineY);
+        yy = lineY + 10;
+      });
+      return yy;
+    };
+    const endA = sigCol(M, "BP DESIGN GROUP LLC", [["Name:", "Beata Piskorska, CEO & Lead Designer"], ["Signature:", "Signs upon receipt of payment"], ["Date:", ""]]);
+    const endB = sigCol(M + colW + 36, "CLIENT", [["Name:", rec.signed_name], ["Signature:", "", rec.signature_png], ["Date:", date]]);
+    y = Math.max(endA, endB) + 4;
+    // Page 2: Client Initials
     doc.addPage(); y = M;
-    write("Terms & Conditions", 16, "bold", 2);
+    center("CLIENT INITIALS", 17, "bold");
+    center("Retainer Agreement  ·  BP Design Group LLC  ·  " + rec.signed_name, 11);
+    y += 8;
+    write("The Client initialed each item below to confirm they have read and agree to the matching section of the Retainer Agreement.", 10, "normal", 10);
+    d.sections.filter(s => s.initial).forEach(s => {
+      const body = lines(plainText(s.ack), 10, "normal", W - 124), h = Math.max(16 + body.length * 13, 50) + 12;
+      need(h); const rowTop = y;
+      doc.setDrawColor(150); doc.line(M, rowTop, M + W, rowTop);
+      y += 6; write(s.title.toUpperCase(), 10, "bold", 1, 0, W - 124);
+      write(plainText(s.ack), 10, "normal", 0, 0, W - 124);
+      doc.setDrawColor(0); doc.rect(M + W - 100, rowTop + 6, 100, 42);
+      if (rec.initials.items[s.id] && rec.initials.image) image(rec.initials.image, M + W - 94, rowTop + 11, 88, 32);
+      y = rowTop + h;
+    });
+    doc.setDrawColor(150); doc.line(M, y, M + W, y);
+    // Terms
+    doc.addPage(); y = M;
+    center("TERMS & CONDITIONS", 17, "bold");
     write("Part of this Agreement. Accepted electronically by " + rec.signed_name + " on " + rec.signed_at_local + ".", 9, "normal", 10);
-    const firstH = b => !b ? 0 : b.type === "ul" ? 14 : b.type === "p" ? lines(b.text, 9).length * 9 * 1.35 : 20;
+    const firstH = b => !b ? 0 : b.type === "ul" ? 14 : b.type === "p" ? lines(b.text, 9.5).length * 9.5 * 1.3 : 20;
     if (termsBlocks) termsBlocks.forEach((b, i) => {
       if (b.type === "h2") { y += 6; write(b.text, 11, "bold", 2, 2 + firstH(termsBlocks[i + 1])); }
-      else if (b.type === "h3") write(b.text, 9.5, "bold", 1, 1 + firstH(termsBlocks[i + 1]));
-      else if (b.type === "ul") b.items.forEach(it => write("-  " + it, 9));
-      else write(b.text, 9, "normal", 4);
+      else if (b.type === "h3") write(b.text, 10, "bold", 1, 1 + firstH(termsBlocks[i + 1]));
+      else if (b.type === "ul") b.items.forEach(it => write("-  " + it, 9.5));
+      else write(b.text, 9.5, "normal", 4);
     });
     const pages = doc.getNumberOfPages();
     for (let i = 1; i <= pages; i++) {
-      doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(120);
-      doc.text("BP Design Group LLC · Retainer Agreement · " + rec.reference + " · Page " + i + " of " + pages, M, H - 28);
+      doc.setPage(i); doc.setFont("times", "normal"); doc.setFontSize(8); doc.setTextColor(120);
+      doc.text("BP Design Group LLC · Retainer Agreement · " + rec.reference + " · Page " + i + " of " + pages, 306, H - 28, { align: "center" });
       doc.setTextColor(0);
     }
     doc.save("BP-Design-Group-Retainer-Agreement-" + rec.reference + ".pdf");
