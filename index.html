@@ -52,7 +52,7 @@
    "name": "How soon will I see my design?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "We aim to deliver your initial designs within three business days after the home visit. Then we set up a phone consultation to review your plans and renderings together."
+    "text": "For one or two rooms, we aim to deliver your designs within three to five business days after the home visit; for larger projects, we'll give you an estimate when you book. Then we review them with you by phone."
    }
   },
   {
@@ -60,7 +60,7 @@
    "name": "What if I want changes?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Each room includes one free revision. Additional revisions are $150 each."
+    "text": "Each room includes one free revision. Each revision beyond that is $150."
    }
   },
   {
@@ -68,7 +68,7 @@
    "name": "What does it cost?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "$300 for the first room, including the home visit, and $250 for each additional room. Your package is paid in full when you book."
+    "text": "$300 for the first room, including the home visit, and $250 for each additional room. The full amount is paid when you book, and all fees are non-refundable."
    }
   },
   {
@@ -76,7 +76,7 @@
    "name": "Can I reschedule or cancel?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "You can reschedule your home visit once at no charge with at least 24 hours' notice. Cancel at least 48 hours before your home visit for a full refund; later cancellations and missed appointments are non-refundable."
+    "text": "You can reschedule your home visit once with at least 48 hours' notice. With less notice, or if the visit is missed, a new $300 retainer is needed to rebook; room fees you've already paid carry over. All fees are non-refundable, but if we cancel or reschedule, you can request a full refund."
    }
   },
   {
@@ -84,7 +84,7 @@
    "name": "Where do you work?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "We design kitchens and bathrooms for homes across the Chicagoland Area."
+    "text": "We design kitchens and bathrooms for homes across Chicagoland and the surrounding suburbs. Beyond a reasonable distance, we may quote a travel fee."
    }
   }
  ]
@@ -371,6 +371,70 @@
     .agree .summary div { grid-template-columns:1fr; gap:2px; }
     .agree .step-nav { flex-wrap:wrap; } .agree .step-nav .btn { flex:1; } .agree .step-nav .fine { flex-basis:100%; order:-1; max-width:none; }
   }
+  /* Review & sign: the Retainer Agreement card and the Terms checkbox */
+  .agree .sign-card { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; border:1px solid var(--rule); padding:18px 20px; }
+  .agree .sign-card.done { border-color:var(--acc); }
+  .agree .sign-kicker { margin:0 0 4px; font-size:12px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; }
+  .agree .sign-card.done .sign-kicker::after { content:" ✓"; color:var(--acc); }
+  .agree .sign-state { margin:0; font-size:14.5px; color:var(--soft); max-width:42ch; }
+  .agree .terms-card { display:grid; gap:14px; justify-items:start; }
+  /* The agreement, shown as a document */
+  dialog.retainer { width:min(820px, calc(100vw - 24px)); height:min(92vh, 1100px); max-height:none; padding:0; border:0; background:#2A2D31; color:#1A1C1F; }
+  dialog.retainer[open] { display:grid; grid-template-rows:auto minmax(0, 1fr) auto; }
+  dialog.retainer::backdrop { background:rgba(8,9,10,.8); }
+  .ret-bar, .ret-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 18px; background:#1C1F23; color:var(--text); }
+  .ret-progress { font-size:13px; font-weight:600; letter-spacing:.08em; color:var(--soft); }
+  .ret-close { background:none; border:0; color:var(--soft); font-size:28px; line-height:1; cursor:pointer; padding:0 4px; }
+  .ret-close:hover { color:var(--text); }
+  .ret-foot p { margin:0; font-size:13px; color:var(--soft); }
+  .ret-foot .btn { cursor:pointer; font-family:inherit; }
+  .paper-wrap { overflow:auto; padding:22px; }
+  .paper { background:#fff; color:#1A1C1F; max-width:680px; margin:0 auto; padding:44px 50px 52px; box-shadow:0 10px 30px rgba(0,0,0,.35); font:400 14.5px/1.6 "Hanken Grotesk", Arial, sans-serif; }
+  .paper .p-head { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:12px; color:#6B6B70; }
+  .paper h2 { font:400 34px/1.1 "Bodoni Moda", serif; margin:20px 0 18px; color:#1A1C1F; }
+  .paper h4 { margin:0 0 6px; font-size:12px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#2B4A3E; }
+  .paper p { margin:0 0 8px; color:#1A1C1F; }
+  .paper .p-sec { padding:16px 0; border-top:1px solid #E4E2DD; }
+  .paper .p-sec.has-init { display:grid; grid-template-columns:minmax(0, 1fr) 108px; gap:18px; }
+  .paper .fill { font-weight:600; background:#F0F5F2; border-bottom:1px solid #9FB5AB; padding:0 3px; }
+  .paper .p-fees { width:100%; border-collapse:collapse; margin:8px 0 0; font-size:14px; }
+  .paper .p-fees td { padding:5px 0; vertical-align:top; }
+  .paper .p-fees td:last-child { text-align:right; white-space:nowrap; padding-left:12px; }
+  .paper .p-fees .total td { font-weight:700; border-top:1.5px solid #1A1C1F; padding-top:7px; }
+  .paper .slot-wrap { display:grid; gap:4px; align-content:start; }
+  .paper .slot-wrap small { font-size:11px; color:#6B6B70; }
+  .paper .init-slot, .paper .sig-slot { display:flex; align-items:center; justify-content:center; background:#FBFAF7; border:1.5px dashed #86A396; color:#2B4A3E; font:600 12px/1 "Hanken Grotesk", sans-serif; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; padding:0; }
+  .paper .init-slot { width:108px; height:58px; }
+  .paper .init-slot:hover, .paper .sig-slot:hover { background:#EEF4F1; }
+  .paper .init-slot.on, .paper .sig-slot.on { border-style:solid; background:#fff; }
+  .paper .init-slot img { max-width:94px; max-height:48px; }
+  .paper .p-sigs { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:8px; }
+  .paper .p-who { font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#6B6B70; margin-bottom:8px; }
+  .paper .sig-slot { width:100%; height:86px; margin-bottom:10px; }
+  .paper .sig-slot img { max-width:92%; max-height:74px; }
+  .paper .p-sigline { height:86px; margin-bottom:10px; display:flex; align-items:flex-end; border-bottom:1px solid #1A1C1F; font-size:12.5px; color:#6B6B70; padding-bottom:6px; font-style:italic; }
+  .paper button:focus-visible { outline:2px solid #2B4A3E; outline-offset:2px; }
+  @media (max-width:640px) { .paper { padding:26px 18px 32px; } .paper h2 { font-size:28px; } .paper .p-sec.has-init { grid-template-columns:1fr; gap:10px; } .paper .p-sigs { grid-template-columns:1fr; } .paper-wrap { padding:10px; } .ret-foot p { display:none; } }
+  /* The white pop-up for drawing initials or a signature */
+  dialog.padbox { width:min(460px, calc(100vw - 24px)); padding:22px 22px 18px; border:0; background:#fff; color:#1A1C1F; box-shadow:0 24px 60px rgba(0,0,0,.45); }
+  dialog.padbox.is-sig { width:min(640px, calc(100vw - 24px)); }
+  dialog.padbox::backdrop { background:rgba(8,9,10,.55); }
+  .padbox h3 { margin:0 0 4px; font:400 24px/1.2 "Bodoni Moda", serif; color:#1A1C1F; }
+  .padbox .pad-hint { margin:0 0 12px; font-size:13.5px; color:#6B6B70; }
+  .padbox canvas { display:block; width:100%; height:170px; background:#fff; border:1.5px solid #CFCBC4; touch-action:none; cursor:crosshair; }
+  .padbox.is-sig canvas { height:200px; }
+  .pad-reuse { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:0 0 12px; padding:10px 12px; background:#F0F5F2; }
+  .pad-reuse[hidden] { display:none; }
+  .pad-reuse img { max-height:40px; max-width:120px; }
+  .pad-reuse .pad-hint { margin:0; }
+  .pad-error { min-height:1.2em; margin:8px 0 0; font-size:13px; color:#B4412E; }
+  .pad-actions { display:flex; align-items:center; gap:10px; margin-top:6px; }
+  .pad-actions .grow { flex:1; }
+  .pad-btn { font:600 12.5px/1 "Hanken Grotesk", sans-serif; letter-spacing:.12em; text-transform:uppercase; padding:12px 16px; border:1px solid #1A1C1F; background:#1A1C1F; color:#fff; cursor:pointer; }
+  .pad-btn.ghost { background:#fff; color:#1A1C1F; }
+  .pad-link { background:none; border:0; padding:0; font:inherit; font-size:13px; color:#555; text-decoration:underline; cursor:pointer; }
+  .pick-policy { margin:12px 0 0; font-size:13.5px; color:var(--soft); text-align:center; }
+  .foot-designer { margin-top:0; padding:44px 0 36px; }
   @media (max-width:600px) { .agree form { padding:28px 20px 22px; } .agree h2 { font-size:26px; } }
   @media (max-width:880px) {
     .pkgs, .steps { grid-template-columns:1fr; } nav { display:none; } section { padding:48px 0; }
@@ -449,14 +513,6 @@
     <li><img src="img/work/project1-rendering-3.jpg" data-full="img/work/project1-rendering-3-full.jpg" width="1022" height="681" loading="lazy" alt="Rendering from the dining side: the island with counter stools, the range hood, and built-in ovens."><span class="tag">Rendering</span></li>
   </ul>
   <a class="designer-link steps-more" href="work.html">See more of our work &rarr;</a>
-  <div class="designer">
-    <img src="img/beata-thumb.jpg" width="120" height="150" loading="lazy" alt="Beata Piskorska">
-    <div>
-      <p class="eyebrow">Led by</p>
-      <p class="designer-name">Beata Piskorska</p>
-      <p class="designer-role">CEO &amp; Lead Designer · 15 years designing kitchens, bathrooms, and homes.</p>
-      <a class="designer-link" href="about.html">Meet Beata &rarr;</a>
-    </div>
   </div>
 </div></section>
 
@@ -491,6 +547,7 @@
         </div>
         <a class="btn is-disabled" href="#packages" id="pkg-pay" aria-disabled="true">Add a room to continue</a>
         <p class="pick-error" id="pick-error" role="alert"></p>
+      <p class="pick-policy">Paid in full at booking. All fees are non-refundable.</p>
         <p class="card-note">Up to 10 rooms online. Planning more? <a href="#contact">Get in touch</a> for a custom quote.</p>
       </div>
     </div>
@@ -558,11 +615,11 @@
   <div class="faq-list">
     <details><summary>Are you a contractor?</summary><p>No. BP Design Group is a design firm. We create your plans and renderings; you hire your own contractor and installers, and they verify all measurements and site conditions before ordering materials or building.</p></details>
     <details><summary>What happens at the home visit?</summary><p>Our Lead Designer walks the space with you, takes measurements for the floor plan, and talks through how you use the room, the look you want, and what matters most to you.</p></details>
-    <details><summary>How soon will I see my design?</summary><p>We aim to deliver your initial designs within three business days after the home visit. Then we set up a phone consultation to review your plans and renderings together.</p></details>
-    <details><summary>What if I want changes?</summary><p>Each room includes one free revision. Additional revisions are $150 each.</p></details>
-    <details><summary>What does it cost?</summary><p>$300 for the first room, including the home visit, and $250 for each additional room. Your package is paid in full when you book.</p></details>
-    <details><summary>Can I reschedule or cancel?</summary><p>You can reschedule your home visit once at no charge with at least 24 hours' notice. Cancel at least 48 hours before your home visit for a full refund; later cancellations and missed appointments are non-refundable.</p></details>
-    <details><summary>Where do you work?</summary><p>We design kitchens and bathrooms for homes across the Chicagoland Area.</p></details>
+    <details><summary>How soon will I see my design?</summary><p>For one or two rooms, we aim to deliver your designs within three to five business days after the home visit; for larger projects, we'll give you an estimate when you book. Then we review them with you by phone.</p></details>
+    <details><summary>What if I want changes?</summary><p>Each room includes one free revision. Each revision beyond that is $150.</p></details>
+    <details><summary>What does it cost?</summary><p>$300 for the first room, including the home visit, and $250 for each additional room. The full amount is paid when you book, and all fees are non-refundable.</p></details>
+    <details><summary>Can I reschedule or cancel?</summary><p>You can reschedule your home visit once with at least 48 hours' notice. With less notice, or if the visit is missed, a new $300 retainer is needed to rebook; room fees you've already paid carry over. All fees are non-refundable, but if we cancel or reschedule, you can request a full refund.</p></details>
+    <details><summary>Where do you work?</summary><p>We design kitchens and bathrooms for homes across Chicagoland and the surrounding suburbs. Beyond a reasonable distance, we may quote a travel fee.</p></details>
   </div>
   <p class="faq-more">Something else? Call <a href="tel:+17732453529">(773) 245-3529</a> or <a href="#contact">send us a message</a>.</p>
 </div></section>
@@ -610,29 +667,17 @@
     <section class="step" data-step="2" aria-labelledby="s3-title" hidden>
       <h3 id="s3-title">Review &amp; sign</h3>
       <dl class="summary" id="summary"></dl>
-      <div>
-        <div class="contract" id="contract" tabindex="0" role="document" aria-label="Design Services Terms and Conditions">
-          <p>Read the full <a href="terms.html" target="_blank" rel="noopener">Design Services Terms and Conditions</a>.</p>
+      <div class="sign-card" id="sign-card">
+        <div>
+          <p class="sign-kicker">Retainer Agreement</p>
+          <p class="sign-state" id="sign-state">Filled in with your details. Open it to initial each section and sign.</p>
         </div>
-        <p class="full">Design Services Terms and Conditions, last updated September 27, 2026 · <a href="terms.html" target="_blank" rel="noopener">Open in a new tab</a></p>
+        <button type="button" class="btn" id="open-retainer">Review &amp; sign</button>
       </div>
-      <fieldset class="initials" id="initials">
-        <legend>Initial each item</legend>
-        <div class="init-head">
-          <label>Your initials<input type="text" id="init-value" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false"></label>
-          <p>Then tap <strong>Initial</strong> next to each item to confirm you've read it.</p>
-          <span class="init-count" id="init-count" aria-live="polite"></span>
-        </div>
-        <div id="init-groups"></div>
-      </fieldset>
-      <div class="field">
-        <div class="sig-head">
-          <label for="sig-pad">Sign here</label>
-          <span><button type="button" class="linkbtn" id="sig-typed">Use my typed name</button> · <button type="button" class="linkbtn" id="sig-clear">Clear</button></span>
-        </div>
-        <canvas class="sig-pad" id="sig-pad" role="img" aria-label="Signature pad. Draw your signature with a mouse or finger, or use your typed name."></canvas>
+      <div class="terms-card">
+        <a class="btn ghost" href="terms.html" target="_blank" rel="noopener">Read the Terms &amp; Conditions</a>
+        <label class="check"><input type="checkbox" name="agree"> <span>I have read the BP Design Group Terms &amp; Conditions and agree to them.</span></label>
       </div>
-      <label class="check"><input type="checkbox" name="agree" required> <span>I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.</span></label>
     </section>
 
     <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -646,9 +691,33 @@
   </form>
 </dialog>
 
-<div class="wrap"><footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois · <a href="tel:+17732453529">(773) 245-3529</a></span><span><a href="terms.html">Terms &amp; conditions</a></span></footer></div>
+<dialog class="retainer" id="retainer" aria-labelledby="ret-title">
+  <div class="ret-bar"><span class="ret-progress" id="ret-progress"></span><button type="button" class="ret-close" data-ret-close aria-label="Close the agreement">&times;</button></div>
+  <div class="paper-wrap"><article class="paper" id="paper"></article></div>
+  <div class="ret-foot"><p>Tap <strong>Initial</strong> on each section, then <strong>Click to sign</strong>.</p><button type="button" class="btn" id="ret-done">Done</button></div>
+</dialog>
+
+<dialog class="padbox" id="padbox" aria-labelledby="pad-title">
+  <h3 id="pad-title">Draw your initials</h3>
+  <p class="pad-hint">Use your mouse, trackpad, or finger.</p>
+  <div class="pad-reuse" id="pad-reuse" hidden><img alt="Your initials"><button type="button" class="pad-btn" id="pad-use">Use these initials</button><span class="pad-hint">or draw new ones below</span></div>
+  <canvas id="pad-canvas" aria-label="Drawing area"></canvas>
+  <p class="pad-error" id="pad-error" role="alert"></p>
+  <div class="pad-actions"><button type="button" class="pad-link" id="pad-clear">Clear</button><span class="grow"></span><button type="button" class="pad-btn ghost" id="pad-cancel">Cancel</button><button type="button" class="pad-btn" id="pad-apply">Apply</button></div>
+</dialog>
+
+<div class="wrap">
+  <div class="designer foot-designer">
+    <img src="img/beata-thumb.jpg" width="120" height="150" loading="lazy" alt="Beata Piskorska">
+    <div>
+      <p class="eyebrow">Led by</p>
+      <p class="designer-name">Beata Piskorska</p>
+      <p class="designer-role">CEO &amp; Lead Designer · 15 years designing kitchens, bathrooms, and homes.</p>
+      <a class="designer-link" href="about.html">Meet Beata &rarr;</a>
+    </div>
+<footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois · <a href="tel:+17732453529">(773) 245-3529</a></span><span><a href="terms.html">Terms &amp; conditions</a></span></footer></div>
 <script>
-  const TERMS_VERSION = "Design Services Terms and Conditions, last updated September 27, 2026";
+  const TERMS_VERSION = "Terms & Conditions, last updated September 28, 2026";
   // Signing automation (Cloudflare Worker): stores the signed agreement, opens a Stripe checkout for the exact package,
   // and emails the signed agreement after payment. If it can't be reached, the site emails the record to info@ and
   // downloads a PDF copy; the office then sends a payment link.
@@ -717,35 +786,39 @@
   const fmt = n => "$" + n.toLocaleString("en-US");
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const priceFor = n => n ? FIRST_ROOM + EXTRA_ROOM * (n - 1) : 0;
-  // The items the Client initials, one by one, for this booking. **text** is bold.
-  // Keep identical in bp-design-site/index.html and bp-agreements/src/pdf.js.
-  const initialItems = r => {
-    const n = Number(r.rooms), usd = v => "$" + Number(v).toLocaleString("en-US");
-    const rooms = (r.room_list || []).map(x => String(x).replace(/\*/g, "")).join(", ");
-    return [
-      { title: "Your Design Package", items: [
-        { id: "visit", text: "**1 in-person home visit**, measurements for the floor plan, and a design consultation with our Lead Designer" },
-        { id: "plans", text: "Design plans and renderings for **" + n + (n === 1 ? " room only**" : " rooms only**") + (rooms ? " (" + rooms + ")" : "") },
-        { id: "phone", text: "**1 phone consultation** to review the designs, plans, and renderings after they are delivered" },
-        { id: "free_revisions", text: "**One (1) free revision per room**, if needed" },
-        { id: "payment", text: "The **" + usd(r.total) + " package fee for " + n + (n === 1 ? " room" : " rooms") + " must be paid in full at the time of booking**." },
-      ] },
-      { title: "Additional Revisions", items: [
-        { id: "revisions", text: "Revisions beyond the one free revision per room are **$150 per revision**." },
-      ] },
-      { title: "Rescheduling and Cancellation — Section 4", items: [
-        { id: "reschedule_free", text: "You may reschedule your home visit **one time at no charge** if you provide at least **24 hours' notice**." },
-        { id: "reschedule_fee", text: "Rescheduling with less than **24 hours' notice** will result in a **$250 rescheduling fee**." },
-        { id: "refund", text: "I understand that I will receive a full refund **only if I cancel at least 48 hours before my scheduled home visit**." },
-        { id: "nonrefundable", text: "Cancellations made less than **48 hours before the scheduled home visit**, missed appointments, and cancellations made after the home visit are **non-refundable**." },
-      ] },
-      { title: "Contractors and Construction — Sections 1, 5, and 6", items: [
-        { id: "design_only", text: "I understand that BP Design Group provides **design services only and is not a contractor**." },
-        { id: "hire_own", text: "I am responsible for hiring my own contractors and installers." },
-        { id: "not_responsible", text: "BP Design Group is **not responsible for the work, mistakes, delays, workmanship, or performance of any contractor or installer I hire**." },
-        { id: "verify", text: "My contractor or installer must verify **all measurements, dimensions, quantities, and site conditions before ordering materials or beginning construction or installation**." },
-      ] },
-    ];
+  // The Retainer Agreement, filled in from the booking. Each section with initial: true is initialed; the client signs at the end.
+  // Keep identical in bp-design-site/index.html and bp-agreements/src/pdf.js. **text** is bold.
+  const retainerDoc = r => {
+    const usd = v => "$" + Number(v).toLocaleString("en-US");
+    const rooms = (r.room_list || []).map(x => String(x).replace(/\*/g, ""));
+    const extra = rooms.slice(1);
+    return {
+      fees: [
+        { label: "Design Retainer — Room 1: " + (rooms[0] || ""), amount: usd(300) },
+        { label: "Additional rooms: " + (extra.length ? extra.join(", ") + " (" + extra.length + " × $250)" : "none"), amount: usd(250 * extra.length) },
+        { label: "Total due at signing", amount: usd(Number(r.total)), total: true },
+      ],
+      sections: [
+        { id: "services", title: "Services & Fees", initial: true, fees: true, paras: [
+          "The **$300 Design Retainer** includes one in-home consultation with measurements, a design plan and rendering for one room, and one free revision.",
+          "Each additional room is **$250** and includes a design plan, a rendering, and one free revision.",
+          "Once the designs are delivered, the Designer will review them with the Client in a phone consultation.",
+          "Each revision beyond the free one is **$150**. A revision is one set of changes to one room's design.",
+        ] },
+        { id: "payment", title: "Payment & No Refunds", initial: true, paras: [
+          "The full amount is due at signing, and the home visit is scheduled once payment clears. **All fees are non-refundable.** If the Designer cancels or reschedules the appointment, the Client will not owe a rescheduling fee and may request a full refund.",
+        ] },
+        { id: "rescheduling", title: "Rescheduling", initial: true, paras: [
+          "The Client may reschedule the home visit **once** by notifying the Designer at least **48 hours** before the appointment. With less notice, or if the appointment is missed, a **new $300 retainer** is required to rebook; additional room fees already paid carry over.",
+        ] },
+        { id: "delivery", title: "Delivery", initial: true, paras: [
+          "The Designer aims to deliver designs for one or two rooms within **three (3) to five (5) business days** after the home visit, and will estimate larger projects at booking. Delivery dates are estimates, not guarantees.",
+        ] },
+        { id: "terms", title: "Terms & Conditions", initial: true, paras: [
+          "This Agreement includes the BP Design Group LLC Terms & Conditions, which the Client acknowledges receiving. If they conflict, this Agreement controls.",
+        ] },
+      ],
+    };
   };
   const picked = document.getElementById("picked"), pickPay = document.getElementById("pkg-pay"), pickError = document.getElementById("pick-error");
   let picks = [];
@@ -793,7 +866,6 @@
   const agreeForm = document.getElementById("agree-form");
   const af = agreeForm.elements;
   const agreeStatus = agreeForm.querySelector(".form-status");
-  const contractBox = document.getElementById("contract");
   const btnBack = document.getElementById("step-back"), btnNext = document.getElementById("step-next"), btnSubmit = document.getElementById("step-submit");
   let pkg = null, step = 1, termsBlocks = null;
   const setAgreeStatus = (text, kind) => { agreeStatus.textContent = text; agreeStatus.className = "form-status" + (kind ? " is-" + kind : ""); };
@@ -813,7 +885,6 @@
       termsBlocks = nodes.map(n => n.tagName === "UL"
         ? { type: "ul", items: [...n.querySelectorAll("li")].map(li => li.textContent.trim()) }
         : { type: n.tagName.toLowerCase(), text: [...n.childNodes].map(c => c.nodeName === "BR" ? "\n" : c.textContent).join("").replace(/[ \t\r]+/g, " ").replace(/ *\n */g, "\n").trim(), initial: n.dataset.initial });
-      contractBox.replaceChildren(...nodes.map(n => document.importNode(n, true)));
     } catch (e) { termsBlocks = null; }
   };
 
@@ -876,43 +947,50 @@
     } catch (e) { /* the client can still type the city */ }
   });
 
-  // ---- Step 2: summary, initials, signature pad ----
-  const pad = document.getElementById("sig-pad"), ctx = pad.getContext("2d");
-  let inked = false, method = "drawn", drawing = false, last = null;
-  const resetPad = () => {
-    const r = pad.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
-    pad.width = Math.round(r.width * dpr); pad.height = Math.round(r.height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.lineWidth = 2.2; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#1F2124"; ctx.fillStyle = "#1F2124";
-    inked = false; method = "drawn";
-  };
-  const point = e => { const r = pad.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
-  pad.addEventListener("pointerdown", e => {
-    drawing = true; last = point(e); pad.setPointerCapture(e.pointerId);
-    ctx.beginPath(); ctx.arc(last.x, last.y, 1.1, 0, Math.PI * 2); ctx.fill();
-    inked = true; method = "drawn";
-  });
-  pad.addEventListener("pointermove", e => { if (!drawing) return; const p = point(e); ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p; });
-  ["pointerup", "pointercancel"].forEach(t => pad.addEventListener(t, () => { drawing = false; }));
-  document.getElementById("sig-clear").addEventListener("click", resetPad);
-  document.getElementById("sig-typed").addEventListener("click", async () => {
-    const name = fullName();
-    resetPad();
-    const r = pad.getBoundingClientRect();
-    let size = Math.min(52, r.height * 0.55);
-    await document.fonts.load(size + "px Allura").catch(() => {});
-    ctx.textBaseline = "middle";
-    while (size > 18) { ctx.font = size + "px Allura, cursive"; if (ctx.measureText(name).width < r.width - 32) break; size -= 2; }
-    ctx.fillText(name, 16, r.height / 2);
-    inked = true; method = "typed name";
-    setAgreeStatus("");
-  });
-  const signatureImage = (w, h, type, q) => {
-    const c = document.createElement("canvas"); c.width = w; c.height = h;
-    const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, w, h); x.drawImage(pad, 0, 0, w, h);
-    return c.toDataURL(type, q);
-  };
+  // ---- Step 2: summary, the Retainer Agreement (initialed and signed in pop-ups), and the Terms checkbox ----
   const fullName = () => (af.first_name.value.trim() + " " + af.last_name.value.trim()).trim();
+  const bold = t => esc(t).split("**").map((x, i) => i % 2 ? "<strong>" + x + "</strong>" : x).join("");
+  const retDlg = document.getElementById("retainer"), paper = document.getElementById("paper");
+  const padDlg = document.getElementById("padbox"), padCanvas = document.getElementById("pad-canvas"), padCtx = padCanvas.getContext("2d");
+  let stamped = {}, initialsPng = "", sigPng = "", docKey = "";
+  const currentRecord = () => ({ rooms: pkg.rooms, total: pkg.total, room_list: chosenRooms() });
+  const today = () => new Date().toLocaleDateString("en-US", { dateStyle: "long" });
+  const signState = () => {
+    const need = retainerDoc(currentRecord()).sections.filter(s => s.initial), done = need.filter(s => stamped[s.id]).length;
+    return { need: need.length, done, signed: !!sigPng, complete: done === need.length && !!sigPng };
+  };
+  const updateSignCard = () => {
+    const st = signState();
+    document.getElementById("sign-state").textContent = st.complete ? "Initialed and signed. Open it again any time to review."
+      : st.done || st.signed ? st.done + " of " + st.need + " sections initialed" + (st.signed ? ", signed" : ", not signed yet") + ". Open it to finish."
+      : "Filled in with your details. Open it to initial each section and sign.";
+    document.getElementById("sign-card").classList.toggle("done", st.complete);
+    document.getElementById("open-retainer").textContent = st.complete ? "View agreement" : "Review & sign";
+    document.getElementById("ret-progress").textContent = st.done + " of " + st.need + " initialed · " + (st.signed ? "Signed" : "Not signed yet");
+    document.getElementById("ret-done").textContent = st.complete ? "Done" : "Save and close";
+  };
+  // The agreement as a document, filled in with the client's booking.
+  const renderPaper = () => {
+    const d = retainerDoc(currentRecord()), key = JSON.stringify(d);
+    if (key !== docKey) { stamped = {}; docKey = key; }
+    const fill = v => '<span class="fill">' + esc(v) + "</span>";
+    const slot = s => '<button type="button" class="init-slot' + (stamped[s.id] ? " on" : "") + '" data-init="' + s.id + '" aria-label="' + (stamped[s.id] ? "Initialed: " : "Initial: ") + esc(s.title) + '">' +
+      (stamped[s.id] && initialsPng ? '<img src="' + initialsPng + '" alt="Your initials">' : "Initial") + "</button>";
+    paper.innerHTML =
+      '<div class="p-head"><img src="bp-mark-email.png" width="31" height="32" alt="BP Design Group"><span>info@bpdesignchi.com · (773) 245-3529</span></div>' +
+      '<h2 id="ret-title">Retainer Agreement</h2>' +
+      '<div class="p-sec"><h4>Parties</h4><p>This Retainer Agreement (the “Agreement”) is entered into on ' + fill(today()) + " between BP Design Group LLC (the “Designer”) and " + fill(fullName()) +
+        " (the “Client”) for design services at " + fill(composeAddress()) + " (the “Property”).</p></div>" +
+      d.sections.map(s => '<div class="p-sec' + (s.initial ? " has-init" : "") + '"><div><h4>' + esc(s.title) + "</h4>" + s.paras.map(p => "<p>" + bold(p) + "</p>").join("") +
+        (s.fees ? '<table class="p-fees">' + d.fees.map(f => "<tr" + (f.total ? ' class="total"' : "") + "><td>" + esc(f.label) + "</td><td>" + esc(f.amount) + "</td></tr>").join("") + "</table>" : "") +
+        "</div>" + (s.initial ? '<div class="slot-wrap">' + slot(s) + "<small>Client initials</small></div>" : "") + "</div>").join("") +
+      '<div class="p-sec"><h4>Signatures</h4><div class="p-sigs">' +
+        '<div><p class="p-who">BP Design Group LLC</p><div class="p-sigline">Signs when your payment is received</div><p>Name: Beata Piskorska, CEO &amp; Lead Designer</p></div>' +
+        '<div><p class="p-who">Client</p><button type="button" class="sig-slot' + (sigPng ? " on" : "") + '" id="sig-slot" aria-label="' + (sigPng ? "Signed. Click to sign again" : "Click to sign") + '">' +
+          (sigPng ? '<img src="' + sigPng + '" alt="Your signature">' : "Click to sign") + "</button><p>Name: " + fill(fullName()) + "</p><p>Date: " + fill(today()) + "</p></div>" +
+      "</div></div>";
+    updateSignCard();
+  };
   const renderReview = () => {
     const rooms = chosenRooms();
     const rows = [
@@ -921,41 +999,78 @@
     ];
     document.getElementById("summary").innerHTML = rows.map(([k, v, s]) =>
       "<div><dt>" + k + "</dt><dd>" + esc(v) + (s ? ' <button type="button" class="linkbtn" data-goto="' + s + '">Edit</button>' : "") + "</dd></div>").join("");
-    renderInitials();
+    renderPaper();
   };
+  document.getElementById("open-retainer").addEventListener("click", () => { renderPaper(); retDlg.showModal(); retDlg.querySelector(".paper-wrap").scrollTop = 0; });
+  retDlg.querySelector("[data-ret-close]").addEventListener("click", () => retDlg.close());
+  document.getElementById("ret-done").addEventListener("click", () => retDlg.close());
+  retDlg.addEventListener("close", () => { updateSignCard(); setAgreeStatus(""); });
 
-  // ---- Initials: adopt once, then tap each item ----
-  const initValue = document.getElementById("init-value"), initGroups = document.getElementById("init-groups"), initCount = document.getElementById("init-count");
-  let stamped = {}, itemsKey = "";
-  const bold = t => esc(t).split("**").map((x, i) => i % 2 ? "<strong>" + x + "</strong>" : x).join("");
-  const currentItems = () => initialItems({ rooms: pkg.rooms, total: pkg.total, pay_now: pkg.payNow, room_list: chosenRooms() });
-  const adopted = () => /^[A-Z]{2,4}$/.test(initValue.value) ? initValue.value : "";
-  const updateInitials = () => {
-    const all = initGroups.querySelectorAll(".init-btn"), who = adopted();
-    let n = 0;
-    all.forEach(b => {
-      const on = !!stamped[b.dataset.id] && !!who; if (on) n++;
-      b.classList.toggle("on", on); b.textContent = on ? who : "Initial";
-      b.setAttribute("aria-pressed", on);
-      if (on) b.closest(".init-item").classList.remove("missing");
-    });
-    initCount.textContent = n + " of " + all.length + " initialed";
-    initCount.classList.toggle("done", n === all.length);
+  // ---- The white pop-up: draw initials or a signature ----
+  let padKind = "", padInk = false, padDrawing = false, padLast = null, padDone = null;
+  const padSetup = () => {
+    const r = padCanvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    padCanvas.width = Math.round(r.width * dpr); padCanvas.height = Math.round(r.height * dpr);
+    padCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    padCtx.lineWidth = 2.5; padCtx.lineCap = "round"; padCtx.lineJoin = "round"; padCtx.strokeStyle = "#16181B"; padCtx.fillStyle = "#16181B";
+    padInk = false;
   };
-  const renderInitials = () => {
-    const groups = currentItems(), key = JSON.stringify(groups);
-    if (key !== itemsKey) { stamped = {}; itemsKey = key; }
-    if (!initValue.value) initValue.value = [af.first_name.value, af.last_name.value].map(v => v.trim().replace(/[^A-Za-z]/g, "").charAt(0).toUpperCase()).join("");
-    initGroups.innerHTML = groups.map(g => '<div class="init-group"><h4>' + esc(g.title) + "</h4>" +
-      g.items.map(it => '<div class="init-item" data-id="' + it.id + '"><p>' + bold(it.text) + '</p><button type="button" class="init-btn" data-id="' + it.id + '" aria-label="Initial: ' + esc(it.text.replace(/\*\*/g, "")) + '">Initial</button></div>').join("") + "</div>").join("");
-    updateInitials();
+  const openPad = (kind, done) => {
+    padKind = kind; padDone = done;
+    padDlg.classList.toggle("is-sig", kind === "signature");
+    document.getElementById("pad-title").textContent = kind === "signature" ? "Draw your signature" : "Draw your initials";
+    const reuse = document.getElementById("pad-reuse");
+    reuse.hidden = !(kind === "initials" && initialsPng);
+    if (!reuse.hidden) reuse.querySelector("img").src = initialsPng;
+    document.getElementById("pad-error").textContent = "";
+    padDlg.showModal();
+    padSetup(); // measuring right after opening gives the pop-up size for this kind of drawing
   };
-  initValue.addEventListener("input", () => { initValue.value = initValue.value.replace(/[^A-Za-z]/g, "").toUpperCase(); updateInitials(); setAgreeStatus(""); });
-  initGroups.addEventListener("click", e => {
-    const b = e.target.closest(".init-btn"); if (!b) return;
-    if (!adopted()) { setAgreeStatus("Type your initials (2–4 letters) first.", "error"); initValue.focus(); return; }
-    if (stamped[b.dataset.id]) delete stamped[b.dataset.id]; else stamped[b.dataset.id] = new Date().toISOString();
-    setAgreeStatus(""); updateInitials();
+  const padPoint = e => { const r = padCanvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  padCanvas.addEventListener("pointerdown", e => {
+    e.preventDefault();
+    // If the box changed size since it opened (for example the phone rotated), start fresh at the new size.
+    if (!padInk && Math.round(padCanvas.getBoundingClientRect().width * (window.devicePixelRatio || 1)) !== padCanvas.width) padSetup();
+    padDrawing = true; padLast = padPoint(e); try { padCanvas.setPointerCapture(e.pointerId); } catch (err) { /* not every pointer can be captured */ }
+    padCtx.beginPath(); padCtx.arc(padLast.x, padLast.y, 1.25, 0, Math.PI * 2); padCtx.fill();
+    padInk = true; document.getElementById("pad-error").textContent = "";
+  });
+  padCanvas.addEventListener("pointermove", e => { if (!padDrawing) return; const p = padPoint(e); padCtx.beginPath(); padCtx.moveTo(padLast.x, padLast.y); padCtx.lineTo(p.x, p.y); padCtx.stroke(); padLast = p; });
+  ["pointerup", "pointercancel"].forEach(t => padCanvas.addEventListener(t, () => { padDrawing = false; }));
+  // Crop to the ink, scale down, keep the background transparent.
+  const padImage = maxW => {
+    const w = padCanvas.width, hgt = padCanvas.height, px = padCtx.getImageData(0, 0, w, hgt).data;
+    let x0 = w, y0 = hgt, x1 = -1, y1 = -1;
+    for (let yy = 0; yy < hgt; yy++) for (let xx = 0; xx < w; xx++) if (px[(yy * w + xx) * 4 + 3] > 20) { if (xx < x0) x0 = xx; if (xx > x1) x1 = xx; if (yy < y0) y0 = yy; if (yy > y1) y1 = yy; }
+    if (x1 < 0) return "";
+    const m = 8 * (window.devicePixelRatio || 1);
+    x0 = Math.max(0, x0 - m); y0 = Math.max(0, y0 - m); x1 = Math.min(w - 1, x1 + m); y1 = Math.min(hgt - 1, y1 + m);
+    const cw = x1 - x0 + 1, ch = y1 - y0 + 1, s = Math.min(1, maxW / cw);
+    const c = document.createElement("canvas"); c.width = Math.max(1, Math.round(cw * s)); c.height = Math.max(1, Math.round(ch * s));
+    c.getContext("2d").drawImage(padCanvas, x0, y0, cw, ch, 0, 0, c.width, c.height);
+    return c.toDataURL("image/png");
+  };
+  document.getElementById("pad-clear").addEventListener("click", () => { padCtx.clearRect(0, 0, padCanvas.width, padCanvas.height); padInk = false; });
+  document.getElementById("pad-cancel").addEventListener("click", () => padDlg.close());
+  document.getElementById("pad-apply").addEventListener("click", () => {
+    if (!padInk) { document.getElementById("pad-error").textContent = padKind === "signature" ? "Draw your signature in the box first." : "Draw your initials in the box first."; return; }
+    const img = padImage(padKind === "signature" ? 600 : 320);
+    padDlg.close();
+    if (padDone && img) padDone(img);
+  });
+  document.getElementById("pad-use").addEventListener("click", () => { padDlg.close(); if (padDone) padDone(initialsPng); });
+  paper.addEventListener("click", e => {
+    const slot = e.target.closest("[data-init]");
+    if (slot) return openPad("initials", img => { initialsPng = img; stamped[slot.dataset.init] = new Date().toISOString(); renderPaper(); });
+    if (e.target.closest("#sig-slot")) return openPad("signature", img => { sigPng = img; renderPaper(); });
+  });
+  // A white-background JPEG of a drawing, for the backup email.
+  const flatJpeg = src => new Promise(res => {
+    if (!src) return res("");
+    const im = new Image();
+    im.onload = () => { const c = document.createElement("canvas"); c.width = im.width; c.height = im.height; const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height); x.drawImage(im, 0, 0); res(c.toDataURL("image/jpeg", 0.7)); };
+    im.onerror = () => res("");
+    im.src = src;
   });
   document.getElementById("summary").addEventListener("click", e => {
     const b = e.target.closest("[data-goto]"); if (!b) return;
@@ -974,7 +1089,7 @@
     btnBack.hidden = n === 1; btnNext.hidden = n === 2; btnSubmit.hidden = n !== 2;
     document.getElementById("agree-fine").textContent = n === 2 ? "Next, you'll pay securely with Stripe. We'll email you a copy of your signed agreement." : "";
     setAgreeStatus("");
-    if (n === 2) { renderReview(); requestAnimationFrame(() => { resetPad(); if (fullName()) document.getElementById("sig-typed").dataset.ready = "1"; }); }
+    if (n === 2) renderReview();
     const first = agreeForm.querySelector('.step[data-step="' + n + '"] select, .step[data-step="' + n + '"] input');
     if (first && n !== 2) first.focus();
     dlg.scrollTop = 0;
@@ -1012,38 +1127,52 @@
   dlg.querySelector("[data-close]").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", event => { if (event.target === dlg) dlg.close(); });
 
+  // Backup PDF (only if the signing automation can't be reached): the signed Retainer Agreement, then the Terms.
   const makePdf = async rec => {
     const JsPDF = await loadPdf();
     const doc = new JsPDF({ unit: "pt", format: "letter" });
-    const M = 54, W = 612 - M * 2, H = 792, BOTTOM = H - M - 20;
+    const M = 54, W = 612 - M * 2, H = 792, BOTTOM = H - M - 20, IN = W - 112;
     let y = M;
-    // Start a new page unless h points fit, so paragraphs, boxes and signatures never split.
+    // Start a new page unless h points fit, so paragraphs, sections, and signatures never split.
     const need = h => { if (y + h > BOTTOM && h < BOTTOM - M) { doc.addPage(); y = M; } };
     const lines = (text, size, style, width) => { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size); return String(text).split("\n").flatMap(t => doc.splitTextToSize(t, width || W)); };
-    const write = (text, size, style, gap, keep) => {
-      const ls = lines(text, size, style);
+    const write = (text, size, style, gap, keep, width) => {
+      const ls = lines(text, size, style, width);
       need(ls.length * size * 1.35 + (keep || 0));
       doc.setFont("helvetica", style || "normal"); doc.setFontSize(size);
       ls.forEach(line => { doc.text(line, M, y + size); y += size * 1.35; });
       y += gap || 0;
     };
-    const ackItem = it => {
-      const ls = lines(it.text.replace(/\*\*/g, ""), 9.5, "normal", W - 120), h = Math.max(ls.length * 12.8, 22) + 8;
-      need(h);
-      doc.setFont("helvetica", "normal"); doc.setFontSize(9.5);
-      ls.forEach((l, i) => doc.text(l, M, y + 9.5 + i * 12.8));
-      const cx = M + W - 96;
-      doc.setFont("helvetica", "bold"); doc.setFontSize(14); doc.text(rec.initials.items[it.id] ? rec.initials.value : "", cx + 6, y + 14);
-      doc.setDrawColor(30); doc.line(cx, y + 18, cx + 96, y + 18);
-      doc.setFont("helvetica", "normal"); doc.setFontSize(6.5); doc.setTextColor(110); doc.text("Client initials", cx, y + 26); doc.setTextColor(0);
-      y += h;
-    };
-    write("BP Design Group LLC", 10, "bold");
-    write("Design Services Agreement", 20, "bold", 8);
-    [["Client", rec.signed_name], ["Email", rec.email], ["Phone", rec.phone], ["Project address", rec.project_address], ["Package", rec.package], ["Rooms", rec.room_list.join(", ")], ["Payment", rec.payment], ["Reference", rec.reference], ["Signed", rec.signed_at_local]]
-      .forEach(([k, v]) => write(k + ": " + v, 10));
-    y += 10;
-    write(rec.signed_name + ' ("Client") agrees to the Design Services Terms and Conditions below (last updated September 27, 2026, published at https://bpdesignchi.com/terms.html).', 10, "normal", 10);
+    const image = (src, x, top, maxW, maxH) => { const p = doc.getImageProperties(src), s = Math.min(maxW / p.width, maxH / p.height); doc.addImage(src, "PNG", x, top, p.width * s, p.height * s); };
+    const d = retainerDoc(rec), plainText = t => t.replace(/\*\*/g, "");
+    write("BP Design Group LLC  ·  info@bpdesignchi.com  ·  (773) 245-3529", 9, "normal", 4);
+    write("Retainer Agreement", 20, "bold", 4);
+    write("Reference " + rec.reference + "  ·  Signed " + rec.signed_at_local, 9, "normal", 12);
+    write("PARTIES", 9.5, "bold", 3);
+    write("This Retainer Agreement (the “Agreement”) is entered into on " + String(rec.signed_at_local).split(" at ")[0] + " between BP Design Group LLC (the “Designer”) and " + rec.signed_name + " (the “Client”) for design services at " + rec.project_address + " (the “Property”).", 9.5, "normal", 12);
+    d.sections.forEach(s => {
+      const body = s.paras.map(plainText).concat(s.fees ? d.fees.map(f => f.label + "  —  " + f.amount) : []);
+      need(Math.max(18 + body.reduce((n, p) => n + lines(p, 9.5, "normal", IN).length * 12.8 + 4, 0), s.initial ? 70 : 0));
+      const top = y;
+      write(s.title.toUpperCase(), 9.5, "bold", 3, 0, IN);
+      body.forEach(p => write(p, 9.5, "normal", 4, 0, IN));
+      if (s.initial) {
+        doc.setDrawColor(150); doc.rect(M + W - 92, top, 92, 46);
+        if (rec.initials.items[s.id] && rec.initials.image) image(rec.initials.image, M + W - 86, top + 6, 80, 34);
+        doc.setFont("helvetica", "normal"); doc.setFontSize(6.5); doc.setTextColor(110); doc.text("Client initials", M + W - 92, top + 56); doc.setTextColor(0);
+        y = Math.max(y, top + 62);
+      }
+      y += 8;
+    });
+    need(150);
+    write("SIGNATURES", 9.5, "bold", 6);
+    image(rec.signature_png, M, y, 220, 60); y += 66;
+    doc.setDrawColor(40); doc.line(M, y, M + 250, y); y += 12;
+    write("Client: " + rec.signed_name + "  ·  " + rec.email + "  ·  " + rec.signed_at_local, 9.5);
+    write("BP Design Group LLC signs when payment is received (Beata Piskorska, CEO & Lead Designer).", 9, "normal", 6);
+    doc.addPage(); y = M;
+    write("Terms & Conditions", 16, "bold", 2);
+    write("Part of this Agreement. Accepted electronically by " + rec.signed_name + " on " + rec.signed_at_local + ".", 9, "normal", 10);
     const firstH = b => !b ? 0 : b.type === "ul" ? 14 : b.type === "p" ? lines(b.text, 9).length * 9 * 1.35 : 20;
     if (termsBlocks) termsBlocks.forEach((b, i) => {
       if (b.type === "h2") { y += 6; write(b.text, 11, "bold", 2, 2 + firstH(termsBlocks[i + 1])); }
@@ -1051,26 +1180,13 @@
       else if (b.type === "ul") b.items.forEach(it => write("-  " + it, 9));
       else write(b.text, 9, "normal", 4);
     });
-    y += 18; need(90);
-    write("Client Acknowledgments", 12, "bold", 2);
-    write("The Client initialed each item below when signing.", 9, "normal", 6);
-    initialItems(rec).forEach(g => { y += 4; write(g.title, 10, "bold", 4, 34); g.items.forEach(ackItem); });
-    y += 18; need(230);
-    write("Electronic Signature", 12, "bold", 4);
-    write("By checking the acceptance box, the Client confirmed:", 9, "normal", 2);
-    write("I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.", 9.5, "bold", 8);
-    doc.addImage(signatureImage(480, 160, "image/png"), "PNG", M, y, 210, 70); y += 78;
-    doc.setDrawColor(150); doc.line(M, y, M + 260, y); y += 14;
-    write(rec.signed_name + "  ·  " + rec.email, 10);
-    write("Initials: " + rec.initials.value + " (" + Object.keys(rec.initials.items).length + " items initialed)", 8.5);
-    write("Signed " + rec.signed_at_local + "  ·  Reference " + rec.reference + "  ·  Signature method: " + rec.signature_method, 8.5);
     const pages = doc.getNumberOfPages();
     for (let i = 1; i <= pages; i++) {
       doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(120);
-      doc.text("BP Design Group LLC · Design Services Agreement · " + rec.reference + " · Page " + i + " of " + pages, M, H - 28);
+      doc.text("BP Design Group LLC · Retainer Agreement · " + rec.reference + " · Page " + i + " of " + pages, M, H - 28);
       doc.setTextColor(0);
     }
-    doc.save("BP-Design-Group-Agreement-" + rec.reference + ".pdf");
+    doc.save("BP-Design-Group-Retainer-Agreement-" + rec.reference + ".pdf");
   };
 
   // ---- Sign & pay ----
@@ -1078,13 +1194,10 @@
     event.preventDefault();
     if (af.botcheck.checked || !pkg) return;
     if (step !== 2) { btnNext.click(); return; }
-    if (!adopted()) { setAgreeStatus("Type your initials (2–4 letters) above the list of items.", "error"); initValue.focus(); return; }
-    const missingItem = [...initGroups.querySelectorAll(".init-item")].filter(r => !stamped[r.dataset.id]);
-    missingItem.forEach(r => r.classList.add("missing"));
-    if (missingItem.length) { setAgreeStatus("Initial every item. " + missingItem.length + (missingItem.length === 1 ? " item still needs" : " items still need") + " your initials.", "error"); missingItem[0].querySelector(".init-btn").focus(); missingItem[0].scrollIntoView({ block: "center", behavior: "smooth" }); return; }
-    const initials = { value: adopted(), items: { ...stamped } };
-    if (!inked) { setAgreeStatus("Sign in the box, or choose “Use my typed name”.", "error"); return; }
-    if (!af.agree.checked) { setAgreeStatus("Check the box to agree to the terms before continuing.", "error"); return; }
+    const st = signState();
+    if (!st.complete) { setAgreeStatus(st.done < st.need ? "Open the Retainer Agreement and initial each section (" + st.done + " of " + st.need + " done)." : "Open the Retainer Agreement and sign it.", "error"); document.getElementById("open-retainer").focus(); return; }
+    if (!af.agree.checked) { setAgreeStatus("Check the box to confirm you've read and agree to the Terms & Conditions.", "error"); af.agree.focus(); return; }
+    const initials = { image: initialsPng, items: { ...stamped } };
 
     const p = pkg, signedAt = new Date(), rooms = chosenRooms();
     const signer = fullName(), email = af.email.value.trim();
@@ -1101,8 +1214,9 @@
       address_verified: addrState === "verified",
       agreement: TERMS_VERSION,
       terms_url: "https://bpdesignchi.com/terms.html",
-      consent: "Checked: I have read and agree to the BP Design Group LLC Design Services Agreement and Design Services Terms and Conditions, and I am signing this Agreement electronically.",
-      signature_method: method,
+      terms_accepted: true,
+      consent: "Checked: I have read the BP Design Group Terms & Conditions and agree to them. Initialed each section of the Retainer Agreement and signed it electronically.",
+      signature_method: "drawn",
       signed_at_utc: signedAt.toISOString(),
       signed_at_local: signedAt.toLocaleString("en-US", { dateStyle: "long", timeStyle: "short" }),
       browser: navigator.userAgent,
@@ -1121,7 +1235,7 @@
         const r = await fetch(AGREEMENT_API + "/sign", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(Object.assign({}, rec, { signature_png: signatureImage(480, 160, "image/png") })),
+          body: JSON.stringify(Object.assign({}, rec, { signature_png: sigPng })),
         });
         if (!r.ok) throw new Error("sign " + r.status);
         const j = await r.json().catch(() => ({}));
@@ -1140,13 +1254,13 @@
           subject: "Signed agreement: " + p.name + " – " + signer + " – " + rec.reference,
           from_name: "BP Design Group website",
           replyto: email,
-        }, rec, { room_list: rooms.join(", "), initials: initials.value + " on all " + Object.keys(initials.items).length + " items: " + currentItems().flatMap(g => g.items).map(it => it.text.replace(/\*\*/g, "")).join(" | "), signature_image: signatureImage(300, 100, "image/jpeg", 0.6) })),
+        }, rec, { room_list: rooms.join(", "), initials: "Drawn initials on " + Object.keys(initials.items).length + " sections of the Retainer Agreement", signature_image: await flatJpeg(sigPng) })),
       });
       const result = await response.json();
       if (!result.success) throw new Error(result.message);
     } catch (err) { return failed("We couldn't record your signature. Try again, or email " + FALLBACK_EMAIL + " to book."); }
     let pdfOk = true;
-    try { await makePdf(rec); } catch (e) { pdfOk = false; }
+    try { await makePdf(Object.assign({}, rec, { signature_png: sigPng })); } catch (e) { pdfOk = false; }
     finished(pdfOk ? "Signed. Your PDF copy is downloading. We'll email you a secure payment link within one business day." : "Signed. We'll email you a copy of your agreement and a secure payment link within one business day.");
   });
 </script>
