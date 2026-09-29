@@ -11,7 +11,7 @@
 
 // Photo viewer: click a project photo to see it larger, without leaving the page.
 (() => {
-  const ZOOM = ".reveal .frame, .gallery img";
+  const ZOOM = ".reveal .frame, .gallery img, .step-shots img";
   if (!document.querySelector(ZOOM)) return;
   const dlg = document.createElement("dialog");
   dlg.className = "lightbox";
@@ -49,7 +49,7 @@
     dlg.querySelector(".lb-prev").hidden = dlg.querySelector(".lb-next").hidden = !many;
   };
   const open = el => {
-    const group = el.closest(".projects, .gallery");
+    const group = el.closest(".projects, .gallery, .steps");
     list = [...group.querySelectorAll(ZOOM)].filter(x => x.offsetParent);
     show(list.indexOf(el));
     dlg.showModal();

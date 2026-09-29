@@ -131,19 +131,18 @@
   .designer-link { font-size:14px; font-weight:600; letter-spacing:.08em; color:var(--text); text-underline-offset:4px; }
   @media (max-width:520px) { .designer { gap:18px; } .designer img { width:88px; } .designer-name { font-size:26px; } }
   .note { font-size:14px; color:var(--soft); margin:0; }
-  .process-work { margin-top:64px; }
-  .process-work h3 { font:400 clamp(28px,3.2vw,40px)/1.1 "Bodoni Moda", serif; margin:0; }
-  .process-work h3 em { font-style:italic; color:var(--acc); }
-  .process-work .process-lede { margin:10px 0 26px; color:var(--soft); max-width:60ch; }
-  .gallery { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:14px; }
-  .gallery li { position:relative; }
-  .gallery img { display:block; width:100%; height:auto; border:1px solid var(--rule); background:var(--raised); }
-  .gallery .tag { position:absolute; top:12px; left:12px; font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px; background:rgba(21,23,26,.8); pointer-events:none; }
-  .process-work .designer-link { display:inline-block; margin-top:22px; }
+  .checkout-note { margin-top:16px; text-align:center; }
   @media (max-width:880px) { .gallery { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; } .gallery .tag { top:6px; left:6px; font-size:10px; letter-spacing:.12em; padding:4px 6px; } }
   .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; list-style:none; margin:0; padding:0; counter-reset:s; }
-  .steps li { counter-increment:s; border-top:1px solid var(--text); padding-top:20px; }
-  .steps li::before { content:counter(s); font:italic 400 36px/1 "Bodoni Moda", serif; color:var(--acc); display:block; margin-bottom:14px; }
+  .steps > li { counter-increment:s; border-top:1px solid var(--text); padding-top:20px; display:flex; flex-direction:column; }
+  .steps > li > p { flex:1; }
+  .step-shots { list-style:none; margin:22px 0 0; padding:0; display:grid; gap:12px; }
+  .step-shots li { position:relative; }
+  .step-shots img { display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; border:1px solid var(--rule); background:var(--raised); }
+  .step-shots .tag { position:absolute; top:10px; left:10px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; padding:5px 9px; background:rgba(21,23,26,.82); pointer-events:none; }
+  .steps-more { display:inline-block; margin-top:26px; }
+  @media (max-width:880px) { .step-shots { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; } .step-shots .tag { top:6px; left:6px; font-size:10px; letter-spacing:.12em; padding:4px 6px; } }
+  .steps > li::before { content:counter(s); font:italic 400 36px/1 "Bodoni Moda", serif; color:var(--acc); display:block; margin-bottom:14px; }
   .steps h3 { margin:0 0 8px; font-size:18px; font-weight:600; }
   .steps p { margin:0; color:var(--soft); font-size:15.5px; }
   .contact-bg { background:var(--raised); }
@@ -361,33 +360,33 @@
       <p class="card-note">Up to 10 rooms online. Planning more? <a href="#contact">Get in touch</a> for a custom quote.</p>
     </div>
   </div>
-  <p class="ask">Questions before you book? Call <a href="tel:+17732453529">(773) 245-3529</a> or <a href="#contact">send us a message</a>.</p>
-  <div class="notes">
-    <p class="note">Secure checkout through Stripe. Pay by card or bank transfer.</p>
-  </div>
+  <p class="note checkout-note">Secure checkout through Stripe. Pay by card or bank transfer.</p>
 </div></section>
 
 <section id="process"><div class="wrap">
-  <h2>How it <em>works</em></h2>
+  <h2>How it works from plan to <em>rendering</em></h2>
   <p class="intro">Three steps from first visit to a plan you can build.</p>
   <ol class="steps">
-    <li><h3>Home visit</h3><p>We walk the space, take measurements and plan the layout, cabinetry, finishes, and lighting for your dream kitchen or bath.</p></li>
-    <li><h3>The Design</h3><p>Our Lead Designer takes your dream space and creates a perfect visual rendering. We wait for your review and approval then can make the final revisions.</p></li>
-    <li><h3>Build with confidence</h3><p>Take the plans and precise renderings to your contractor with a clear picture of the finished space.</p></li>
+    <li><h3>Home visit</h3><p>We walk the space, take measurements and plan the layout, cabinetry, finishes, and lighting for your dream kitchen or bath.</p>
+      <ul class="step-shots">
+        <li><img src="img/work/project1-existing.jpg" data-full="img/work/project1-existing-full.jpg" width="939" height="626" loading="lazy" alt="The kitchen before the redesign: cherry cabinets, a beige tile floor, and a breakfast table by the window."><span class="tag">Existing kitchen</span></li>
+        <li><img src="img/work/project1-floor-plan.png" data-full="img/work/project1-floor-plan-full.png" width="1200" height="800" loading="lazy" alt="The floor plan for the new kitchen, with cabinet sizes and measurements."><span class="tag">Floor plan</span></li>
+      </ul>
+    </li>
+    <li><h3>The Design</h3><p>Our Lead Designer takes your dream space and creates a perfect visual rendering. We wait for your review and approval then can make the final revisions.</p>
+      <ul class="step-shots">
+        <li><img src="img/work/project1-layout.png" data-full="img/work/project1-layout-full.png" width="1200" height="800" loading="lazy" alt="A 3D line drawing of the new layout: the wall between the kitchen and dining room removed, a new island, and a relocated door."><span class="tag">New layout</span></li>
+        <li><img src="img/work/project1-rendering-1.jpg" data-full="img/work/project1-rendering-1-full.jpg" width="1672" height="1115" loading="lazy" alt="Rendering from above: white cabinetry, a long stone island with a dark wood base, glass pendants, and a built-in buffet by the dining table."><span class="tag">Rendering</span></li>
+      </ul>
+    </li>
+    <li><h3>Build with confidence</h3><p>Take the plans and precise renderings to your contractor with a clear picture of the finished space.</p>
+      <ul class="step-shots">
+        <li><img src="img/work/project1-rendering-2.jpg" data-full="img/work/project1-rendering-2-full.jpg" width="1062" height="708" loading="lazy" alt="Rendering of the island and sink wall, with the patio door on the left."><span class="tag">Rendering</span></li>
+        <li><img src="img/work/project1-rendering-3.jpg" data-full="img/work/project1-rendering-3-full.jpg" width="1022" height="681" loading="lazy" alt="Rendering from the dining side: the island with counter stools, the range hood, and built-in ovens."><span class="tag">Rendering</span></li>
+      </ul>
+    </li>
   </ol>
-  <div class="process-work">
-    <h3>From plan to <em>rendering</em></h3>
-    <p class="process-lede">One kitchen, start to finish: the existing room, the floor plan, the new layout, and the renderings. Tap any image to see it larger.</p>
-    <ul class="gallery">
-      <li><img src="img/work/project1-existing.jpg" data-full="img/work/project1-existing-full.jpg" width="939" height="626" loading="lazy" alt="The kitchen before the redesign: cherry cabinets, a beige tile floor, and a breakfast table by the window."><span class="tag">Existing kitchen</span></li>
-      <li><img src="img/work/project1-floor-plan.png" data-full="img/work/project1-floor-plan-full.png" width="1200" height="800" loading="lazy" alt="The floor plan for the new kitchen, with cabinet sizes and measurements."><span class="tag">Floor plan</span></li>
-      <li><img src="img/work/project1-layout.png" data-full="img/work/project1-layout-full.png" width="1200" height="800" loading="lazy" alt="A 3D line drawing of the new layout: the wall between the kitchen and dining room removed, a new island, and a relocated door."><span class="tag">New layout</span></li>
-      <li><img src="img/work/project1-rendering-1.jpg" data-full="img/work/project1-rendering-1-full.jpg" width="1672" height="1115" loading="lazy" alt="Rendering from above: white cabinetry, a long stone island with a dark wood base, glass pendants, and a built-in buffet by the dining table."><span class="tag">Rendering</span></li>
-      <li><img src="img/work/project1-rendering-2.jpg" data-full="img/work/project1-rendering-2-full.jpg" width="1062" height="708" loading="lazy" alt="Rendering of the island and sink wall, with the patio door on the left."><span class="tag">Rendering</span></li>
-      <li><img src="img/work/project1-rendering-3.jpg" data-full="img/work/project1-rendering-3-full.jpg" width="1022" height="681" loading="lazy" alt="Rendering from the dining side: the island with counter stools, the range hood, and built-in ovens."><span class="tag">Rendering</span></li>
-    </ul>
-    <a class="designer-link" href="work.html">See more of our work &rarr;</a>
-  </div>
+  <a class="designer-link steps-more" href="work.html">See more of our work &rarr;</a>
   <div class="designer">
     <img src="img/beata-thumb.jpg" width="120" height="150" loading="lazy" alt="Beata Piskorska">
     <div>
