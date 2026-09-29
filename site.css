@@ -47,3 +47,7 @@ dialog.lightbox::backdrop { background:transparent; }
 
 /* Keep phone numbers on one line */
 a[href^="tel:"] { white-space:nowrap; }
+
+/* Section spacing, set per section in the page editor */
+section.space-tight { padding-top:clamp(28px, 3vw, 44px); padding-bottom:clamp(28px, 3vw, 44px); }
+section.space-roomy { padding-top:clamp(80px, 9vw, 136px); padding-bottom:clamp(80px, 9vw, 136px); }
