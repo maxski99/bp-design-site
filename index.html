@@ -74,6 +74,48 @@
   .notes { margin-top:18px; display:grid; gap:4px; }
   .card-note { margin:16px 0 0; font-size:14px; color:var(--soft); text-align:center; }
   .card-note a { color:var(--text); text-underline-offset:3px; }
+  /* one package, priced by room: pick rooms on the card */
+  .package { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); background:var(--raised); border:1px solid var(--rule); }
+  .package-info { padding:36px 34px 30px; }
+  .package-info h3 { margin:0; font-size:14px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
+  .package-price { display:flex; align-items:baseline; gap:14px; margin:20px 0 4px; }
+  .package-price .price { margin:0; }
+  .package-extra { margin:0; font-size:17px; color:var(--soft); }
+  .package-extra strong { color:var(--text); font-weight:600; }
+  .package-info ul { list-style:none; padding:0; margin:26px 0 0; }
+  .package-info li { padding:11px 0; border-top:1px solid var(--rule); font-size:15.5px; }
+  .package-info li strong { font-weight:600; }
+  .package-pick { padding:36px 34px 30px; background:#17191C; border-left:1px solid var(--rule); display:flex; flex-direction:column; }
+  .pick-title { margin:0 0 14px; font-size:13px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
+  .room-add { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; }
+  .room-add button { font:600 13px/1 "Hanken Grotesk", sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--text); background:transparent; border:1px solid var(--rule); padding:15px 12px; cursor:pointer; text-align:left; transition:border-color .2s, background .2s; }
+  .room-add button::before { content:"+"; color:var(--acc); font-size:17px; margin-right:10px; }
+  .room-add button:hover:not(:disabled) { border-color:var(--text); background:rgba(236,233,227,.04); }
+  .room-add button:disabled { opacity:.4; cursor:not-allowed; }
+  .room-add button:focus-visible, .picked button:focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
+  .pick-empty { margin:18px 0 0; color:var(--soft); font-size:15px; }
+  .picked { list-style:none; margin:18px 0 0; padding:0; }
+  .picked:empty { display:none; }
+  .picked li { display:grid; grid-template-columns:28px minmax(0, 1fr) 36px; align-items:center; gap:8px; padding:8px 0; border-top:1px solid var(--rule); }
+  .picked .pick-n { font:italic 400 20px/1 "Bodoni Moda", serif; color:var(--acc); }
+  .picked .pick-name { font-size:16px; }
+  .picked input { font:inherit; font-size:16px; color:var(--text); background:transparent; border:0; border-bottom:1px solid var(--soft); padding:6px 0; width:100%; }
+  .picked input:focus { outline:none; border-bottom-color:var(--acc); }
+  .picked input::placeholder { color:#6E6C67; }
+  .picked .pick-x { width:36px; height:36px; background:none; border:0; color:var(--soft); font-size:24px; line-height:1; cursor:pointer; }
+  .picked .pick-x:hover { color:var(--text); }
+  .pick-max { margin:12px 0 0; font-size:14px; color:#E6B872; }
+  .pick-max a { color:var(--text); }
+  .pick-sum { margin:18px 0 0; padding-top:16px; border-top:1px solid var(--text); }
+  .pick-line { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .pick-line span { font-size:15px; color:var(--soft); }
+  .pick-line strong { font:400 44px/1 "Bodoni Moda", serif; }
+  .pick-sum p { margin:8px 0 0; font-size:14px; color:var(--soft); }
+  .package-pick .btn { margin-top:22px; text-align:center; }
+  .pick-error { margin:10px 0 0; font-size:14px; color:#E58B7C; min-height:0; }
+  .pick-error:empty { display:none; }
+  .package-pick .card-note { margin-top:14px; }
+  @media (max-width:880px) { .package { grid-template-columns:1fr; } .package-pick { border-left:0; border-top:1px solid var(--rule); } .package-info, .package-pick { padding:28px 22px 24px; } }
   .addons { margin-top:clamp(16px, 2vw, 28px); border:1px solid var(--rule); padding:22px 30px; display:grid; grid-template-columns:auto minmax(0, 1fr); gap:10px 40px; align-items:center; }
   .addons h3 { margin:0; font-size:14px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
   .addons dl { margin:0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px 40px; }
@@ -246,7 +288,7 @@
   <div class="hero">
     <p class="eyebrow">Kitchen &amp; bath design · Chicagoland Area</p>
     <h1>Kitchens and baths, <em>designed</em> around you.</h1>
-    <p class="lede">We design your kitchen or bathroom before construction begins and provide a realistic rendering of the finished space, so every decision is made on paper&mdash;not in the middle of demolition.</p>
+    <p class="lede">We design your kitchen or bathroom before construction begins and provide a realistic rendering of the finished space, so every decision is made on paper not in the middle of demolition.</p>
     <div class="hero-ctas"><a class="btn" href="#packages">Book a home visit</a><a class="btn ghost" href="work.html">See our work</a></div>
 
     <div class="projects hero-work">
@@ -288,33 +330,36 @@
 
 <section id="packages"><div class="wrap">
   <h2>Design <em>packages</em></h2>
-  <p class="intro">Pay your retainer online to book. Every package starts with a home visit and consultation.</p>
-  <div class="pkgs">
-    <div class="pkg"><h3>One room</h3><div class="price">$250</div><div class="per">retainer</div>
-      <ul><li>Home visit and consultation</li><li>Phone consultation after the visit</li><li>Design plan and rendering for one room</li><li>1 free revision</li></ul>
-      <a class="btn" href="#packages" data-pay="oneRoom">Book one room</a></div>
-    <div class="pkg"><h3>Two rooms</h3><div class="price">$500</div><div class="per">retainer</div>
-      <ul><li>Home visit and consultation</li><li>Phone consultation after the visit</li><li>Design plans and renderings for two rooms</li><li>2 free revisions</li></ul>
-      <a class="btn" href="#packages" data-pay="twoRooms">Book two rooms</a></div>
-    <div class="pkg" id="multi-card"><h3>Three or more rooms</h3>
-      <div class="price multi-price" id="rooms-price" aria-live="polite"><span class="choose">Choose your rooms</span></div><div class="per" id="rooms-per">Select how many rooms to see your total.</div>
-      <label class="rooms"><span>Rooms</span>
-        <select id="rooms" aria-label="Number of rooms">
-          <option value="" selected disabled>Select</option>
-          <option value="3">3 rooms</option><option value="4">4 rooms</option><option value="5">5 rooms</option><option value="6">6 rooms</option>
-          <option value="7">7 rooms</option><option value="8">8 rooms</option><option value="9">9 rooms</option><option value="10">10 rooms</option>
-        </select>
-      </label>
-      <ul><li>Home visit and consultation</li><li>Phone consultation after the visit</li><li>Design plans and renderings for every room</li><li>2 free revisions</li></ul>
-      <a class="btn is-disabled" href="#packages" data-pay="multi" id="rooms-pay" aria-disabled="true">Select rooms to continue</a>
-      <p class="card-note">Planning more than 10 rooms? <a href="#contact">Get in touch</a> for a custom quote.</p></div>
-  </div>
-  <div class="addons">
-    <h3>Add-ons</h3>
-    <dl>
-      <div><dt>Additional revisions</dt><dd><strong>$200</strong> each</dd></div>
-      <div><dt>Hourly design support</dt><dd>From <strong>$300</strong> per hour, for larger projects or extra design help</dd></div>
-    </dl>
+  <p class="intro">Secure your home visit and consultation by booking today!</p>
+  <div class="package" id="package-card">
+    <div class="package-info">
+      <h3>Kitchen and Bathroom Design Packages</h3>
+      <div class="package-price"><span class="price">$300</span><span class="per">first room</span></div>
+      <p class="package-extra">+ <strong>$250</strong> each additional room</p>
+      <ul>
+        <li>Home visit, measurements for floor plan, and consultation by our Lead Designer</li>
+        <li>Design plans and renderings for each room</li>
+        <li>Phone consultation to review your designs, plans, and renderings once they're delivered</li>
+        <li>One (1) free revision per room</li>
+        <li>Additional revisions: <strong>$150</strong> each</li>
+      </ul>
+    </div>
+    <div class="package-pick">
+      <p class="pick-title" id="pick-title">Choose your rooms</p>
+      <div class="room-add" role="group" aria-labelledby="pick-title">
+        <button type="button" data-add="Kitchen">Kitchen</button><button type="button" data-add="Bathroom">Bathroom</button><button type="button" data-add="Powder room">Powder room</button><button type="button" data-add="Other">Other</button>
+      </div>
+      <p class="pick-empty" id="pick-empty">Add each room you'd like designed.</p>
+      <ol class="picked" id="picked" aria-label="Rooms in your package"></ol>
+      <p class="pick-max" id="pick-max" hidden>That's 10 rooms, the most we can book online. Planning more? <a href="#contact">Get in touch</a> for a custom quote.</p>
+      <div class="pick-sum" id="pick-sum" aria-live="polite" hidden>
+        <div class="pick-line"><span id="pick-count"></span><strong id="pick-total"></strong></div>
+        <p id="pick-break"></p>
+      </div>
+      <a class="btn is-disabled" href="#packages" id="pkg-pay" aria-disabled="true">Add a room to continue</a>
+      <p class="pick-error" id="pick-error" role="alert"></p>
+      <p class="card-note">Up to 10 rooms online. Planning more? <a href="#contact">Get in touch</a> for a custom quote.</p>
+    </div>
   </div>
   <p class="ask">Questions before you book? Call <a href="tel:+17732453529">(773) 245-3529</a> or <a href="#contact">send us a message</a>.</p>
   <div class="notes">
@@ -326,9 +371,9 @@
   <h2>How it <em>works</em></h2>
   <p class="intro">Three steps from first visit to a plan you can build.</p>
   <ol class="steps">
-    <li><h3>Home visit</h3><p>We walk the space, take measurements and talk through how you use the room.</p></li>
-    <li><h3>Design your space</h3><p>We plan the layout, cabinetry, finishes, and lighting, and show you renderings of the finished room.</p></li>
-    <li><h3>Build with confidence</h3><p>Take the plan to your contractor with a clear picture of the finished space.</p></li>
+    <li><h3>Home visit</h3><p>We walk the space, take measurements and plan the layout, cabinetry, finishes, and lighting for your dream kitchen or bath.</p></li>
+    <li><h3>The Design</h3><p>Our Lead Designer takes your dream space and creates a perfect visual rendering. We wait for your review and approval then can make the final revisions.</p></li>
+    <li><h3>Build with confidence</h3><p>Take the plans and precise renderings to your contractor with a clear picture of the finished space.</p></li>
   </ol>
   <div class="process-work">
     <h3>From plan to <em>rendering</em></h3>
@@ -394,19 +439,11 @@
       <p class="pkgline" id="agree-pkg"></p>
     </div>
     <ol class="stepper" aria-label="Booking steps">
-      <li data-for="1">Rooms</li><li data-for="2">Your details</li><li data-for="3">Review &amp; sign</li>
+      <li data-for="1">Your details</li><li data-for="2">Review &amp; sign</li>
     </ol>
 
-    <!-- Step 1: which rooms -->
-    <section class="step" data-step="1" aria-labelledby="s1-title">
-      <h3 id="s1-title">Which rooms are we designing?</h3>
-      <p class="fine">Choose one room for each space in your package.</p>
-      <div class="room-list" id="room-list"></div>
-      <p class="step-total" id="s1-total"></p>
-    </section>
-
-    <!-- Step 2: contact details and project address -->
-    <section class="step" data-step="2" aria-labelledby="s2-title" hidden>
+    <!-- Step 1: contact details and project address -->
+    <section class="step" data-step="1" aria-labelledby="s2-title">
       <h3 id="s2-title">Your details</h3>
       <div class="row">
         <div class="field"><label for="sig-first">First name</label><input id="sig-first" name="first_name" type="text" autocomplete="given-name" required></div>
@@ -432,8 +469,8 @@
       </fieldset>
     </section>
 
-    <!-- Step 3: review, terms, signature -->
-    <section class="step" data-step="3" aria-labelledby="s3-title" hidden>
+    <!-- Step 2: review, terms, signature -->
+    <section class="step" data-step="2" aria-labelledby="s3-title" hidden>
       <h3 id="s3-title">Review &amp; sign</h3>
       <dl class="summary" id="summary"></dl>
       <div>
@@ -474,18 +511,11 @@
 
 <div class="wrap"><footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois · <a href="tel:+17732453529">(773) 245-3529</a></span><span><a href="terms.html">Terms &amp; conditions</a></span></footer></div>
 <script>
-  // Stripe Payment Links for the retainer buttons. Until a link is set, the button scrolls to the inquiry form.
-  const STRIPE_LINKS = {
-    oneRoom: "https://buy.stripe.com/7sYbJ2gzKbffdax8pha3u00",
-    twoRooms: "https://buy.stripe.com/8x24gA6Za3MN6M90WPa3u01",
-    threeRooms: "https://buy.stripe.com/14A7sM2IUerrc6tgVNa3u02",
-    deposit: "https://buy.stripe.com/28E28s2IU1EFdax8pha3u03",
-  };
   const TERMS_VERSION = "Design Services Terms and Conditions, last updated September 27, 2026";
-  // Signing automation (Cloudflare Worker). When set, the signed agreement is emailed to the client after payment.
-  // When empty or unreachable, the site falls back to emailing the record to info@ and downloading a PDF copy.
+  // Signing automation (Cloudflare Worker): stores the signed agreement, opens a Stripe checkout for the exact package,
+  // and emails the signed agreement after payment. If it can't be reached, the site emails the record to info@ and
+  // downloads a PDF copy; the office then sends a payment link.
   const AGREEMENT_API = "https://bp-agreements.bp-agreements.workers.dev";
-  document.querySelectorAll("[data-pay]").forEach(a => { const url = STRIPE_LINKS[a.dataset.pay]; if (url) a.href = url; });
   document.getElementById("year").textContent = new Date().getFullYear();
 
   document.querySelectorAll(".reveal").forEach(fig => {
@@ -541,29 +571,28 @@
     }
   });
 
-  // ---- Packages ----
+  // ---- Package: pick rooms on the card, see the total ----
+  // Prices: keep in step with FIRST_ROOM / EXTRA_ROOM / MAX_ROOMS in bp-agreements/src/index.js, which sets the real charge.
+  const FIRST_ROOM = 300, EXTRA_ROOM = 250, MAX_ROOMS = 10;
+  const PACKAGE_NAME = "Kitchen and Bathroom Design Package";
   const fmt = n => "$" + n.toLocaleString("en-US");
-  const roomsSelect = document.getElementById("rooms");
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const priceFor = n => n ? FIRST_ROOM + EXTRA_ROOM * (n - 1) : 0;
   // The items the Client initials, one by one, for this booking. **text** is bold.
   // Keep identical in bp-design-site/index.html and bp-agreements/src/pdf.js.
   const initialItems = r => {
     const n = Number(r.rooms), usd = v => "$" + Number(v).toLocaleString("en-US");
     const rooms = (r.room_list || []).map(x => String(x).replace(/\*/g, "")).join(", ");
-    const payment = n === 1 ? "The **$250 One-Room Design Retainer must be paid in full at the time of booking**."
-      : n === 2 ? "The **$500 Two-Room Design Retainer must be paid in full at the time of booking**."
-      : n === 3 ? "The **" + usd(r.total) + " Three-Room Design Package must be paid in full at the time of booking**."
-      : "A **" + usd(r.pay_now) + " deposit is due at the time of booking** and is applied toward the **" + usd(r.total) + " package total**. The **" + usd(r.total - r.pay_now) + " balance is due when the designs are delivered**.";
     return [
-      { title: "Additional Services", items: [
-        { id: "revisions", text: "If additional revisions are needed, they may be purchased for **$200 per revision**." },
-        { id: "hourly", text: "For more hands-on design support, hourly consultations are available at **$300 per hour**, with a **$600 deposit required before services begin**." },
+      { title: "Your Design Package", items: [
+        { id: "visit", text: "**1 in-person home visit**, measurements for the floor plan, and a design consultation with our Lead Designer" },
+        { id: "plans", text: "Design plans and renderings for **" + n + (n === 1 ? " room only**" : " rooms only**") + (rooms ? " (" + rooms + ")" : "") },
+        { id: "phone", text: "**1 phone consultation** to review the designs, plans, and renderings after they are delivered" },
+        { id: "free_revisions", text: "**One (1) free revision per room**, if needed" },
+        { id: "payment", text: "The **" + usd(r.total) + " package fee for " + n + (n === 1 ? " room" : " rooms") + " must be paid in full at the time of booking**." },
       ] },
-      { title: "Your " + n + "-Room Package Includes", items: [
-        { id: "visit", text: "**1 in-person home visit and design consultation**" },
-        { id: "phone", text: "**1 phone consultation after the home visit**" },
-        { id: "plans", text: (n === 1 ? "Design plan and rendering for **1 room only**" : "Design plans and renderings for **" + n + " rooms only**") + (rooms ? " (" + rooms + ")" : "") },
-        { id: "free_revisions", text: n === 1 ? "**1 free revision**, if needed" : "**2 free revisions**, if needed" },
-        { id: "payment", text: payment },
+      { title: "Additional Revisions", items: [
+        { id: "revisions", text: "Revisions beyond the one free revision per room are **$150 per revision**." },
       ] },
       { title: "Rescheduling and Cancellation — Section 4", items: [
         { id: "reschedule_free", text: "You may reschedule your home visit **one time at no charge** if you provide at least **24 hours' notice**." },
@@ -579,38 +608,55 @@
       ] },
     ];
   };
-  const ROOM_TYPES = ["Kitchen", "Primary bathroom", "Guest bathroom", "Powder room", "Laundry room", "Mudroom", "Other"];
-  const packageFor = key => {
-    if (key === "oneRoom") return { name: "One-Room Design Package", rooms: 1, revisions: 1, total: 250, payNow: 250, link: STRIPE_LINKS.oneRoom };
-    if (key === "twoRooms") return { name: "Two-Room Design Package", rooms: 2, revisions: 2, total: 500, payNow: 500, link: STRIPE_LINKS.twoRooms };
-    const rooms = Number(roomsSelect.value);
-    if (!rooms) return null;
-    const total = rooms * 250;
-    return rooms === 3
-      ? { name: "Three-Room Design Package", rooms, revisions: 2, total, payNow: total, link: STRIPE_LINKS.threeRooms }
-      : { name: rooms + "-Room Design Package", rooms, revisions: 2, total, payNow: 1000, link: STRIPE_LINKS.deposit };
+  const picked = document.getElementById("picked"), pickPay = document.getElementById("pkg-pay"), pickError = document.getElementById("pick-error");
+  let picks = [];
+  const chosenRooms = () => picks.map(p => p.type === "Other" ? p.other.trim() : p.type);
+  const currentPackage = () => picks.length ? { name: PACKAGE_NAME, rooms: picks.length, total: priceFor(picks.length), payNow: priceFor(picks.length) } : null;
+  const paymentLine = p => "The " + fmt(p.total) + " package fee for " + p.rooms + (p.rooms === 1 ? " room" : " rooms") + " is paid in full at booking.";
+  const payShort = p => fmt(p.total) + " paid at booking";
+  const renderPicks = focusIndex => {
+    picked.innerHTML = picks.map((p, i) => '<li><span class="pick-n">' + (i + 1) + '</span>' +
+      (p.type === "Other"
+        ? '<input type="text" class="pick-other" data-i="' + i + '" maxlength="40" placeholder="Describe the room" aria-label="Room ' + (i + 1) + ': describe the room" value="' + esc(p.other) + '">'
+        : '<span class="pick-name">' + esc(p.type) + '</span>') +
+      '<button type="button" class="pick-x" data-i="' + i + '" aria-label="Remove room ' + (i + 1) + ' (' + esc(p.type) + ')">&times;</button></li>').join("");
+    const n = picks.length;
+    document.getElementById("pick-empty").hidden = n > 0;
+    document.getElementById("pick-sum").hidden = n === 0;
+    document.getElementById("pick-max").hidden = n < MAX_ROOMS;
+    document.getElementById("pick-count").textContent = n + (n === 1 ? " room" : " rooms");
+    document.getElementById("pick-total").textContent = fmt(priceFor(n));
+    document.getElementById("pick-break").textContent = (n > 1 ? fmt(FIRST_ROOM) + " first room + " + fmt(EXTRA_ROOM) + " × " + (n - 1) : fmt(FIRST_ROOM) + " first room") + " · paid in full at booking";
+    pickPay.textContent = n ? "Book " + n + (n === 1 ? " room" : " rooms") : "Add a room to continue";
+    pickPay.classList.toggle("is-disabled", !n);
+    if (n) pickPay.removeAttribute("aria-disabled"); else pickPay.setAttribute("aria-disabled", "true");
+    document.querySelectorAll("[data-add]").forEach(b => { b.disabled = n >= MAX_ROOMS; });
+    pickError.textContent = "";
+    if (focusIndex != null) { const li = picked.children[focusIndex]; if (li) (li.querySelector("input") || li.querySelector("button")).focus(); }
   };
-  const paymentLine = p => p.payNow === p.total
-    ? "The " + fmt(p.total) + " package fee is paid in full today."
-    : "A " + fmt(p.payNow) + " deposit is paid today and credited to the " + fmt(p.total) + " total. The " + fmt(p.total - p.payNow) + " balance is invoiced when your design plans are delivered.";
-  const payShort = p => p.payNow === p.total ? fmt(p.total) + " paid at booking" : fmt(p.payNow) + " deposit today · " + fmt(p.total) + " total";
-
-  // 3+ rooms card: the total appears only after a room count is chosen
-  roomsSelect.addEventListener("change", () => {
-    const p = packageFor("multi"), pay = document.getElementById("rooms-pay");
-    document.getElementById("rooms-price").textContent = fmt(p.total);
-    document.getElementById("rooms-per").textContent = p.payNow === p.total ? "total for " + p.rooms + " rooms, paid at booking" : "total for " + p.rooms + " rooms · " + fmt(p.payNow) + " deposit today, " + fmt(p.total - p.payNow) + " when your plans are delivered";
-    pay.textContent = "Book " + p.rooms + " rooms"; pay.classList.remove("is-disabled"); pay.removeAttribute("aria-disabled");
+  document.querySelectorAll("[data-add]").forEach(b => b.addEventListener("click", () => {
+    if (picks.length >= MAX_ROOMS) return;
+    picks.push({ type: b.dataset.add, other: "" });
+    renderPicks(b.dataset.add === "Other" ? picks.length - 1 : null);
+  }));
+  picked.addEventListener("click", e => {
+    const x = e.target.closest(".pick-x"); if (!x) return;
+    picks.splice(Number(x.dataset.i), 1);
+    renderPicks();
+    const next = picked.querySelectorAll(".pick-x")[Math.min(Number(x.dataset.i), picks.length - 1)];
+    (next || document.querySelector("[data-add]")).focus();
   });
+  picked.addEventListener("input", e => { if (e.target.matches(".pick-other")) { picks[Number(e.target.dataset.i)].other = e.target.value; pickError.textContent = ""; } });
+  renderPicks();
 
-  // ---- Booking: 1 rooms · 2 details · 3 review & sign, then Stripe ----
+  // ---- Booking: 1 details · 2 review & sign, then Stripe checkout ----
   const dlg = document.getElementById("agree");
   const agreeForm = document.getElementById("agree-form");
   const af = agreeForm.elements;
   const agreeStatus = agreeForm.querySelector(".form-status");
   const contractBox = document.getElementById("contract");
   const btnBack = document.getElementById("step-back"), btnNext = document.getElementById("step-next"), btnSubmit = document.getElementById("step-submit");
-  let chosen = null, pkg = null, step = 1, termsBlocks = null;
+  let pkg = null, step = 1, termsBlocks = null;
   const setAgreeStatus = (text, kind) => { agreeStatus.textContent = text; agreeStatus.className = "form-status" + (kind ? " is-" + kind : ""); };
   const newReference = rooms => {
     const d = new Date(), pad2 = n => String(n).padStart(2, "0");
@@ -643,26 +689,7 @@
     document.head.appendChild(s);
   }));
 
-  // ---- Step 1: rooms ----
-  const roomList = document.getElementById("room-list");
-  const buildRooms = n => {
-    roomList.replaceChildren(...Array.from({ length: n }, (_, i) => {
-      const row = document.createElement("div"); row.className = "room-row";
-      const id = "room-" + (i + 1);
-      row.innerHTML = '<label for="' + id + '">Room ' + (i + 1) + '</label>' +
-        '<select id="' + id + '" class="room-type"><option value="" selected disabled>Choose a room</option>' + ROOM_TYPES.map(t => "<option>" + t + "</option>").join("") + '</select>' +
-        '<input type="text" class="room-other" maxlength="40" placeholder="Describe the room" aria-label="Describe room ' + (i + 1) + '" hidden>';
-      const sel = row.querySelector("select"), other = row.querySelector("input");
-      sel.addEventListener("change", () => { other.hidden = sel.value !== "Other"; if (!other.hidden) other.focus(); setAgreeStatus(""); });
-      return row;
-    }));
-  };
-  const chosenRooms = () => [...roomList.querySelectorAll(".room-row")].map(r => {
-    const v = r.querySelector("select").value;
-    return v === "Other" ? r.querySelector("input").value.trim() : v;
-  });
-
-  // ---- Step 2: phone formatting, ZIP fill, address verification ----
+  // ---- Step 1: phone formatting, ZIP fill, address verification ----
   const phoneDigits = v => { let d = v.replace(/\D/g, ""); if (d.length === 11 && d[0] === "1") d = d.slice(1); return d.slice(0, 10); };
   af.phone.addEventListener("input", () => {
     const d = phoneDigits(af.phone.value);
@@ -710,7 +737,7 @@
     } catch (e) { /* the client can still type the city */ }
   });
 
-  // ---- Step 3: summary, key terms, signature pad ----
+  // ---- Step 2: summary, initials, signature pad ----
   const pad = document.getElementById("sig-pad"), ctx = pad.getContext("2d");
   let inked = false, method = "drawn", drawing = false, last = null;
   const resetPad = () => {
@@ -747,12 +774,11 @@
     return c.toDataURL(type, q);
   };
   const fullName = () => (af.first_name.value.trim() + " " + af.last_name.value.trim()).trim();
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const renderReview = () => {
     const rooms = chosenRooms();
     const rows = [
-      ["Package", pkg.name, 1], ["Rooms", rooms.join(", "), 1], ["Payment", payShort(pkg), 0],
-      ["Name", fullName(), 2], ["Email", af.email.value.trim(), 2], ["Phone", af.phone.value.trim(), 2], ["Project address", composeAddress(), 2],
+      ["Package", pkg.name, 0], ["Rooms", rooms.join(", "), "rooms"], ["Total", payShort(pkg), 0],
+      ["Name", fullName(), 1], ["Email", af.email.value.trim(), 1], ["Phone", af.phone.value.trim(), 1], ["Project address", composeAddress(), 1],
     ];
     document.getElementById("summary").innerHTML = rows.map(([k, v, s]) =>
       "<div><dt>" + k + "</dt><dd>" + esc(v) + (s ? ' <button type="button" class="linkbtn" data-goto="' + s + '">Edit</button>' : "") + "</dd></div>").join("");
@@ -792,31 +818,30 @@
     if (stamped[b.dataset.id]) delete stamped[b.dataset.id]; else stamped[b.dataset.id] = new Date().toISOString();
     setAgreeStatus(""); updateInitials();
   });
-  document.getElementById("summary").addEventListener("click", e => { const b = e.target.closest("[data-goto]"); if (b) goTo(Number(b.dataset.goto)); });
+  document.getElementById("summary").addEventListener("click", e => {
+    const b = e.target.closest("[data-goto]"); if (!b) return;
+    if (b.dataset.goto !== "rooms") return goTo(Number(b.dataset.goto));
+    // Rooms are chosen on the package card.
+    dlg.close();
+    document.getElementById("package-card").scrollIntoView({ behavior: "smooth", block: "start" });
+    document.querySelector("[data-add]").focus({ preventScroll: true });
+  });
 
   // ---- Step navigation ----
   const goTo = n => {
     step = n;
     agreeForm.querySelectorAll(".step").forEach(s => { s.hidden = Number(s.dataset.step) !== n; });
     agreeForm.querySelectorAll(".stepper li").forEach(li => { const f = Number(li.dataset.for); li.className = f < n ? "done" : f === n ? "on" : ""; li.toggleAttribute("aria-current", f === n); });
-    btnBack.hidden = n === 1; btnNext.hidden = n === 3; btnSubmit.hidden = n !== 3;
-    document.getElementById("agree-fine").textContent = n === 3 ? (AGREEMENT_API ? "After payment, we'll email you a copy of your signed agreement." : "You'll download a signed PDF copy, then pay securely with Stripe.") : "";
+    btnBack.hidden = n === 1; btnNext.hidden = n === 2; btnSubmit.hidden = n !== 2;
+    document.getElementById("agree-fine").textContent = n === 2 ? "Next, you'll pay securely with Stripe. We'll email you a copy of your signed agreement." : "";
     setAgreeStatus("");
-    if (n === 3) { renderReview(); requestAnimationFrame(() => { resetPad(); if (fullName()) document.getElementById("sig-typed").dataset.ready = "1"; }); }
+    if (n === 2) { renderReview(); requestAnimationFrame(() => { resetPad(); if (fullName()) document.getElementById("sig-typed").dataset.ready = "1"; }); }
     const first = agreeForm.querySelector('.step[data-step="' + n + '"] select, .step[data-step="' + n + '"] input');
-    if (first && n !== 3) first.focus();
+    if (first && n !== 2) first.focus();
     dlg.scrollTop = 0;
   };
   const validateStep = async n => {
     if (n === 1) {
-      const rows = [...roomList.querySelectorAll(".room-row")];
-      const missing = rows.find(r => !r.querySelector("select").value);
-      if (missing) { setAgreeStatus("Choose a room type for every room in your package.", "error"); missing.querySelector("select").focus(); return false; }
-      const otherEmpty = rows.find(r => r.querySelector("select").value === "Other" && !r.querySelector("input").value.trim());
-      if (otherEmpty) { setAgreeStatus("Describe the room you chose as Other.", "error"); otherEmpty.querySelector("input").focus(); return false; }
-      return true;
-    }
-    if (n === 2) {
       if (!af.first_name.value.trim()) { setAgreeStatus("Enter your first name as it appears on legal documents.", "error"); af.first_name.focus(); return false; }
       if (!af.last_name.value.trim()) { setAgreeStatus("Enter your last name.", "error"); af.last_name.focus(); return false; }
       if (!af.email.value.trim() || !af.email.checkValidity()) { setAgreeStatus("Check your email address. It should look like name@example.com.", "error"); af.email.focus(); return false; }
@@ -831,20 +856,20 @@
   btnNext.addEventListener("click", async () => { btnNext.disabled = true; const ok = await validateStep(step); btnNext.disabled = false; if (ok) goTo(step + 1); });
   btnBack.addEventListener("click", () => goTo(step - 1));
 
-  // Open the booking window from any package button
-  document.querySelectorAll("[data-pay]").forEach(a => a.addEventListener("click", event => {
+  // Open the booking window from the package card
+  pickPay.addEventListener("click", event => {
     event.preventDefault();
-    const p = packageFor(a.dataset.pay);
-    if (!p) { roomsSelect.focus(); return; }
-    if (!p.link || typeof dlg.showModal !== "function") { if (p.link) window.location.href = p.link; return; }
-    if (chosen !== a.dataset.pay || !pkg || pkg.rooms !== p.rooms) buildRooms(p.rooms);
-    chosen = a.dataset.pay; pkg = p;
-    document.getElementById("agree-pkg").textContent = p.name + " · " + payShort(p);
-    document.getElementById("s1-total").textContent = p.rooms + (p.rooms === 1 ? " room" : " rooms") + " · " + payShort(p);
+    const p = currentPackage();
+    if (!p) { pickError.textContent = "Add at least one room to book."; document.querySelector("[data-add]").focus(); return; }
+    const blank = picks.findIndex(x => x.type === "Other" && !x.other.trim());
+    if (blank >= 0) { pickError.textContent = "Describe the room you added as Other."; picked.children[blank].querySelector("input").focus(); return; }
+    if (typeof dlg.showModal !== "function") { location.hash = "contact"; return; }
+    pkg = p;
+    document.getElementById("agree-pkg").textContent = chosenRooms().join(", ") + " · " + payShort(p);
     dlg.showModal();
     goTo(1);
     loadTerms();
-  }));
+  });
   dlg.querySelector("[data-close]").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", event => { if (event.target === dlg) dlg.close(); });
 
@@ -913,7 +938,7 @@
   agreeForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (af.botcheck.checked || !pkg) return;
-    if (step !== 3) { btnNext.click(); return; }
+    if (step !== 2) { btnNext.click(); return; }
     if (!adopted()) { setAgreeStatus("Type your initials (2–4 letters) above the list of items.", "error"); initValue.focus(); return; }
     const missingItem = [...initGroups.querySelectorAll(".init-item")].filter(r => !stamped[r.dataset.id]);
     missingItem.forEach(r => r.classList.add("missing"));
@@ -926,8 +951,8 @@
     const signer = fullName(), email = af.email.value.trim();
     const rec = {
       reference: newReference(p.rooms),
-      package_name: p.name,
-      package: p.name + " (" + p.rooms + (p.rooms === 1 ? " room" : " rooms") + ", " + p.revisions + " free revision" + (p.revisions === 1 ? "" : "s") + ")",
+      package_name: PACKAGE_NAME,
+      package: PACKAGE_NAME + " (" + p.rooms + (p.rooms === 1 ? " room" : " rooms") + ", one free revision per room)",
       room_list: rooms,
       initials,
       payment: paymentLine(p),
@@ -944,13 +969,11 @@
       browser: navigator.userAgent,
     };
     btnSubmit.disabled = true; btnBack.disabled = true; btnSubmit.textContent = "Signing…"; setAgreeStatus("");
-    const goToPayment = message => {
-      setAgreeStatus(message, "success");
-      const url = new URL(p.link);
-      url.searchParams.set("prefilled_email", email);
-      url.searchParams.set("client_reference_id", rec.reference);
-      setTimeout(() => { window.location.href = url.toString(); }, 1400);
+    const toCheckout = url => {
+      setAgreeStatus("Signed. Taking you to secure checkout. We'll email your signed agreement once payment is complete…", "success");
+      setTimeout(() => { window.location.href = url; }, 1200);
     };
+    const finished = message => { setAgreeStatus(message, "success"); btnSubmit.hidden = true; btnBack.hidden = true; };
     const failed = msg => { setAgreeStatus(msg, "error"); btnSubmit.disabled = false; btnBack.disabled = false; btnSubmit.textContent = "Sign & continue to payment"; };
 
     // 1. Preferred: the signing automation stores the agreement and emails it to the client after payment.
@@ -962,7 +985,9 @@
           body: JSON.stringify(Object.assign({}, rec, { signature_png: signatureImage(480, 160, "image/png") })),
         });
         if (!r.ok) throw new Error("sign " + r.status);
-        return goToPayment("Signed. Taking you to secure payment. We'll email your signed agreement once payment is complete…");
+        const j = await r.json().catch(() => ({}));
+        if (j.checkout_url) return toCheckout(j.checkout_url);
+        return finished("Signed. Checkout couldn't open just now, so we'll email you a secure payment link within one business day.");
       } catch (err) { /* fall through to the backup below */ }
     }
 
@@ -983,7 +1008,7 @@
     } catch (err) { return failed("We couldn't record your signature. Try again, or email " + FALLBACK_EMAIL + " to book."); }
     let pdfOk = true;
     try { await makePdf(rec); } catch (e) { pdfOk = false; }
-    goToPayment(pdfOk ? "Signed. Your PDF copy is downloading. Taking you to secure payment…" : "Signed. We'll email you a copy of your agreement. Taking you to secure payment…");
+    finished(pdfOk ? "Signed. Your PDF copy is downloading. We'll email you a secure payment link within one business day." : "Signed. We'll email you a copy of your agreement and a secure payment link within one business day.");
   });
 </script>
 <script src="site.js" defer></script>
