@@ -271,7 +271,7 @@
   .hero-facts { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:10px 28px; margin:36px 0 0; padding:0; font-size:12.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--soft); }
   .hero-facts li { display:flex; align-items:center; gap:10px; }
   /* four across in the same 3:2 shape as the How it works photos; the row runs wider than the text column so each photo stays large */
-  .hero .hero-strip { grid-template-columns:repeat(4, minmax(0, 1fr)); gap:14px; width:min(1600px, calc(100vw - 48px)); max-width:none; margin:52px 0 0 calc(50% - min(800px, 50vw - 24px)); text-align:left; }
+  .hero .hero-strip { grid-template-columns:repeat(4, minmax(0, 1fr)); gap:14px; width:auto; max-width:none; margin:52px 0 0; text-align:left; }
   .hero-strip .reveal .frame { aspect-ratio:3/2; }
   .hero-strip .reveal .after, .hero-strip .reveal .before { object-fit:cover; }
   .hero-strip .reveal .state { top:10px; left:10px; font-size:11px; letter-spacing:.16em; padding:5px 9px; }
@@ -444,7 +444,13 @@
   .pad-btn.ghost { background:#fff; color:#1A1C1F; }
   .pad-link { background:none; border:0; padding:0; font:inherit; font-size:13px; color:#555; text-decoration:underline; cursor:pointer; }
   .pick-policy { margin:12px 0 0; font-size:13.5px; color:var(--soft); text-align:center; }
-  .foot-designer { margin-top:0; padding:44px 0 36px; }
+  .foot-designer { margin-top:0; padding:44px 0 36px; justify-content:center; }
+  /* one centered column: section headings and intros sit over the content they introduce */
+  #process > .wrap > h2, #packages > .wrap > h2, .faq > h2 { text-align:center; }
+  #process > .wrap > h2 { margin-bottom:44px; }
+  #packages > .wrap > .intro { text-align:center; margin-left:auto; margin-right:auto; margin-bottom:40px; }
+  .steps-more { display:table; margin:30px auto 0; }
+  .faq-more { text-align:center; }
   @media (max-width:600px) { .agree form { padding:28px 20px 22px; } .agree h2 { font-size:26px; } }
   @media (max-width:880px) {
     .pkgs, .steps { grid-template-columns:1fr; } nav { display:none; } section { padding:48px 0; }
@@ -523,7 +529,6 @@
     <li><img src="img/work/project1-rendering-3.jpg" data-full="img/work/project1-rendering-3-full.jpg" width="1022" height="681" loading="lazy" alt="Rendering from the dining side: the island with counter stools, the range hood, and built-in ovens."><span class="tag">Rendering</span></li>
   </ul>
   <a class="designer-link steps-more" href="work.html">See more of our work &rarr;</a>
-  </div>
 </div></section>
 
 <section id="packages" class="space-tight"><div class="wrap">
@@ -725,6 +730,7 @@
       <p class="designer-role">CEO &amp; Lead Designer · 15 years designing kitchens, bathrooms, and homes.</p>
       <a class="designer-link" href="about.html">Meet Beata &rarr;</a>
     </div>
+  </div>
 <footer><img class="foot-mark" src="logo-mark.svg" width="26" height="27" alt=""><span>© <span id="year">2026</span> BP Design Group LLC · Chicago, Illinois · <a href="tel:+17732453529">(773) 245-3529</a></span><span><a href="terms.html">Terms &amp; conditions</a></span></footer></div>
 <script>
   const TERMS_VERSION = "Terms & Conditions, last updated September 28, 2026";
