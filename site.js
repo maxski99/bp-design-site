@@ -80,3 +80,19 @@
     });
   });
 })();
+
+// Phones: a Call / Book bar after the visitor scrolls past the top, hidden while booking or contact is on screen.
+(() => {
+  const bar = document.createElement("div");
+  bar.className = "mbar";
+  bar.setAttribute("aria-label", "Call or book");
+  bar.innerHTML = '<a href="tel:+17732453529">Call</a><a class="mbar-book" href="/#packages">Book a home visit</a>';
+  document.body.append(bar);
+  document.body.classList.add("has-mbar");
+  // Hide it while the packages, the contact form, or a closing call to action fills the middle of the screen.
+  const zones = [...document.querySelectorAll("#packages, #contact, .cta")];
+  const inView = el => { const r = el.getBoundingClientRect(); return r.top < innerHeight * 0.6 && r.bottom > innerHeight * 0.3; };
+  const update = () => bar.classList.toggle("show", scrollY > 420 && !zones.some(inView));
+  addEventListener("scroll", update, { passive: true });
+  update();
+})();
